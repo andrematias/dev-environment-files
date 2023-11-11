@@ -8,9 +8,14 @@ return {
     -- configure lualine with modified theme
     lualine.setup({
       options = {
-        theme = "darkplus",
+        -- theme = "darkplus",
+        component_separators = { left = "", right = "" },
+        section_separators = { left = "", right = "" },
+        disabled_filetypes = { "alpha", "dashboard", "NvimTree", "Outline" },
+        always_divide_middle = true,
       },
       sections = {
+        lualine_c = { "filename", "filesize" },
         lualine_x = {
           {
             lazy_status.updates,
@@ -22,6 +27,7 @@ return {
           { "filetype" },
         },
       },
+      extensions = { "nvim-tree" },
     })
   end,
 }
