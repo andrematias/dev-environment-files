@@ -25,8 +25,17 @@ keymap.set("n", "<leader>sh", "<C-w>s", { desc = "Split window horizontally" }) 
 keymap.set("n", "<leader>se", "<C-w>=", { desc = "Make splits equal size" }) -- make split windows equal width & height
 keymap.set("n", "<leader>sc", "<cmd>close<CR>", { desc = "Close current split" }) -- close current split window
 
-keymap.set("n", "<leader>to", "<cmd>bu<CR>", { desc = "Open new tab" }) -- open new tab
-keymap.set("n", "<leader>bc", "<cmd>bd<CR>", { desc = "Close current tab" }) -- close current tab
-keymap.set("n", "<leader>bn", "<cmd>bn<CR>", { desc = "Go to next tab" }) --  go to next tab
-keymap.set("n", "<leader>bp", "<cmd>bp<CR>", { desc = "Go to previous tab" }) --  go to previous tab
-keymap.set("n", "<leader>bf", "<cmd>new %<CR>", { desc = "Open current buffer in new tab" }) --  move current buffer to new tab
+keymap.set("n", "<leader>to", "<cmd>enew<CR>", { desc = "Open new buffer" }) -- open new buffer
+keymap.set("n", "<leader>bc", "<cmd>Bdelete<CR>", { desc = "Close current buffer" }) -- close current buffer
+keymap.set("n", "<leader>bn", "<cmd>bn<CR>", { desc = "Go to next buffer" }) --  go to next buffer
+keymap.set("n", "<leader>bp", "<cmd>bp<CR>", { desc = "Go to previous buffer" }) --  go to previous buffer
+keymap.set("n", "<leader>bf", "<cmd>new %<CR>", { desc = "Open current buffer in new buffer" }) --  move current buffer to new buffer
+keymap.set("n", "<leader>c", "<cmd>Bdelete<CR>", { desc = "Close current buffer" }) -- close current buffer
+keymap.set("n", "<S-l>", "<cmd>bnext<CR>", { desc = "Go to next buffer" })
+keymap.set("n", "<S-h>", "<cmd>bprevious<CR>", { desc = "Go to previous buffer" })
+
+keymap.set("v", "<", "<gv", { desc = "Indent to left" })
+keymap.set("v", ">", ">gv", { desc = "Indent to right" })
+
+keymap.set("v", "J", "<cmd>move '>+1<CR>gv-gv", { desc = "Move selected line to down" })
+keymap.set("v", "K", "<cmd>move '<-2<CR>gv-gv", { desc = "Move selected line to up" })
