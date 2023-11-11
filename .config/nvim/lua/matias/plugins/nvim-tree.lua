@@ -18,6 +18,15 @@ return {
         width = 35,
         relativenumber = true,
       },
+
+      -- update cwd
+      update_cwd = true,
+      update_focused_file = {
+        enable = true,
+        update_cwd = true,
+        ignore_list = {},
+      },
+
       -- change folder arrow icons
       renderer = {
         indent_markers = {
@@ -47,6 +56,12 @@ return {
       },
       git = {
         ignore = false,
+      },
+
+      -- enable trash
+      trash = {
+        cmd = "trash",
+        require_confirm = true,
       },
     })
 
