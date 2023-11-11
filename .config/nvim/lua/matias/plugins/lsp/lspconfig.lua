@@ -152,5 +152,12 @@ return {
       capabilities = capabilities,
       on_attach = on_attach,
     })
+
+    -- configure docker language server
+    lspconfig["dockerls"].setup({
+      handlers = handlers,
+      capabilities = capabilities,
+      on_attach = on_attach,
+    })
   end,
 }
