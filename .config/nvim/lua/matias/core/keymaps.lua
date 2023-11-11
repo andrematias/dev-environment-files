@@ -39,3 +39,5 @@ keymap.set("v", ">", ">gv", { desc = "Indent to right" })
 
 keymap.set("v", "J", "<cmd>move '>+1<CR>gv-gv", { desc = "Move selected line to down" })
 keymap.set("v", "K", "<cmd>move '<-2<CR>gv-gv", { desc = "Move selected line to up" })
+
+keymap.set("n", "<leader>rr", "<cmd>so %<CR>", { desc = "Reload source file without restart nvim" })
