@@ -23,10 +23,10 @@ keymap.set("n", "<leader>-", "<C-x>", { desc = "Decrement number" }) -- decremen
 keymap.set("n", "<leader>sv", "<C-w>v", { desc = "Split window vertically" }) -- split window vertically
 keymap.set("n", "<leader>sh", "<C-w>s", { desc = "Split window horizontally" }) -- split window horizontally
 keymap.set("n", "<leader>se", "<C-w>=", { desc = "Make splits equal size" }) -- make split windows equal width & height
-keymap.set("n", "<leader>sx", "<cmd>close<CR>", { desc = "Close current split" }) -- close current split window
+keymap.set("n", "<leader>sc", "<cmd>close<CR>", { desc = "Close current split" }) -- close current split window
 
-keymap.set("n", "<leader>to", "<cmd>tabnew<CR>", { desc = "Open new tab" }) -- open new tab
-keymap.set("n", "<leader>tx", "<cmd>tabclose<CR>", { desc = "Close current tab" }) -- close current tab
-keymap.set("n", "<leader>tn", "<cmd>tabn<CR>", { desc = "Go to next tab" }) --  go to next tab
-keymap.set("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "Go to previous tab" }) --  go to previous tab
-keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in new tab" }) --  move current buffer to new tab
+keymap.set("n", "<leader>to", "<cmd>bu<CR>", { desc = "Open new tab" }) -- open new tab
+keymap.set("n", "<leader>bc", "<cmd>bd<CR>", { desc = "Close current tab" }) -- close current tab
+keymap.set("n", "<leader>bn", "<cmd>bn<CR>", { desc = "Go to next tab" }) --  go to next tab
+keymap.set("n", "<leader>bp", "<cmd>bp<CR>", { desc = "Go to previous tab" }) --  go to previous tab
+keymap.set("n", "<leader>bf", "<cmd>new %<CR>", { desc = "Open current buffer in new tab" }) --  move current buffer to new tab
