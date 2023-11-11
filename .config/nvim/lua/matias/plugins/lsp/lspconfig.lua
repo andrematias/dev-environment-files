@@ -15,7 +15,7 @@ return {
     local keymap = vim.keymap -- for conciseness
 
     local opts = { noremap = true, silent = true }
-    local on_attach = function(client, bufnr)
+    local on_attach = function(_, bufnr)
       opts.buffer = bufnr
 
       -- set keybinds
@@ -69,26 +69,35 @@ return {
       vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
     end
 
+    local handlers = {
+      ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "single" }),
+      ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "single" }),
+    }
+
     -- configure html server
     lspconfig["html"].setup({
+      handlers = handlers,
       capabilities = capabilities,
       on_attach = on_attach,
     })
 
     -- configure typescript server with plugin
     lspconfig["tsserver"].setup({
+      handlers = handlers,
       capabilities = capabilities,
       on_attach = on_attach,
     })
 
     -- configure css server
     lspconfig["cssls"].setup({
+      handlers = handlers,
       capabilities = capabilities,
       on_attach = on_attach,
     })
 
     -- configure emmet language server
     lspconfig["emmet_ls"].setup({
+      handlers = handlers,
       capabilities = capabilities,
       on_attach = on_attach,
       filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "svelte" },
@@ -96,12 +105,14 @@ return {
 
     -- configure python server
     lspconfig["pyright"].setup({
+      handlers = handlers,
       capabilities = capabilities,
       on_attach = on_attach,
     })
 
     -- configure lua server (with special settings)
     lspconfig["lua_ls"].setup({
+      handlers = handlers,
       capabilities = capabilities,
       on_attach = on_attach,
       settings = { -- custom settings for lua
@@ -121,14 +132,23 @@ return {
       },
     })
 
-    -- configure php server
+    -- configure php lsp server
     lspconfig["intelephense"].setup({
+      handlers = handlers,
       capabilities = capabilities,
       on_attach = on_attach,
     })
 
-    -- configure php server
+    -- configure clang lsp server
     lspconfig["clangd"].setup({
+      handlers = handlers,
+      capabilities = capabilities,
+      on_attach = on_attach,
+    })
+
+    -- configure cmake lsp server
+    lspconfig["neocmake"].setup({
+      handlers = handlers,
       capabilities = capabilities,
       on_attach = on_attach,
     })
