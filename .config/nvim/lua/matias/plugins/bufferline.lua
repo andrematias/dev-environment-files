@@ -4,8 +4,10 @@ return {
   version = "*",
   opts = {
     options = {
+      close_command = "Bdelete! %d",
       mode = "buffers",
-      separator_style = "thin",
+      separator_style = "slope",
+      offsets = { { filetype = "NvimTree", text = "", padding = 1 } },
       hover = {
         enabled = true,
         delay = 200,
