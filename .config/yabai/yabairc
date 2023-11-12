@@ -28,8 +28,13 @@ yabai -m mouse_drop_action swap
 
 
 # disable specific apps
+yabai -m rule --add app="^System Preferences$" stick=on layer=above manage=off
 yabai -m rule --add app="^System Settings$" manage=off
 yabai -m rule --add app="^Calculator$" manage=off
 yabai -m rule --add app="^QuickTime Player$" manage=off
 yabai -m rule --add app="^Raycast$" manage=off
 yabai -m rule --add app="^Picture-in$" manage=off
+yabai -m rule --add app="^System Information$" manage=off
+yabai -m rule --add app="^Disk Utility$" manage=off
+yabai -m rule --add app="^Spotify$" manage=off
+yabai -m rule --add app="^WhatsApp$" manage=off
