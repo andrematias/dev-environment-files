@@ -2,8 +2,7 @@
 
 # Global properties
 separator=true
-separator_block_width=20
-align=center
+separator_block_width=15
 
 [wallpaper]
 command=feh --recursive --bg-fill --randomize ~/Pictures/Wallpapers/
@@ -77,13 +76,16 @@ interval=1
 command=i3-msg exit
 full_text=⭘ 
 separator=false
+separator_block_width=5
 
 [reboot]
 command=sudo reboot
 full_text=⏼ 
 separator=false
+separator_block_width=5
 
 [poweroff]
 command=sudo poweroff
 full_text= 
 separator=false
+separator_block_width=5
