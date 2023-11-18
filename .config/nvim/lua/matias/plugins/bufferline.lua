@@ -6,7 +6,7 @@ return {
     options = {
       close_command = "Bdelete! %d",
       mode = "buffers",
-      separator_style = "slope",
+      separator_style = "thin",
       offsets = { { filetype = "NvimTree", text = "", padding = 1 } },
       hover = {
         enabled = true,
