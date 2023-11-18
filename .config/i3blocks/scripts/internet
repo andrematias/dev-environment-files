@@ -1,0 +1,10 @@
+#! /bin/bash
+
+ping=$(ping -c1 google.com | rg "bytes from")
+
+if [ -n "$ping" ]; then
+    echo "󰱓"
+else
+    echo "󰅛"
+fi
+

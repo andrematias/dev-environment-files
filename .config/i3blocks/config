@@ -1,0 +1,89 @@
+# vim: syntax=dosini
+
+# Global properties
+separator=true
+separator_block_width=20
+align=center
+
+[wallpaper]
+command=feh --recursive --bg-fill --randomize ~/Pictures/Wallpapers/
+full_text=󰋬 
+
+[internet]
+command=/home/matias/.config/i3blocks/scripts/internet
+interval=60
+
+[nm-vpn]
+init_color=#000000
+on_color=#000000
+command=/home/matias/.config/i3blocks/scripts/nm-vpn
+label=󰖂  
+interval=5
+
+[volume-pipewire]
+#exposed format variables: ${SYMB}, ${VOL}, ${INDEX}, ${NAME}
+command=/home/matias/.config/i3blocks/scripts/volume-pipewire
+interval=1
+signal=1
+LONG_FORMAT="${SYMB} ${VOL}"
+SHORT_FORMAT="${SYMB} ${VOL}"
+DEFAULT_COLOR="#000000"
+MUTED_COLOR="#000000"
+
+[arch-update]
+command=/home/matias/.config/i3blocks/scripts/arch-update
+interval=3600
+markup=pango
+UPDATE_COLOR=#FFFF85
+BASE_COLOR=#000000
+LABEL=  
+QUIET=true
+
+[pacman-updates]
+command=/home/matias/.config/i3blocks/scripts/arch-update
+markup=pango
+interval= 3600
+QUIET=true
+WATCH=^linux.* ^pacman.*
+BASE_COLOR=#000000
+UPDATE_COLOR=#FFFF85
+AUR=true
+LABEL= 
+
+
+[cpu_usage]
+command=/home/matias/.config/i3blocks/scripts/cpu_usage
+interval=5
+T_WARN=50
+T_CRIT=80
+DECIMALS=2
+COLOR_NORMAL=#000000
+COLOR_WARN=#FFFC00
+COLOR_CRIT=#FF0000
+
+[memory]
+command=/home/matias/.config/i3blocks/scripts/memory
+percent=true
+total=false
+interval=30
+
+
+[time]
+TZ=America/Sao_Paulo
+command=date +"%a %d %B %Y - %H:%M:%S "
+interval=1
+
+[logout]
+command=i3-msg exit
+full_text=⭘ 
+separator=false
+
+[reboot]
+command=sudo reboot
+full_text=⏼ 
+separator=false
+
+[poweroff]
+command=sudo poweroff
+full_text= 
+separator=false
