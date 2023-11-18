@@ -278,8 +278,8 @@ bar {
         statusline #000000
         separator #000000
         # colorclass       <border> <background> <text>
-        focused_workspace  #000000  #000000     #FFFFFF
-        inactive_workspace #616161  #616161     #000000
+        focused_workspace  #969696  #000000     #FFFFFF
+        inactive_workspace #969696  #616161     #000000
 
     }
 }
