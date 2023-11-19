@@ -241,7 +241,7 @@ assign [instance="discord"] $ws9
      bindsym Escape mode "default"
  }
 
-bindsym Ctrl+$mod+Delete mode "$mode_system"
+# bindsym Ctrl+$mod+Delete mode "$mode_system"
 
 ####################################################################
 #   Resize and Moves
