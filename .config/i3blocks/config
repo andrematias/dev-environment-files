@@ -1,7 +1,7 @@
 # vim: syntax=dosini
 
 # Global properties
-separator=true
+separator=false
 separator_block_width=15
 
 [wallpaper]
@@ -72,20 +72,30 @@ TZ=America/Sao_Paulo
 command=date +"%a %d %B %Y - %H:%M:%S "
 interval=1
 
+[lockscreen]
+command=i3-msg -q exec "i3lock -c 000000"
+markup=pango
+full_text=<span>⭘</span> 
+separator=false
+separator_block_width=2
+
 [logout]
 command=i3-msg exit
-full_text=⭘ 
+markup=pango
+full_text=<span></span> 
 separator=false
-separator_block_width=5
+separator_block_width=2
 
 [reboot]
 command=sudo reboot
-full_text=⏼ 
+markup=pango
+full_text=<span>⏼</span> 
 separator=false
-separator_block_width=5
+separator_block_width=2
 
 [poweroff]
 command=sudo poweroff
-full_text= 
+markup=pango
+full_text=<span></span> 
 separator=false
-separator_block_width=5
+separator_block_width=2
