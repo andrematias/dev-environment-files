@@ -15,7 +15,7 @@ return {
         always_divide_middle = true,
       },
       sections = {
-        lualine_c = { "filename", "filesize" },
+        lualine_c = { "filename", "filesize", "%{PencilMode()}" },
         lualine_x = {
           {
             lazy_status.updates,

@@ -16,3 +16,17 @@ autocmd("Filetype", {
   pattern = { "xml", "html", "xhtml", "css", "scss", "javascript", "typescript", "yaml", "lua" },
   command = "setlocal shiftwidth=2 tabstop=2",
 })
+
+-- Pencil Toggle
+augroup("setPencilMode", { clear = true })
+autocmd("Filetype", {
+  group = "setPencilMode",
+  pattern = { "mkd", "markdown" },
+  command = "PencilSoft",
+})
+
+autocmd("Filetype", {
+  group = "setPencilMode",
+  pattern = { "text" },
+  command = "PencilHard",
+})
