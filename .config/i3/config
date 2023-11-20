@@ -48,10 +48,10 @@ bindsym $mod+Shift+c kill
 # bindsym $mod+p exec $psst dmenu_run -fn 'FiraCode-12' 
 # start launcher
 # bindsym $mod+p exec qdbus org.kde.krunner /App querySingleRunner applications ""
-bindsym $mod+p exec rofi -width 60 -hide-scrollbar -show-icons -show drun
-# bindsym $mod+p exec ~/.config/rofi/launchers/type-4/launcher.sh
+bindsym $mod+p exec rofi -show drun -font "FiraCode Nerd Font Mono 10" -display-drun ""
+
 # switch between opened windows with rofi
-bindsym $mod+Tab exec rofi -show window -width 200 -hide-scrollbar
+bindsym $mod+Tab exec rofi -show window -width 200 -hide-scrollbar -font "FiraCode Nerd Font Mono 10"
 
 # change focus
 # alternatively, you can use the cursor keys:
