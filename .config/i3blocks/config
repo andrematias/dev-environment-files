@@ -1,8 +1,9 @@
 # vim: syntax=dosini
 
 # Global properties
-separator=false
-separator_block_width=15
+separator=true
+separator_block_width=30
+align=center
 
 [wallpaper]
 command=feh --recursive --bg-fill --randomize ~/Pictures/Wallpapers/
@@ -49,8 +50,14 @@ UPDATE_COLOR=#FFFF85
 AUR=true
 LABEL= 
 
+[crypto]
+markup=pango
+interval=60
+instance=bitcoin
+command=/home/matias/.config/i3blocks/scripts/crypto
 
 [cpu_usage]
+markup=pango
 command=/home/matias/.config/i3blocks/scripts/cpu_usage
 interval=5
 T_WARN=50
@@ -61,14 +68,14 @@ COLOR_WARN=#FFFC00
 COLOR_CRIT=#FF0000
 
 [memory]
+markup=pango
 command=/home/matias/.config/i3blocks/scripts/memory
-percent=true
-total=false
 interval=30
 
 
 [time]
 TZ=America/Sao_Paulo
+markup=pango
 command=date +"%a %d %B %Y - %H:%M:%S "
 interval=1
 
