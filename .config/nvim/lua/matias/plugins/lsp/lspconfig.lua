@@ -8,6 +8,9 @@ return {
   config = function()
     -- import lspconfig plugin
     local lspconfig = require("lspconfig")
+    local util = require("lspconfig/util")
+    local path = util.path
+    local exepath = vim.fn.exepath
 
     -- import cmp-nvim-lsp plugin
     local cmp_nvim_lsp = require("cmp_nvim_lsp")
@@ -104,7 +107,27 @@ return {
     })
 
     -- configure python server
+    local function get_python_path(workspace)
+      -- Use activated virtualenv.
+      if vim.env.VIRTUAL_ENV then
+        return path.join(vim.env.VIRTUAL_ENV, "bin", "python")
+      end
+
+      -- Find and use virtualenv from pipenv in workspace directory.
+      local match = vim.fn.glob(path.join(workspace, "Pipfile"))
+      if match ~= "" then
+        local venv = vim.fn.trim(vim.fn.system("PIPENV_PIPFILE=" .. match .. " pipenv --venv"))
+        return path.join(venv, "bin", "python")
+      end
+
+      -- Fallback to system Python.
+      return vim.fn.exepath("python3") or vim.fn.exepath("python") or "python"
+    end
+
     lspconfig["pyright"].setup({
+      on_init = function(client)
+        client.config.settings.python.pythonPath = get_python_path(client.config.root_dir)
+      end,
       handlers = handlers,
       capabilities = capabilities,
       on_attach = on_attach,
