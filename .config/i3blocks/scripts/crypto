@@ -41,7 +41,7 @@ else:
 percentChange = float(quote["percent_change_" + PRICE_CHANGE_PERIOD])
 percentChangeFormat = '<span color="{}">{}{:.2f}%</span>'
 if percentChange > 0:
-    percentChangeInfo = percentChangeFormat.format("#1C7A35", " ", percentChange)
+    percentChangeInfo = percentChangeFormat.format("#FFFF85", " ", percentChange)
 elif percentChange == 0:
     percentChangeInfo = percentChangeFormat.format("#1A6FB0", "", percentChange)
 else:
