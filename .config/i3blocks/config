@@ -7,7 +7,7 @@ align=center
 
 [wallpaper]
 command=feh --recursive --bg-fill --randomize ~/Pictures/Wallpapers/
-full_text=󰋬 
+full_text=󰸉 
 
 [internet]
 command=/home/matias/.config/i3blocks/scripts/internet
