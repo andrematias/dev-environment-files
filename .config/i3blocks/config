@@ -72,29 +72,29 @@ TZ=America/Sao_Paulo
 command=date +"%a %d %B %Y - %H:%M:%S "
 interval=1
 
-[lockscreen]
-command=i3-msg -q exec "i3lock -c 000000"
-markup=pango
-full_text=<span>⭘</span> 
-separator=false
-separator_block_width=2
-
-[logout]
-command=i3-msg exit
-markup=pango
-full_text=<span></span> 
-separator=false
-separator_block_width=2
-
-[reboot]
-command=sudo reboot
-markup=pango
-full_text=<span>⏼</span> 
-separator=false
-separator_block_width=2
-
+# [lockscreen]
+# command=i3-msg -q exec "i3lock -c 000000"
+# markup=pango
+# full_text=<span>⭘</span> 
+# separator=false
+# separator_block_width=2
+#
+# [logout]
+# command=i3-msg exit
+# markup=pango
+# full_text=<span></span> 
+# separator=false
+# separator_block_width=2
+#
+# [reboot]
+# command=i3-msg -q exec "sudo reboot"
+# markup=pango
+# full_text=<span>⏼</span> 
+# separator=false
+# separator_block_width=2
+#
 [poweroff]
-command=sudo poweroff
+command=i3-msg -q exec "systemctl poweroff"
 markup=pango
 full_text=<span></span> 
 separator=false
