@@ -284,8 +284,7 @@ bar {
     tray_output none
     status_command i3blocks
     position top
-    height 22
-    separator_symbol "|"
+    separator_symbol "󰇙"
 
     # mode invisible
     colors {
