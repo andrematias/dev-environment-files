@@ -12,6 +12,8 @@
 set $mod Mod1
 set $psst --no-startup-id
 
+title_align center
+
 # default_border pixel 2
 for_window [all] title_window_icon off
 
