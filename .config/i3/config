@@ -177,7 +177,7 @@ exec $psst  xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec $psst  feh --recursive --bg-fill --randomize $HOME/Pictures/Wallpapers/ 
 exec_always $psst /usr/lib/polkit-kde-authentication-agent-1
 exec_always $psst autotiling
-exec_always $psst picom -c ~/.config/picom/picom.conf
+exec_always $psst picom
 # exec_always $psst twmnd 
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
