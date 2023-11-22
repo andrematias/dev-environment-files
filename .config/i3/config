@@ -26,6 +26,12 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 
+# Media player controls
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioPause exec playerctl play-pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+
 # bindsym XF86AudioRaiseVolume exec --no-startup-id qdbus org.kde.kglobalaccel /component/kmix invokeShortcut "increase_volume"
 # bindsym XF86AudioLowerVolume exec --no-startup-id qdbus org.kde.kglobalaccel /component/kmix invokeShortcut "decrease_volume"
 # bindsym XF86AudioMute exec --no-startup-id qdbus org.kde.kglobalaccel /component/kmix invokeShortcut "mute"
@@ -214,6 +220,7 @@ for_window [title="*Spectacle"] floating enable
 for_window [class="plasmashell" window_type="notification"] border none, move right 800 px, move up 400 px
 for_window [title="YouTube Music"] floating enable, resize set 500 px 900 px, move position center
 for_window [title="web.whatsapp.com"] floating enable, resize set 1000 px 800 px, move position center
+for_window [title="WhatsDesk"] floating enable, resize set 1000 px 800 px, move position center
 no_focus [class="plasmashell" window_type="notification"]
 
 
@@ -222,6 +229,7 @@ no_focus [class="plasmashell" window_type="notification"]
 #   Open applications on exacly workspace
 ####################################################################
 assign [title="web.whatsapp.com"] $ws9
+assign [title="WhatsDesk"] $ws9
 assign [instance="discord"] $ws9
 
 
