@@ -30,3 +30,11 @@ autocmd("Filetype", {
   pattern = { "text" },
   command = "PencilHard",
 })
+
+-- Markdown Syntax
+augroup("setMarkdownSyntax", { clear = true })
+autocmd("Filetype", {
+  group = "setMarkdownSyntax",
+  pattern = { "md", "markdown", "mkd" },
+  command = "setlocal syntax=markdown foldmethod=manual",
+})
