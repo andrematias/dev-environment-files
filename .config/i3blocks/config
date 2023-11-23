@@ -9,6 +9,16 @@ align=center
 command=feh --recursive --bg-fill --randomize ~/Pictures/Wallpapers/
 full_text=󰸉 
 
+[redshift]
+label=
+command=/home/matias/.config/i3blocks/scripts/toggle
+interval=once
+COMMAND_ON=redshift -P -O 3000 > /tmp/redshift.tmp
+COMMAND_OFF=redshift -x; rm -f /tmp/redshift.tmp
+COMMAND_STATUS=test -f /tmp/redshift.tmp
+COLOR_ON=#FFFF85
+COLOR_OFF=#000000
+
 [internet]
 command=/home/matias/.config/i3blocks/scripts/internet
 interval=60
