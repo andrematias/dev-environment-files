@@ -5,4 +5,5 @@ return {
   "ellisonleao/gruvbox.nvim",
   "ishan9299/modus-theme-vim",
   "moll/vim-bbye",
+  "godlygeek/tabular",
 }
