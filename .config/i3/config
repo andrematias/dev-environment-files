@@ -308,12 +308,12 @@ bar {
 
     # mode invisible
     colors {
-        background #969696
-        statusline #000000
-        separator #000000
+        background #000000
+        statusline #ffffff
+        separator #ffffff
         # colorclass       <border> <background> <text>
         focused_workspace  #969696  #000000     #FFFFFF
-        inactive_workspace #969696  #616161     #000000
+        inactive_workspace #969696  #616161     #ffffff
 
     }
 }
@@ -324,10 +324,10 @@ bar {
 ####################################################################
 
 # class                 border  bground text    indicator child_border
-client.focused          #AA3941 #AA3941 #FFFFFF #FF9500   #AA3941
+client.focused          #AA3941 #AA3941 #FFFFFF #ff5797   #AA3941
 client.focused_inactive #333333 #333333 #FFFFFF #333333   #333333
 client.unfocused        #333333 #222222 #888888 #292D2E   #222222
-client.urgent           #900000 #900000 #FFFFFF #900000   #900000
+client.urgent           #AA3941 #AA3941 #FFFFFF #AA3941   #AA3941
 client.placeholder      #0C0C0C #0C0C0C #FFFFFF #000000   #0C0C0C
 
 client.background       #FFFFFF

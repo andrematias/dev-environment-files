@@ -17,15 +17,15 @@ COMMAND_ON=redshift -P -O 2500 > /tmp/redshift.tmp
 COMMAND_OFF=redshift -x; rm -f /tmp/redshift.tmp
 COMMAND_STATUS=test -f /tmp/redshift.tmp
 COLOR_ON=#FFFF85
-COLOR_OFF=#000000
+COLOR_OFF=#FFFFFF
 
 [internet]
 command=/home/matias/.config/i3blocks/scripts/internet
 interval=60
 
 [nm-vpn]
-init_color=#000000
-on_color=#000000
+init_color=#FFFFFF
+on_color=#FFFFFF
 command=/home/matias/.config/i3blocks/scripts/nm-vpn
 label=󰖂  
 interval=5
@@ -37,15 +37,15 @@ interval=1
 signal=1
 LONG_FORMAT="${SYMB} ${VOL}"
 SHORT_FORMAT="${SYMB} ${VOL}"
-DEFAULT_COLOR="#000000"
-MUTED_COLOR="#000000"
+DEFAULT_COLOR="#FFFFFF"
+MUTED_COLOR="#FFFFFF"
 
 [arch-update]
 command=/home/matias/.config/i3blocks/scripts/arch-update
 interval=3600
 markup=pango
 UPDATE_COLOR=#FFFF85
-BASE_COLOR=#000000
+BASE_COLOR=#FFFFFF
 LABEL=  
 QUIET=true
 
@@ -55,7 +55,7 @@ markup=pango
 interval= 3600
 QUIET=true
 WATCH=^linux.* ^pacman.*
-BASE_COLOR=#000000
+BASE_COLOR=#FFFFFF
 UPDATE_COLOR=#FFFF85
 AUR_YAY=true
 LABEL= 
@@ -73,7 +73,7 @@ interval=5
 T_WARN=50
 T_CRIT=80
 DECIMALS=2
-COLOR_NORMAL=#000000
+COLOR_NORMAL=#FFFFFF
 COLOR_WARN=#FFFC00
 COLOR_CRIT=#FF0000
 
