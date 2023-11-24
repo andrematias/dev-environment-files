@@ -5,13 +5,14 @@ separator=true
 separator_block_width=30
 align=center
 
+
 [wallpaper]
 command=feh --recursive --bg-fill --randomize ~/Pictures/Wallpapers/
 full_text=󰸉 
 
 [redshift]
 label=
-command=/home/matias/.config/i3blocks/scripts/toggle
+command=~/.config/i3blocks/scripts/toggle
 interval=once
 COMMAND_ON=redshift -P -O 2500 > /tmp/redshift.tmp
 COMMAND_OFF=redshift -x; rm -f /tmp/redshift.tmp
@@ -20,19 +21,19 @@ COLOR_ON=#FFFF85
 COLOR_OFF=#FFFFFF
 
 [internet]
-command=/home/matias/.config/i3blocks/scripts/internet
+command=~/.config/i3blocks/scripts/internet
 interval=60
 
 [nm-vpn]
 init_color=#FFFFFF
 on_color=#FFFFFF
-command=/home/matias/.config/i3blocks/scripts/nm-vpn
+command=~/.config/i3blocks/scripts/nm-vpn
 label=󰖂  
 interval=5
 
 [volume-pipewire]
 #exposed format variables: ${SYMB}, ${VOL}, ${INDEX}, ${NAME}
-command=/home/matias/.config/i3blocks/scripts/volume-pipewire
+command=~/.config/i3blocks/scripts/volume-pipewire
 interval=1
 signal=1
 LONG_FORMAT="${SYMB} ${VOL}"
@@ -41,7 +42,7 @@ DEFAULT_COLOR="#FFFFFF"
 MUTED_COLOR="#FFFFFF"
 
 [arch-update]
-command=/home/matias/.config/i3blocks/scripts/arch-update
+command=~/.config/i3blocks/scripts/arch-update
 interval=3600
 markup=pango
 UPDATE_COLOR=#FFFF85
@@ -50,7 +51,7 @@ LABEL=
 QUIET=true
 
 [pacman-updates]
-command=/home/matias/.config/i3blocks/scripts/arch-update
+command=~/.config/i3blocks/scripts/arch-update
 markup=pango
 interval= 3600
 QUIET=true
@@ -64,11 +65,11 @@ LABEL=
 markup=pango
 interval=60
 instance=bitcoin
-command=/home/matias/.config/i3blocks/scripts/crypto
+command=~/.config/i3blocks/scripts/crypto
 
 [cpu_usage]
 markup=pango
-command=/home/matias/.config/i3blocks/scripts/cpu_usage
+command=~/.config/i3blocks/scripts/cpu_usage
 interval=5
 T_WARN=50
 T_CRIT=80
@@ -79,7 +80,7 @@ COLOR_CRIT=#FF0000
 
 [memory]
 markup=pango
-command=/home/matias/.config/i3blocks/scripts/memory
+command=~/.config/i3blocks/scripts/memory
 interval=30
 
 
@@ -96,12 +97,12 @@ interval=1
 # separator=false
 # separator_block_width=2
 #
-# [logout]
-# command=i3-msg exit
-# markup=pango
-# full_text=<span></span> 
-# separator=false
-# separator_block_width=2
+[logout]
+command=i3-msg exit
+markup=pango
+full_text=<span>⏼</span> 
+separator=false
+separator_block_width=2
 #
 # [reboot]
 # command=i3-msg -q exec "sudo reboot"
