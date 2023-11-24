@@ -173,7 +173,7 @@ exec $psst dex --autostart --environment i3
 exec $psst xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec $psst setxkbmap -option "ctrl:nocaps,compose:ralt"
 exec $psst xrandr --output DP-2 --mode 1920x1080 --rate 144.00
-exec $psst nm-applet
+exec $psst balooctl enable
 exec $psst dunst
 exec $psst xset r rate 200 50 
 exec $psst /usr/lib/pam_kwallet_init
