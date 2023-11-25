@@ -14,6 +14,12 @@ return {
       python = { "pylint" },
     }
 
+    if vim.env.VIRTUAL_ENV ~= nil then
+      local pylint_env = vim.env.VIRTUAL_ENV .. "/bin/pylint"
+      local pylint = lint.linters.pylint
+      pylint.cmd = pylint_env
+    end
+
     local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
 
     vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
