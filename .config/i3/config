@@ -158,7 +158,7 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Finish the session?' -B 'Yes' 'i3-msg exit'"
 
 # lock screen
-bindsym Ctrl+$mod+Delete exec "i3lock -c 000000 --ignore-empty-password --show-failed-attempts" 
+bindsym Ctrl+$mod+Delete exec "i3lock -c 035b9e --ignore-empty-password --show-failed-attempts" 
 
 # using plasma's logout screen instead of i3's
 # bindsym $mod+Shift+e exec --no-startup-id qdbus-qt5 org.kde.ksmserver /KSMServer org.kde.KSMServerInterface.logout -1 -1 -1
@@ -170,7 +170,7 @@ bindsym Ctrl+$mod+Delete exec "i3lock -c 000000 --ignore-empty-password --show-f
 exec $psst dex --autostart --environment i3
 # exec $psst wmctrl -c Plasma
 # exec $psst pa-applet
-exec $psst xss-lock --transfer-sleep-lock -- i3lock --nofork
+exec $psst xss-lock --transfer-sleep-lock -- i3lock --nofork -c 000000
 exec $psst setxkbmap -option "ctrl:nocaps,compose:ralt"
 exec $psst xrandr --output DP-2 --mode 1920x1080 --rate 144.00
 exec $psst balooctl enable
@@ -307,12 +307,12 @@ bar {
 
     # mode invisible
     colors {
-        background #3e3e3e
+        background #000000
         statusline #ffffff
         # colorclass       <border> <background> <text>
-        focused_workspace  #000000  #000000     #FFFFFF
-        inactive_workspace #3e3e3e  #3e3e3e     #000000
-        active_workspace   #3e3e3e  #3e3e3e     #000000
+        focused_workspace  #4C7899  #4C7899     #ffffff
+        inactive_workspace #000000  #000000     #ffffff
+        active_workspace   #000000  #000000     #ffffff
 
     }
 }
@@ -323,10 +323,11 @@ bar {
 ####################################################################
 
 # class                 border  bground text    indicator child_border
-client.focused          #AA3941 #AA3941 #FFFFFF #FF9500   #AA3941
+# client.focused          #AA3941 #AA3941 #FFFFFF #FF9500   #AA3941
+client.focused          #4C7899 #4C7899 #FFFFFF #ffffff   #4C7899
 client.focused_inactive #333333 #333333 #FFFFFF #333333   #333333
 client.unfocused        #333333 #222222 #888888 #292D2E   #222222
-client.urgent           #900000 #900000 #FFFFFF #900000   #900000
+client.urgent           #AA3941 #AA3941 #FFFFFF #AA3941   #AA3941
 client.placeholder      #0C0C0C #0C0C0C #FFFFFF #000000   #0C0C0C
 
 client.background       #FFFFFF
