@@ -323,8 +323,8 @@ bar {
 ####################################################################
 
 # class                 border  bground text    indicator child_border
-# client.focused          #AA3941 #AA3941 #FFFFFF #FF9500   #AA3941
-client.focused          #4C7899 #4C7899 #FFFFFF #ffffff   #4C7899
+#client.focused          #4C7899 #4C7899 #FFFFFF #ffffff   #4C7899
+client.focused          #AA3941 #AA3941 #FFFFFF #FF9500   #AA3941
 client.focused_inactive #333333 #333333 #FFFFFF #333333   #333333
 client.unfocused        #333333 #222222 #888888 #292D2E   #222222
 client.urgent           #AA3941 #AA3941 #FFFFFF #AA3941   #AA3941
