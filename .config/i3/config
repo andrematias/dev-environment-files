@@ -286,10 +286,10 @@ set $kill_redshift pkill -9 redshift;
 mode "$mode_redshift" {
     bindsym a exec $psst "$kill_redshift redshift -P -t 5000:4000", mode "default"
     bindsym r exec $psst "$kill_redshift redshift -x", mode "default"
-    bindsym 2 exec $psst "$kill_redshift redshift -P -O 2500", mode "default"
-    bindsym 3 exec $psst "$kill_redshift redshift -P -O 3000", mode "default"
-    bindsym 4 exec $psst "$kill_redshift redshift -P -O 4000", mode "default"
-    bindsym 5 exec $psst "$kill_redshift redshift -P -O 5000", mode "default"
+    bindsym 2 exec $psst "$kill_redshift redshift -P -O 2500 > /tmp/redshift.tmp", mode "default"
+    bindsym 3 exec $psst "$kill_redshift redshift -P -O 3000 > /tmp/redshift.tmp", mode "default"
+    bindsym 4 exec $psst "$kill_redshift redshift -P -O 4000 > /tmp/redshift.tmp", mode "default"
+    bindsym 5 exec $psst "$kill_redshift redshift -P -O 5000 > /tmp/redshift.tmp", mode "default"
  
     # exit mode: "Enter" or "Escape"
     bindsym Return mode "default"
