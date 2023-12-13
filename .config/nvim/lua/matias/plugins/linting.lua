@@ -12,6 +12,8 @@ return {
       typescriptreact = { "eslint_d" },
       svelte = { "eslint_d" },
       python = { "pylint" },
+      cpp = { "cpplint" },
+      c = { "cpplint" },
     }
 
     if vim.env.VIRTUAL_ENV ~= nil then
