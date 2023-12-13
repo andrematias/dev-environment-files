@@ -14,8 +14,12 @@ set $psst --no-startup-id
 
 title_align center
 
-# default_border pixel 2
+default_border normal 0 px
+default_floating_border normal 2 px
+# default_border pixel 3
+hide_edge_borders smart
 for_window [all] title_window_icon off
+# new_window normal 0 px
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -193,7 +197,7 @@ exec --no-startup-id nm-applet
 ####################################################################
 #   Gaps
 ####################################################################
-gaps inner 8
+gaps inner 0
 gaps outer 0
 
 ####################################################################
@@ -306,15 +310,15 @@ bar {
     separator_symbol "󰇙"
 
     # mode invisible
-    colors {
-        background #000000
-        statusline #ffffff
-        # colorclass       <border> <background> <text>
-        focused_workspace  #4C7899  #4C7899     #ffffff
-        inactive_workspace #000000  #000000     #ffffff
-        active_workspace   #000000  #000000     #ffffff
-
-    }
+    # colors {
+    #     background #000000
+    #     statusline #ffffff
+    #     # colorclass       <border> <background> <text>
+    #     # focused_workspace  #000000  #000000     #ffffff
+    #     # inactive_workspace #7c7c7c  #7c7c7c     #000000
+    #     # active_workspace   #7c7c7c  #7c7c7c     #000000
+    #
+    # }
 }
 
 
@@ -323,8 +327,8 @@ bar {
 ####################################################################
 
 # class                 border  bground text    indicator child_border
-#client.focused          #4C7899 #4C7899 #FFFFFF #ffffff   #4C7899
-client.focused          #AA3941 #AA3941 #FFFFFF #FF9500   #AA3941
+# client.focused          #4C7899 #4C7899 #FFFFFF #ffffff   #4C7899
+# client.focused          #AA3941 #AA3941 #FFFFFF #FF9500   #AA3941
 client.focused_inactive #333333 #333333 #FFFFFF #333333   #333333
 client.unfocused        #333333 #222222 #888888 #292D2E   #222222
 client.urgent           #AA3941 #AA3941 #FFFFFF #AA3941   #AA3941
