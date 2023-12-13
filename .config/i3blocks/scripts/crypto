@@ -6,7 +6,7 @@ import os
 
 from requests import Session
 
-API_KEY = "XXXXXX"
+API_KEY = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 PRICE_CHANGE_PERIOD = "1h"  # Available: '1h', '24h', '7d'
 PRICE_CHANGE_URGENT_PERCENT = 10
 
@@ -45,7 +45,7 @@ if percentChange > 0:
 elif percentChange == 0:
     percentChangeInfo = percentChangeFormat.format("#1A6FB0", "", percentChange)
 else:
-    percentChangeInfo = percentChangeFormat.format("#F7555E", " ", percentChange)
+    percentChangeInfo = percentChangeFormat.format("#AA3941", " ", percentChange)
 
 print(
     ("{} {:." + str(precision) + "f} {}").format(
