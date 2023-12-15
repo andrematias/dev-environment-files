@@ -1,19 +1,60 @@
 return {
   {
-    "LunarVim/darkplus.nvim",
+    "navarasu/onedark.nvim",
     priority = 1000, -- make sure to load this before all the other start plugins
     config = function()
-      -- load the colorscheme here
-      vim.cmd([[colorscheme darkplus]])
+      local onedark = require("onedark")
+      local palette = require("onedark.palette").darker
+      onedark.setup({
+        style = "darker",
+        transparent = true, -- Show/hide background
+        term_colors = true, -- Change terminal color as per the selected theme style
+        ending_tildes = false, -- Show the end-of-buffer tildes. By default they are hidden
+        cmp_itemkind_reverse = false, -- reverse item kind highlights in cmp menu
 
-      vim.cmd([[
-        highlight DiagnosticVirtualTextWarn guifg=#704100 guibg=none
-        highlight DiagnosticVirtualTextError guifg=#8c2929 guibg=none
-        highlight DiagnosticVirtualTextInfo guifg=#a88643 guibg=none
-        highlight DiagnosticVirtualTextHint guifg=#296a8b guibg=none
-      ]])
+        -- Change code style ---
+        -- Options are italic, bold, underline, none
+        code_style = {
+          comments = "italic",
+          keywords = "bold,italic",
+          functions = "bold",
+          strings = "none",
+          variables = "none",
+        },
+
+        -- Custom Highlights --
+        highlights = {
+          ["FileExplorer"] = { fg = palette.orange, bg = nil, fmt = "bold" },
+        },
+
+        -- colors = {}, -- Override default colors
+
+        -- Plugins Config --
+        diagnostics = {
+          darker = true, -- darker colors for diagnostic
+          undercurl = true, -- use undercurl instead of underline for diagnostics
+          background = false, -- use background color for virtual text
+        },
+      })
+
+      onedark.load()
     end,
   },
+  -- {
+  --   "LunarVim/darkplus.nvim",
+  --   priority = 1000, -- make sure to load this before all the other start plugins
+  --   config = function()
+  --     -- load the colorscheme here
+  --     vim.cmd([[colorscheme darkplus]])
+  --
+  --     vim.cmd([[
+  --       highlight DiagnosticVirtualTextWarn guifg=#704100 guibg=none
+  --       highlight DiagnosticVirtualTextError guifg=#8c2929 guibg=none
+  --       highlight DiagnosticVirtualTextInfo guifg=#a88643 guibg=none
+  --       highlight DiagnosticVirtualTextHint guifg=#296a8b guibg=none
+  --     ]])
+  --   end,
+  -- },
   -- {
   --   "sam4llis/nvim-tundra",
   --   priority = 1000,
