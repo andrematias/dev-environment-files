@@ -5,8 +5,78 @@ return {
     config = function()
       -- load the colorscheme here
       vim.cmd([[colorscheme darkplus]])
+
+      vim.cmd([[
+        highlight DiagnosticVirtualTextWarn guifg=#704100 guibg=none
+        highlight DiagnosticVirtualTextError guifg=#8c2929 guibg=none
+        highlight DiagnosticVirtualTextInfo guifg=#a88643 guibg=none
+        highlight DiagnosticVirtualTextHint guifg=#296a8b guibg=none
+      ]])
     end,
   },
+  -- {
+  --   "sam4llis/nvim-tundra",
+  --   priority = 1000,
+  --   config = function()
+  --     local tundra = require("nvim-tundra")
+  --     tundra.setup({
+  --       transparent_background = false,
+  --       dim_inactive_windows = {
+  --         enabled = true,
+  --         color = nil,
+  --       },
+  --       sidebars = {
+  --         enabled = true,
+  --         color = nil,
+  --       },
+  --       editor = {
+  --         search = {},
+  --         substitute = {},
+  --       },
+  --       syntax = {
+  --         booleans = { bold = true, italic = true },
+  --         comments = { bold = true, italic = true },
+  --         conditionals = {},
+  --         constants = { bold = true },
+  --         fields = {},
+  --         functions = {},
+  --         keywords = {},
+  --         loops = {},
+  --         numbers = { bold = true },
+  --         operators = { bold = true },
+  --         punctuation = {},
+  --         strings = {},
+  --         types = { italic = true },
+  --       },
+  --       diagnostics = {
+  --         errors = {},
+  --         warnings = {},
+  --         information = {},
+  --         hints = {},
+  --       },
+  --       plugins = {
+  --         lsp = true,
+  --         semantic_tokens = true,
+  --         treesitter = true,
+  --         telescope = true,
+  --         nvimtree = true,
+  --         cmp = true,
+  --         context = true,
+  --         dbui = true,
+  --         gitsigns = true,
+  --         neogit = true,
+  --         textfsm = true,
+  --       },
+  --       overwrite = {
+  --         colors = {},
+  --         highlights = {},
+  --       },
+  --     })
+  --
+  --     vim.opt.background = "dark"
+  --     vim.cmd("colorscheme tundra")
+  --   end,
+  -- },
   -- {
   --   "bluz71/vim-nightfly-guicolors",
   --   priority = 1000, -- make sure to load this before all the other start plugins
