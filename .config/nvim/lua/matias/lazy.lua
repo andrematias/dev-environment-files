@@ -13,7 +13,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({ { import = "matias.plugins" }, { import = "matias.plugins.lsp" } }, {
   install = {
-    colorscheme = { "darkplus" },
+    colorscheme = { "onedark" },
   },
   checker = {
     enabled = true,
