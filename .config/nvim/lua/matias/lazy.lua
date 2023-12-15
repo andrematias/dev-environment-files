@@ -11,15 +11,18 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup({ { import = "matias.plugins" }, { import = "matias.plugins.lsp" } }, {
-  install = {
-    colorscheme = { "onedark" },
-  },
-  checker = {
-    enabled = true,
-    notify = false,
-  },
-  change_detection = {
-    notify = false,
-  },
-})
+require("lazy").setup(
+  { { import = "matias.plugins" }, { import = "matias.plugins.lsp" }, { import = "matias.plugins.dap" } },
+  {
+    install = {
+      colorscheme = { "onedark" },
+    },
+    checker = {
+      enabled = true,
+      notify = false,
+    },
+    change_detection = {
+      notify = false,
+    },
+  }
+)
