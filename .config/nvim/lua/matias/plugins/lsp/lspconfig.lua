@@ -10,7 +10,6 @@ return {
     local lspconfig = require("lspconfig")
     local util = require("lspconfig/util")
     local path = util.path
-    local exepath = vim.fn.exepath
 
     -- import cmp-nvim-lsp plugin
     local cmp_nvim_lsp = require("cmp_nvim_lsp")
@@ -65,17 +64,43 @@ return {
     -- used to enable autocompletion (assign to every lsp server config)
     local capabilities = cmp_nvim_lsp.default_capabilities()
 
-    -- Change the Diagnostic symbols in the sign column (gutter)
+    local handlers = {
+      ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "single" }),
+      ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "single" }),
+    }
     local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
     for type, icon in pairs(signs) do
       local hl = "DiagnosticSign" .. type
       vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
     end
 
-    local handlers = {
-      ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "single" }),
-      ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "single" }),
-    }
+    -- disable virtual_text (inline) diagnostics and use floating window
+    -- format the message such that it shows source, message and
+    -- the error code.
+    vim.diagnostic.config({
+      -- signs = true,
+      -- virtual_text = false,
+      underline = true,
+      virtual_text = {
+        severity = { min = vim.diagnostic.severity.HINT }, -- don't show virtual text for HINT
+      },
+      signs = {
+        severity = { min = vim.diagnostic.severity.HINT }, -- don't show signs for HINT
+      },
+      severity_sort = true,
+      float = {
+        source = "always",
+        border = "single",
+        -- format = function(diagnostic)
+        --   return string.format(
+        --     "%s (%s) [%s]",
+        --     diagnostic.message,
+        --     diagnostic.source,
+        --     diagnostic.code or diagnostic.user_data.lsp.code
+        --   )
+        -- end,
+      },
+    })
 
     -- configure html server
     lspconfig["html"].setup({
