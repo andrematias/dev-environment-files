@@ -24,7 +24,7 @@ return {
 
         -- Custom Highlights --
         highlights = {
-          ["FileExplorer"] = { fg = palette.orange, bg = nil, fmt = "bold" },
+          ["FileExplorer"] = { fg = palette.orange, bg = "none", fmt = "bold" },
         },
 
         -- colors = {}, -- Override default colors

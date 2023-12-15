@@ -36,7 +36,5 @@ return {
         separator_style = "thin", -- | "thick" | "thin" | { 'any', 'any' },
       },
     })
-
-    vim.cmd("hi FileExplorer guibg=#252525 gui=bold")
   end,
 }
