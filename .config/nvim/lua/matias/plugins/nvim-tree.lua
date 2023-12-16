@@ -64,10 +64,11 @@ return {
         },
       },
       filters = {
-        custom = { ".DS_Store", "__pycache__", "^.git$" },
+        custom = { ".DS_Store", ".DS_Store", "__pycache__", "^.git$" },
+        dotfiles = true,
       },
       git = {
-        ignore = false,
+        ignore = true,
       },
 
       -- enable trash
