@@ -18,9 +18,9 @@ return {
         -- They can be integers or a float between 0 and 1 (e.g. 0.4 for 40%)
         -- min_width and max_width can be a list of mixed types.
         -- max_width = {40, 0.2} means "the lesser of 40 columns or 20% of total"
-        max_width = { 40, 0.2 },
-        width = nil,
-        min_width = 10,
+        max_width = { 50, 0.2 },
+        width = 50,
+        min_width = 30,
 
         -- key-value pairs of window-local options for aerial window (e.g. winhl)
         win_opts = {},
@@ -52,7 +52,7 @@ return {
       --   unfocus       - close aerial when you leave the original source window
       --   switch_buffer - close aerial when you change buffers in the source window
       --   unsupported   - close aerial when attaching to a buffer that has no symbol source
-      close_automatic_events = {},
+      close_automatic_events = { "unfocus", "unsupported" },
 
       -- Keymaps in aerial window. Can be any value that `vim.keymap.set` accepts OR a table of keymap
       -- options with a `callback` (e.g. { callback = function() ... end, desc = "", nowait = true })
@@ -137,10 +137,10 @@ return {
 
       -- When jumping to a symbol, highlight the line for this many ms.
       -- Set to false to disable
-      highlight_on_jump = 300,
+      highlight_on_jump = 900,
 
       -- Jump to symbol in source window when the cursor moves
-      autojump = false,
+      autojump = true,
 
       -- Define symbol icons. You can also specify "<Symbol>Collapsed" to change the
       -- icon when the tree is collapsed at that symbol, or "Collapsed" to specify a
@@ -197,7 +197,7 @@ return {
 
       -- Set default symbol icons to use patched font icons (see https://www.nerdfonts.com/)
       -- "auto" will set it to true if nvim-web-devicons or lspkind-nvim is installed.
-      nerd_font = "auto",
+      nerd_font = true,
 
       -- Call this function when aerial attaches to a buffer.
       on_attach = function(bufnr) end,
