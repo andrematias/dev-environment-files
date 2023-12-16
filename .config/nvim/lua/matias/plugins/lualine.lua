@@ -1,6 +1,3 @@
--- stylua: ignore
-local colors = require('onedark.palette').darker
-
 return {
   "nvim-lualine/lualine.nvim",
   dependencies = { "nvim-tree/nvim-web-devicons" },
@@ -13,29 +10,6 @@ return {
     -- configure lualine with modified theme
     lualine.setup({
       options = {
-        -- theme = "gruvbox",
-        theme = {
-          normal = {
-            a = { fg = colors.fg, bg = colors.bg, gui = "bold" },
-            b = { fg = colors.fg, bg = colors.bg },
-            c = { fg = colors.fg, bg = colors.bg },
-          },
-          inactive = {
-            a = { fg = colors.fg, bg = colors.bg, gui = "bold" },
-            b = { fg = colors.fg, bg = colors.bg },
-            c = { fg = colors.fg, bg = colors.bg },
-          },
-          command = {
-            a = { fg = colors.fg, bg = colors.bg, gui = "bold" },
-            b = { fg = colors.fg, bg = colors.bg },
-            c = { fg = colors.fg, bg = colors.bg },
-          },
-          terminal = {
-            a = { fg = colors.fg, bg = colors.bg, gui = "bold" },
-            b = { fg = colors.fg, bg = colors.bg },
-            c = { fg = colors.fg, bg = colors.bg },
-          },
-        },
         globalstatus = true,
         component_separators = { left = "", right = "" },
         section_separators = { left = "", right = "" },
@@ -48,32 +22,32 @@ return {
             function()
               return ""
             end,
-            color = function()
-              -- auto change color according to neovims mode
-              local mode_color = {
-                n = colors.red,
-                i = colors.green,
-                v = colors.blue,
-                [""] = colors.blue,
-                V = colors.blue,
-                c = colors.magenta,
-                no = colors.red,
-                s = colors.orange,
-                S = colors.orange,
-                [""] = colors.orange,
-                ic = colors.yellow,
-                R = colors.violet,
-                Rv = colors.violet,
-                cv = colors.red,
-                ce = colors.red,
-                r = colors.cyan,
-                rm = colors.cyan,
-                ["r?"] = colors.cyan,
-                ["!"] = colors.red,
-                t = colors.red,
-              }
-              return { bg = colors.bg, fg = mode_color[vim.fn.mode()] }
-            end,
+            -- color = function()
+            --   -- auto change color according to neovims mode
+            --   local mode_color = {
+            --     n = colors.red,
+            --     i = colors.green,
+            --     v = colors.blue,
+            --     [""] = colors.blue,
+            --     V = colors.blue,
+            --     c = colors.magenta,
+            --     no = colors.red,
+            --     s = colors.orange,
+            --     S = colors.orange,
+            --     [""] = colors.orange,
+            --     ic = colors.yellow,
+            --     R = colors.violet,
+            --     Rv = colors.violet,
+            --     cv = colors.red,
+            --     ce = colors.red,
+            --     r = colors.cyan,
+            --     rm = colors.cyan,
+            --     ["r?"] = colors.cyan,
+            --     ["!"] = colors.red,
+            --     t = colors.red,
+            --   }
+            --   return { bg = colors.bg, fg = mode_color[vim.fn.mode()] }
+            -- end,
             padding = { left = 1, right = 1 },
           },
         },
