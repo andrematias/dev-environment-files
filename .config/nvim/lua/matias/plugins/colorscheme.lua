@@ -64,6 +64,10 @@ return {
             mantle = "#0e0e0e",
             crust = "#080808",
           },
+          latte = {
+            text = "#000000",
+            base = "#ffffff",
+          },
         },
         custom_highlights = {},
         integrations = {
