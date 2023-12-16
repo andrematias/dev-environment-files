@@ -11,7 +11,6 @@ return {
           opts.buffer = bufnr
           vim.keymap.set(mode, l, r, opts)
         end
-
         -- Navigation
         map("n", "]c", function()
           if vim.wo.diff then
@@ -55,7 +54,7 @@ return {
         map("n", "<leader>hD", function()
           gs.diffthis("~")
         end, { desc = "Diff this buffer" })
-        map("n", "<leader>td", gs.toggle_deleted, { desc = "Toggle deleted" })
+        map("n", "<leader>tr", gs.toggle_deleted, { desc = "Toggle deleted" })
 
         -- Text object
         map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", { desc = "Select hunk" })

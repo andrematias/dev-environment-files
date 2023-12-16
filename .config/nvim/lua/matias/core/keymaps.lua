@@ -42,3 +42,10 @@ keymap.set("v", "J", "<cmd>move '>+1<CR>gv-gv", { desc = "Move selected line to 
 keymap.set("v", "K", "<cmd>move '<-2<CR>gv-gv", { desc = "Move selected line to up" })
 
 keymap.set("n", "<leader>rr", "<cmd>so %<CR>", { desc = "Reload source file without restart nvim" })
+
+keymap.set("n", "<leader>td", function()
+  vim.opt.background = "dark"
+end, { desc = "Set dark background" })
+keymap.set("n", "<leader>tl", function()
+  vim.opt.background = "light"
+end, { desc = "Set light background" })

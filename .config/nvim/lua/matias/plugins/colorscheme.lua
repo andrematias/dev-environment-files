@@ -1,45 +1,102 @@
 return {
   {
-    "navarasu/onedark.nvim",
-    priority = 1000, -- make sure to load this before all the other start plugins
+    "catppuccin/nvim",
+    name = "catppuccin",
+    priority = 1000,
     config = function()
-      local onedark = require("onedark")
-      local palette = require("onedark.palette").darker
-      onedark.setup({
-        style = "darker",
-        transparent = true, -- Show/hide background
-        term_colors = true, -- Change terminal color as per the selected theme style
-        ending_tildes = false, -- Show the end-of-buffer tildes. By default they are hidden
-        cmp_itemkind_reverse = false, -- reverse item kind highlights in cmp menu
-
-        -- Change code style ---
-        -- Options are italic, bold, underline, none
-        code_style = {
-          comments = "italic",
-          keywords = "bold,italic",
-          functions = "bold",
-          strings = "none",
-          variables = "none",
+      require("catppuccin").setup({
+        flavour = "mocha", -- latte, frappe, macchiato, mocha
+        background = { -- :h background
+          light = "latte",
+          dark = "mocha",
         },
-
-        -- Custom Highlights --
-        highlights = {
-          ["FileExplorer"] = { fg = palette.orange, bg = "none", fmt = "bold" },
+        transparent_background = false, -- disables setting the background color.
+        show_end_of_buffer = false, -- shows the '~' characters after the end of buffers
+        term_colors = true, -- sets terminal colors (e.g. `g:terminal_color_0`)
+        dim_inactive = {
+          enabled = true, -- dims the background color of inactive window
+          shade = "dark",
+          percentage = 0.15, -- percentage of the shade to apply to the inactive window
         },
-
-        -- colors = {}, -- Override default colors
-
-        -- Plugins Config --
-        diagnostics = {
-          darker = true, -- darker colors for diagnostic
-          undercurl = true, -- use undercurl instead of underline for diagnostics
-          background = false, -- use background color for virtual text
+        no_italic = false, -- Force no italic
+        no_bold = false, -- Force no bold
+        no_underline = false, -- Force no underline
+        styles = { -- Handles the styles of general hi groups (see `:h highlight-args`):
+          comments = { "italic" }, -- Change the style of comments
+          conditionals = { "italic" },
+          loops = { "bold" },
+          functions = { "bold" },
+          keywords = { "bold", "italic" },
+          strings = {},
+          variables = {},
+          numbers = {},
+          booleans = { "bold" },
+          properties = {},
+          types = {},
+          operators = {},
+        },
+        color_overrides = {},
+        custom_highlights = {},
+        integrations = {
+          markdown = true,
+          gitsigns = true,
+          nvimtree = true,
+          mason = true,
+          aerial = true,
+          alpha = true,
+          treesitter = true,
+          telescope = {
+            enabled = true,
+          },
+          -- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
         },
       })
 
-      onedark.load()
+      -- setup must be called before loading
+      vim.cmd.colorscheme("catppuccin")
     end,
   },
+  -- {
+  --   "navarasu/onedark.nvim",
+  --   priority = 1000, -- make sure to load this before all the other start plugins
+  --   config = function()
+  --     local onedark = require("onedark")
+  --     local palette = require("onedark.palette").darker
+  --     onedark.setup({
+  --       style = "darker",
+  --       transparent = true, -- Show/hide background
+  --       term_colors = true, -- Change terminal color as per the selected theme style
+  --       ending_tildes = false, -- Show the end-of-buffer tildes. By default they are hidden
+  --       cmp_itemkind_reverse = false, -- reverse item kind highlights in cmp menu
+  --
+  --       -- Change code style ---
+  --       -- Options are italic, bold, underline, none
+  --       code_style = {
+  --         comments = "italic",
+  --         keywords = "bold,italic",
+  --         functions = "bold",
+  --         strings = "none",
+  --         variables = "none",
+  --       },
+  --
+  --       -- Custom Highlights --
+  --       highlights = {
+  --         ["FileExplorer"] = { fg = palette.orange, bg = "none", fmt = "bold" },
+  --       },
+  --
+  --       -- colors = {}, -- Override default colors
+  --
+  --       -- Plugins Config --
+  --       diagnostics = {
+  --         darker = true, -- darker colors for diagnostic
+  --         undercurl = true, -- use undercurl instead of underline for diagnostics
+  --         background = false, -- use background color for virtual text
+  --       },
+  --     })
+  --
+  --     onedark.load()
+  --   end,
+  -- },
   -- {
   --   "LunarVim/darkplus.nvim",
   --   priority = 1000, -- make sure to load this before all the other start plugins
