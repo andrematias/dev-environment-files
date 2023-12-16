@@ -1,7 +1,8 @@
 return {
   "nvimtools/none-ls.nvim", -- configure formatters & linters
+  enabled = true,
   lazy = true,
-  -- event = { "BufReadPre", "BufNewFile" }, -- to enable uncomment this
+  event = { "BufReadPre", "BufNewFile" },
   dependencies = {
     "jay-babu/mason-null-ls.nvim",
   },
@@ -20,6 +21,7 @@ return {
         "pylint", -- python linter
         "eslint_d", -- js linter
         "cpplint", -- c/c++ linter
+        "clang_format", -- c/c++ formatter
       },
     })
 
@@ -46,6 +48,7 @@ return {
         formatting.black,
         formatting.clang_format,
         diagnostics.pylint,
+        diagnostics.cpplint.with({ extra_args = { "—filter", "-legal/copyright" } }),
         diagnostics.eslint_d.with({ -- js/ts linter
           condition = function(utils)
             return utils.root_has_file({ ".eslintrc.js", ".eslintrc.cjs" }) -- only enable if root has .eslintrc.js or .eslintrc.cjs
@@ -60,6 +63,7 @@ return {
             group = augroup,
             buffer = bufnr,
             callback = function()
+              -- vim.lsp.buf.format({ async = false })
               vim.lsp.buf.format({
                 filter = function(client)
                   --  only use null-ls for formatting instead of lsp server
