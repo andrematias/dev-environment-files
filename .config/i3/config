@@ -14,8 +14,8 @@ set $psst --no-startup-id
 
 title_align center
 
-default_border normal 0 px
-default_floating_border normal 2 px
+# default_border normal 0 px
+# default_floating_border normal 2 px
 # default_border pixel 3
 hide_edge_borders smart
 for_window [all] title_window_icon off
@@ -197,7 +197,7 @@ exec --no-startup-id nm-applet
 ####################################################################
 #   Gaps
 ####################################################################
-gaps inner 10
+gaps inner 0
 
 ####################################################################
 #   Floating Rules
