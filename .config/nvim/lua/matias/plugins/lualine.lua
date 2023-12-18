@@ -20,7 +20,7 @@ return {
         lualine_a = {
           {
             function()
-              return ""
+              return "  "
             end,
             -- color = function()
             --   -- auto change color according to neovims mode
@@ -48,7 +48,7 @@ return {
             --   }
             --   return { bg = colors.bg, fg = mode_color[vim.fn.mode()] }
             -- end,
-            padding = { left = 1, right = 1 },
+            -- padding = { left = 1, right = 2 },
           },
         },
         lualine_c = { "filename", "filesize", "%{PencilMode()}" },
