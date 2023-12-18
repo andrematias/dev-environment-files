@@ -60,16 +60,51 @@ return {
             surface2 = "#504844",
             surface1 = "#3a3634",
             surface0 = "#252525",
-            base = "#151515",
+            base = "#141516",
             mantle = "#0e0e0e",
             crust = "#080808",
           },
           latte = {
             text = "#000000",
             base = "#ffffff",
+            rosewater = "#dc8a78",
+            flamingo = "#dd7878",
+            pink = "#ea76cb",
+            mauve = "#8839ef",
+            red = "#d20f39",
+            maroon = "#e64553",
+            peach = "#fe640b",
+            yellow = "#df8e1d",
+            green = "#40a02b",
+            teal = "#179299",
+            sky = "#04a5e5",
+            sapphire = "#209fb5",
+            blue = "#1e66f5",
+            lavender = "#7287fd",
+            subtext1 = "#5c5f77",
+            subtext0 = "#6c6f85",
+            overlay2 = "#7c7f93",
+            overlay1 = "#8c8fa1",
+            overlay0 = "#9ca0b0",
+            surface2 = "#acb0be",
+            surface1 = "#bcc0cc",
+            surface0 = "#ccd0da",
+            mantle = "#e6e9ef",
+            crust = "#dce0e8",
           },
         },
-        custom_highlights = {},
+        highlight_overrides = {
+          latte = function(c)
+            return {
+              FileExplorer = { bg = c.mantle },
+            }
+          end,
+          mocha = function(c)
+            return {
+              FileExplorer = { bg = c.crust },
+            }
+          end,
+        },
         integrations = {
           markdown = true,
           gitsigns = true,
