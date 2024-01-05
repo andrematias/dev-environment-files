@@ -60,6 +60,7 @@ return {
             surface2 = "#504844",
             surface1 = "#3a3634",
             surface0 = "#252525",
+            -- base = "#1b171c",
             base = "#141516",
             mantle = "#0e0e0e",
             crust = "#080808",
@@ -97,11 +98,15 @@ return {
           latte = function(c)
             return {
               FileExplorer = { bg = c.mantle },
+              CursorLineNr = { fg = c.blue },
+              CursorLine = { bg = c.base },
             }
           end,
           mocha = function(c)
             return {
-              FileExplorer = { bg = c.crust },
+              FileExplorer = { bg = c.mantle },
+              CursorLineNr = { fg = c.lavender },
+              CursorLine = { bg = c.base },
             }
           end,
         },

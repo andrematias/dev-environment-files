@@ -16,7 +16,7 @@ return {
     nvimtree.setup({
       view = {
         width = 40,
-        relativenumber = true,
+        relativenumber = false,
       },
 
       -- update cwd

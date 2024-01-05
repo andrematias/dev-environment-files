@@ -58,6 +58,29 @@ return {
           }
           require("mason-nvim-dap").default_setup(set) -- don't forget this!
         end,
+
+        python = function(set)
+          set.configurations = {
+            {
+              name = "DebugPy: Relative",
+              type = "python",
+              request = "launch",
+              program = function()
+                return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+              end,
+              cwd = function()
+                return vim.fn.input("Workspace: ", vim.fn.getcwd() .. "/", "file")
+              end,
+              stopOnEntry = true,
+              runInTerminal = true,
+              args = function()
+                local input_args = vim.fn.input("Args to executable: ")
+                return vim.split(input_args, " ")
+              end,
+            },
+          }
+          require("mason-nvim-dap").default_setup(set) -- don't forget this!
+        end,
       },
     })
   end,

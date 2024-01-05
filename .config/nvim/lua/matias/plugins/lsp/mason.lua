@@ -33,7 +33,7 @@ return {
         "lua_ls",
         "emmet_ls",
         "pyright",
-        "clangd",
+        -- "clangd",
         "intelephense",
       },
       -- auto-install configured servers (with lspconfig)

@@ -63,6 +63,7 @@ return {
 
     -- used to enable autocompletion (assign to every lsp server config)
     local capabilities = cmp_nvim_lsp.default_capabilities()
+    capabilities.offsetEncoding = { "utf-16" }
 
     local handlers = {
       ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "single" }),

@@ -23,24 +23,7 @@ return {
           enable = true,
         },
         -- ensure these language parsers are installed
-        ensure_installed = {
-          "json",
-          "javascript",
-          "typescript",
-          "tsx",
-          "yaml",
-          "html",
-          "css",
-          "markdown",
-          "markdown_inline",
-          "bash",
-          "lua",
-          "vim",
-          "dockerfile",
-          "gitignore",
-          "query",
-          "python",
-        },
+        auto_instal = true,
         incremental_selection = {
           enable = true,
           keymaps = {
