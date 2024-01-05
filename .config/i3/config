@@ -14,7 +14,7 @@ set $psst --no-startup-id
 
 title_align center
 
-# default_border normal 0 px
+# default_border normal 2 px
 # default_floating_border normal 2 px
 # default_border pixel 3
 hide_edge_borders smart
@@ -23,7 +23,8 @@ for_window [all] title_window_icon off
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:Jetbrains Mono NL 9
+# font pango:Jetbrains Mono NL 12
+font pango:IosevkaTerm Nerd Font 14
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -197,13 +198,15 @@ exec --no-startup-id nm-applet
 ####################################################################
 #   Gaps
 ####################################################################
-gaps inner 0
+# gaps inner 2
+# gaps outer 2
 
 ####################################################################
 #   Floating Rules
 ####################################################################
 
 # for_window [instance="keepassx"] floating enable
+for_window [title="Seer Console*"] floating enable
 for_window [instance="pavucontrol"] floating enable
 for_window [title="Picture-in-Picture"] sticky enable 
 for_window [instance="qalculate-gtk"] floating enable
@@ -306,18 +309,19 @@ bar {
     tray_output none
     status_command i3blocks
     position top
+    # position bottom
     separator_symbol "󰇙"
 
     # mode invisible
-    # colors {
-    #     background #000000
-    #     statusline #ffffff
-    #     # colorclass       <border> <background> <text>
-    #     # focused_workspace  #000000  #000000     #ffffff
-    #     # inactive_workspace #7c7c7c  #7c7c7c     #000000
-    #     # active_workspace   #7c7c7c  #7c7c7c     #000000
-    #
-    # }
+    colors {
+        background #000000
+        statusline #FFFFFF
+        # colorclass       <border> <background> <text>
+        # focused_workspace  #434343  #434343     #FFFFFF
+        # inactive_workspace #000000  #000000     #FFFFFF
+        # active_workspace   #000000  #000000     #FFFFFF
+
+    }
 }
 
 
@@ -326,10 +330,18 @@ bar {
 ####################################################################
 
 # class                 border  bground text    indicator child_border
+# Black
+# client.focused          #434343 #434343 #FFFFFF #FFFFFF   #434343
+# Cyan
 # client.focused          #4C7899 #4C7899 #FFFFFF #ffffff   #4C7899
+# Red
 # client.focused          #AA3941 #AA3941 #FFFFFF #FF9500   #AA3941
-client.focused_inactive #333333 #333333 #FFFFFF #333333   #333333
-client.unfocused        #333333 #222222 #888888 #292D2E   #222222
+# Yealow
+# client.focused          #ffa202 #cb6d02 #FFFFFF #4C7899   #ffa202
+# Orange
+# client.focused          #fabd2f #fe8019 #282828 #b8bb26   #fabd2f
+client.focused_inactive #222222 #222222 #414141 #292D2E   #222222
+client.unfocused        #222222 #222222 #414141 #292D2E   #222222
 client.urgent           #AA3941 #AA3941 #FFFFFF #AA3941   #AA3941
 client.placeholder      #0C0C0C #0C0C0C #FFFFFF #000000   #0C0C0C
 
