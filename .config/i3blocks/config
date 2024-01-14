@@ -97,12 +97,12 @@ interval=1
 # separator=false
 # separator_block_width=2
 #
-[logout]
-command=i3-msg exit
-markup=pango
-full_text=<span>⏼</span> 
-separator=false
-separator_block_width=2
+#[logout]
+#command=i3-msg exit
+#markup=pango
+#full_text=<span>⏼</span> 
+#separator=false
+#separator_block_width=2
 #
 # [reboot]
 # command=i3-msg -q exec "sudo reboot"
