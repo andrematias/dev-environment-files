@@ -58,12 +58,7 @@
     :config
     (setq which-key-side-window-location 'bottom))
 
-(use-package catppuccin-theme
-    :init
-    (load-theme 'catppuccin :no-confirm)
-    :config
-    ;;(setq catppuccin-flavor 'latte)
-    (catppuccin-reload))
+(load-theme 'modus-operandi t)
 
 (use-package sudo-edit)
 

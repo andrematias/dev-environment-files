@@ -87,18 +87,11 @@ Instalação de pacotes
 #+end_src
 
 ** THEME
-
 #+begin_src emacs-lisp
-    (use-package catppuccin-theme
-	:init
-	(load-theme 'catppuccin :no-confirm)
-	:config
-	;;(setq catppuccin-flavor 'latte)
-	(catppuccin-reload))
+	(load-theme 'modus-operandi t)
 #+end_src
 
 ** SUDO EDIT
-
 #+begin_src emacs-lisp
   (use-package sudo-edit)
 #+end_src
