@@ -3,20 +3,6 @@
 #+STARTUP: showeverything
 #+OPTIONS: toc:2
 
-* TABLE OF CONTENTS :toc:
-- [[#gnu-gui-configs][GNU GUI CONFIGS]]
-  - [[#set-font-face][Set font face]]
-  - [[#set-menu-off][Set menu off]]
-  - [[#set-line-numbers][Set line numbers]]
-- [[#load-first-programs][LOAD FIRST PROGRAMS]]
-  - [[#package-manager][Package Manager]]
-- [[#packages][PACKAGES]]
-- [[#org-mode][ORG MODE]]
-  - [[#enabling-table-of-contents][Enabling Table of Contents]]
-  - [[#enabling-org-bullets][Enabling Org Bullets]]
-- [[#keybindings][KEYBINDINGS]]
-  - [[#general-keybindings][General Keybindings]]
-
 * GNU COMMONS CONFIGS
 ** Set font face
 #+begin_src emacs-lisp
