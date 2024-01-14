@@ -1,0 +1,12 @@
+{
+    "configurations": [
+	{
+	    "type": "lldb-vscode",
+	    "request": "launch",
+	    "name": "LLDB Ar Debbuger",
+	    "program": "${workspaceFolder}/build/debug/tests/${fileBasenameNoExtension}",
+	    "cwd": "${workspaceFolder}/build/debug/tests",
+	    "args": [],
+	}
+    ]
+}
