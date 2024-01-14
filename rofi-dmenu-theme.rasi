@@ -8,7 +8,7 @@
     background-color:      Black;
     border-color:          White;
     text-color:            White;
-    font:                  "IosevkaTerm Nerd Font 14";
+    font:                  "IosevkaTerm Nerd Font 10.5";
 }
 window {
     anchor:     north;
