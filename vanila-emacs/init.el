@@ -369,8 +369,38 @@ one, an error is signaled."
 (use-package all-the-icons)
 (use-package nerd-icons)
 
-(use-package mood-line
-  :init (mood-line-mode 1))
+;; (custom-set-faces
+  ;; ;; '(mode-line ((t (:background "black" :foreground "gray70" :box (:line-width 4 :color "black"))))))
+  ;; '(mode-line ((t (:box (:line-width 4))))))
+  ;; (setq mode-line-format '("%e" mode-line-front-space 
+  ;; 			mode-line-mule-info
+  ;; 			mode-line-client
+  ;; 			mode-line-modified
+  ;; 			mode-line-remote
+  ;; 			mode-line-frame-identification
+  ;; 			mode-line-buffer-identification
+  ;; 			mode-line-position
+  ;; 			(vc-mode vc-mode)
+  ;; 			mode-line-modes
+  ;; 			mode-line-misc-info
+  ;; 			mode-line-end-spaces))
+
+(use-package doom-modeline
+  :ensure t
+  :config
+  (setq doom-modeline-modal t)
+  (setq doom-modeline-modal-modern-icon nil)
+  (setq doom-modeline-icon t)
+  (setq doom-modeline-major-mode-icon t)
+  (setq doom-modeline-buffer-state-icon t)
+  (setq doom-modeline-buffer-modification-icon t)
+  (setq doom-modeline-height 30)
+  (setq nerd-icons-scale-factor 0.8)
+  :init (doom-modeline-mode 1))
+
+
+  ;; (use-package mood-line
+  ;;     :init (mood-line-mode 1))
 
 (use-package vterm-toggle
 :after vterm
@@ -433,7 +463,7 @@ one, an error is signaled."
   (doom-themes-treemacs-config)
   (doom-themes-org-config))
 
-(load-theme 'modus-operandi t)
+(load-theme 'doom-1337 t)
 
 (use-package minions
   :config (minions-mode 1))
@@ -585,6 +615,8 @@ one, an error is signaled."
   :after lsp-mode
   :commands lsp-ui-mode
   :custom
+  (lsp-ui-doc-show-with-mouse nil)
+  (lsp-ui-doc-show-with-cursor nil)
   (lsp-ui-doc-position 'at-point))
 
   (use-package flycheck-inline

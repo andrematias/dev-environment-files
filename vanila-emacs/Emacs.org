@@ -15,7 +15,7 @@
   - [[#general][General]]
 - [[#ui-configuration][UI Configuration]]
   - [[#icons][Icons]]
-  - [[#moodline][Moodline]]
+  - [[#modline][Modline]]
   - [[#vterm][Vterm]]
   - [[#hydra][Hydra]]
   - [[#treemacs][Treemacs]]
@@ -459,10 +459,40 @@
       (use-package nerd-icons)
     #+end_src
 
-** Moodline
+** Modline
     #+begin_src emacs-lisp
-      (use-package mood-line
-	:init (mood-line-mode 1))
+	;; (custom-set-faces
+	;; ;; '(mode-line ((t (:background "black" :foreground "gray70" :box (:line-width 4 :color "black"))))))
+	;; '(mode-line ((t (:box (:line-width 4))))))
+	;; (setq mode-line-format '("%e" mode-line-front-space 
+	;; 			mode-line-mule-info
+	;; 			mode-line-client
+	;; 			mode-line-modified
+	;; 			mode-line-remote
+	;; 			mode-line-frame-identification
+	;; 			mode-line-buffer-identification
+	;; 			mode-line-position
+	;; 			(vc-mode vc-mode)
+	;; 			mode-line-modes
+	;; 			mode-line-misc-info
+	;; 			mode-line-end-spaces))
+
+      (use-package doom-modeline
+	:ensure t
+	:config
+	(setq doom-modeline-modal t)
+	(setq doom-modeline-modal-modern-icon nil)
+	(setq doom-modeline-icon t)
+	(setq doom-modeline-major-mode-icon t)
+	(setq doom-modeline-buffer-state-icon t)
+	(setq doom-modeline-buffer-modification-icon t)
+	(setq doom-modeline-height 30)
+	(setq nerd-icons-scale-factor 0.8)
+	:init (doom-modeline-mode 1))
+
+
+	;; (use-package mood-line
+	;;     :init (mood-line-mode 1))
     #+end_src
 
 ** Vterm
@@ -544,7 +574,7 @@
 
 *** Theme selected
     #+begin_src emacs-lisp
-      (load-theme 'modus-operandi t)
+      (load-theme 'doom-1337 t)
     #+end_src
     
 ** Better Modeline
@@ -758,6 +788,8 @@
 	:after lsp-mode
 	:commands lsp-ui-mode
 	:custom
+	(lsp-ui-doc-show-with-mouse nil)
+	(lsp-ui-doc-show-with-cursor nil)
 	(lsp-ui-doc-position 'at-point))
 
 	(use-package flycheck-inline
