@@ -25,7 +25,6 @@
   - [[#which-key][Which Key]]
   - [[#ivy-and-counsel][Ivy and Counsel]]
   - [[#helpful-help-commands][Helpful Help Commands]]
-  - [[#highlight-indent][Highlight Indent]]
 - [[#org-mode][Org Mode]]
   - [[#basic-config][Basic Config]]
   - [[#configure-babel-languages][Configure Babel Languages]]
@@ -115,19 +114,33 @@
 
       ;; Disable line numbers for some modes
       (dolist (mode '(org-mode-hook
-		      vterm-mode-hook
-		      term-mode-hook
-		      shell-mode-hook
-		      treemacs-mode-hook
-		      eshell-mode-hook))
-	(add-hook mode (lambda () (display-line-numbers-mode 0))))
+			    vterm-mode-hook
+			    term-mode-hook
+			    shell-mode-hook
+			    treemacs-mode-hook
+			    eshell-mode-hook))
+	      (add-hook mode (lambda () (display-line-numbers-mode 0))))
 
-      ;;; Window auto focus
+	    ;;; Window auto focus
       (setq split-window-preferred-function 'my/split-window-func)
       (defun my/split-window-func (&optional window)
-	(let ((new-window (split-window-sensibly window)))
-	  (if (not (active-minibuffer-window))
-	      (select-window new-window))))
+	      (let ((new-window (split-window-sensibly window)))
+		(if (not (active-minibuffer-window))
+		    (select-window new-window))))
+
+      ;; scroll one line at a time (less "jumpy" than defaults)
+      (setq mouse-wheel-scroll-amount '(1 ((shift) . 1))) ;; one line at a time
+      (setq mouse-wheel-progressive-speed nil) ;; don't accelerate scrolling
+      (setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
+      (setq scroll-step 1) ;; keyboard scroll one line at a time
+
+      ;; Compilation colors
+      (require 'ansi-color)
+      (defun colorize-compilation-buffer ()
+	(read-only-mode)
+	(ansi-color-apply-on-region compilation-filter-start (point))
+	(read-only-mode))
+      (add-hook 'compilation-filter-hook 'colorize-compilation-buffer)
     #+end_src
     
 ** Font Configuration
@@ -272,176 +285,170 @@
 
 ** General
     #+begin_src emacs-lisp
-      ;; general
-      (use-package general
-      :config
-      (general-evil-setup t)
-      (defconst my-leader "SPC")
-      (general-create-definer my-leader-def
-	  :prefix my-leader)
-      (general-override-mode)
-      (my-leader-def
-	  :states '(motion normal visual)
-	  :keymaps 'override 
+	    ;; general
+	    (use-package general
+	    :config
+	    (general-evil-setup t)
+	    (defconst my-leader "SPC")
+	    (general-create-definer my-leader-def
+		:prefix my-leader)
+	    (general-override-mode)
+	    (my-leader-def
+		:states '(motion normal visual)
+		:keymaps 'override 
 
-	  "u" '(universal-argument :which-key "Universal argument")
-	  ";" '(eval-region :which-key "eval-region")
-	  "C-SPC" '(projectile-find-file-other-frame :which-key "Projectile find file (new frame)")
-	  "S-SPC" '(projectile-find-file-other-frame :which-key "Projectile find file (new frame)")
-	  "." '(find-file :which-key "Find file")
-	  ">" '(find-file-other-frame :which-key "Find file (new frame)")
-	  "d" '(dired-jump :which-key "dired-jump")
-	  "a" '(ace-window :which-key "ace-window")
-	  "m" '(counsel-imenu :which-key "iMenu Symbols")
+		"u" '(universal-argument :which-key "Universal argument")
+		"." '(eval-region :which-key "eval-region")
+		"C-SPC" '(projectile-find-file-other-frame :which-key "Projectile find file (new frame)")
+		"S-SPC" '(projectile-find-file-other-frame :which-key "Projectile find file (new frame)")
+		">" '(find-file-other-frame :which-key "Find file (new frame)")
+		"d" '(dired-jump :which-key "dired-jump")
+		"a" '(ace-window :which-key "ace-window")
+		"m" '(counsel-imenu :which-key "iMenu Symbols")
 
-	  ;; files
-	  "f" '(:ignore t :which-key "File Explorer")
-	  "fr" '(counsel-recentf :which-key "Recent files")
-	  "ff" '(find-file :which-key "Find file")
-	  "fg" '(counsel-ag :which-key "Grep text")
-	  "fe" '(treemacs :which-key "File Explorer")
-
-
-	  ;; code + lsp
-	  "c"   '(:ignore t :which-key "Code")
-	  "cs" '(counsel-imenu :which-key "iMenu Symbols")
-	  "cp" '(point-to-register :which-key "point-to-register")
-	  "cj" '(jump-to-register :which-key "jump-to-register")
-	  "cu" '(undo :which-key "undo")
-	  "cr" '(query-replace :which-key "query-replace")
-	  "cc"  '(compile :which-key "Compile")
-	  "cm"  '(makefile-executor-execute-project-target :which-key "Compile Project Makefile Target")
-	  "ck"  '(kill-compilation :which-key "Kill compilation")
-
-	  "cl" '(:ignore t :which-key "LSP")
-	  "clr" '(lsp-rename :which-key "Lsp Rename Symbol")
-	  "clF" '(lsp-format-buffer :which-key "Lsp Format Buffer")
-	  "clf" '(lsp-format-region :which-key "Lsp Format region")
-	  "cla" '(lsp-execute-code-action :which-key "Lsp code action")
-	  "cls" '(lsp-treemacs-symbols :which-key "Show symbols")
-	  "cle" '(lsp-treemacs-errors-list :which-key "Show errors list")
-	  "cli" '(lsp-treemacs-implementations :which-key "Show implementations list")
-	  "cld" '(lsp-treemacs-references :which-key "Show references list")
-
-	  "cf" '(:ignore t :which-key "Fold")
-	  "cfh" '(hs-hide-block :which-key "hs-hide-block")
-	  "cfs" '(hs-show-block :which-key "hs-show-block")
-	  "cfa" '(hs-show-all :which-key "hs-show-all")
-	  "nh" '(git-gutter:next-hunk :which-key "Next hunk")
-	  "ph" '(git-gutter:previous-hunk :which-key "Previous hunk")
-	  ;; "ch" '(:ignore t :which-key "Help")
+		;; files
+		"f" '(:ignore t :which-key "File Explorer")
+		"fr" '(counsel-recentf :which-key "Recent files")
+		"ff" '(find-file :which-key "Find file")
+		"fg" '(counsel-ag :which-key "Grep text")
+		"fe" '(treemacs :which-key "File Explorer")
 
 
-	  ;; editor
-	  "e" '(:ignore t :which-key "Editor")
-	  "ed" '(dashboard-open :which-key "Open dashboard")
+		;; code + lsp
+		"c"   '(:ignore t :which-key "Code")
+		"cs" '(counsel-imenu :which-key "iMenu Symbols")
+		"cp" '(point-to-register :which-key "point-to-register")
+		"cj" '(jump-to-register :which-key "jump-to-register")
+		"cu" '(undo :which-key "undo")
+		"cr" '(query-replace :which-key "query-replace")
+		"cc"  '(compile :which-key "Compile")
+		"cm"  '(makefile-executor-execute-project-target :which-key "Compile Project Makefile Target")
+		"ck"  '(kill-compilation :which-key "Kill compilation")
 
-	  ;; buffer
-	  "b" '(:ignore t :which-key "Buffer")
-	  "bb" '(counsel-projectile-switch-to-buffer :which-key "Switch buffer")
-	  "b[" '(previous-buffer :which-key "Previous buffer")
-	  "b]" '(next-buffer :which-key "Next buffer")
-	  "bc" '(kill-current-buffer :which-key "Close buffer")
-	  "bC" '(kill-other-buffers :which-key "Close other buffers")
-	  "bl" '(evil-switch-to-windows-last-buffer :which-key "Switch to last buffer")
-	  "br" '(revert-buffer-no-confirm :which-key "Revert buffer")
+		"cl" '(:ignore t :which-key "LSP")
+		"clr" '(lsp-rename :which-key "Lsp Rename Symbol")
+		"clF" '(lsp-format-buffer :which-key "Lsp Format Buffer")
+		"clf" '(lsp-format-region :which-key "Lsp Format region")
+		"cla" '(lsp-execute-code-action :which-key "Lsp code action")
+		"cls" '(lsp-treemacs-symbols :which-key "Show symbols")
+		"cle" '(lsp-treemacs-errors-list :which-key "Show errors list")
+		"cli" '(lsp-treemacs-implementations :which-key "Show implementations list")
+		"cld" '(lsp-treemacs-references :which-key "Show references list")
 
-	  "s" '(:ignore t :wk "Split")
-	  "ss" '(evil-window-split :wk "Horizontal split window")
-	  "sv" '(evil-window-vsplit :wk "Vertical split window")
-
-	  "w" '(:ignore t :wk "Windows")
-	  "wk" '(evil-window-delete :wk "Close window")
-	  "wc" '(evil-window-delete :wk "Close window")
-	  "wn" '(evil-window-new :wk "New window")
-	  "ws" '(evil-window-split :wk "Horizontal split window")
-	  "wv" '(evil-window-vsplit :wk "Vertical split window")
-	  "wh" '(evil-window-left :wk "Window left")
-	  "wj" '(evil-window-down :wk "Window down")
-	  "wk" '(evil-window-up :wk "Window up")
-	  "wl" '(evil-window-right :wk "Window right")
-	  "ww" '(evil-window-next :wk "Goto next window")
-	  "wH" '(buf-move-left :wk "Buffer move left")
-	  "wJ" '(buf-move-down :wk "Buffer move down")
-	  "wK" '(buf-move-up :wk "Buffer move up")
-	  "wL" '(buf-move-right :wk "Buffer move right")
-
-	  ;; open
-	  "o" '(:ignore t :which-key "Open")
-	  "oc" '(open-init-file :which-key "Open Emacs.org")
-	  "ot" '(vterm-toggle :which-key "vterm-toggle")
-	  "oT" '(vterm :which-key "Open vterm current buffer")
-
-	  ;; project
-	  "p" '(:ignore t :which-key "Project")
-	  "pp" '(projectile-switch-project :which-key "Switch Project")
-	  "po" '(projectile-find-other-file :which-key "projectile-find-other-file")
-	  "pf" '(projectile-find-file :which-key "Projectile find file")
-
-	  ;; help
-	  "h" '(:ignore t :which-key "Help")
-	  "hf" '(helpful-callable :which-key "describe-function")
-	  "hk" '(helpful-key :which-key "describe-key")
-	  "hv" '(helpful-variable :which-key "describe-variable")
-	  "hp" '(helpful-at-point :which-key "describe-at-point")
-	  "ho" '(helpful-symbol :which-key "describe-symbol")
-	  "hm" '(describe-mode :which-key "describe-mode")
-	  "hF" '(describe-face :which-key "describe-face")
-	  "hw" '(where-is :which-key "where-is")
-	  "h." '(display-local-help :which-key "display-local-help")
-	  "hc" '(:ignore t :which-key "Code")
-	  "hcp" '(lsp-describe-thing-at-point :which-key "Lsp describe thind at point")
-	  "hcd" '(lsp-ui-doc-toggle :which-key "Toggle documentation at point")
-
-	  ;; zoom
-	  ;; the hydra is nice but the rest is kind of janky, need to play around with this more
-	  "=" '(text-scale-increase :which-key "text-scale-increase")
-	  "-" '(text-scale-decrease :which-key "text-scale-decrease")
-
-	  ;; window
-	  "w" '(:ignore t :which-key "Window")
-	  "ww" '(ace-window :which-key "ace-window")
-
-	  ;; toggles
-	  "t" '(:ignore t :which-key "Toggles")
-	  "tw" '(visual-line-mode :which-key "visual-line-mode")
-	  "tt" '(load-theme :which-key "load theme")
-	  "td" '(:ignore t :which-key "Todos")
-	  "tdn" '(hl-todo-next :which-key "Go to next TODO")
-	  "tdp" '(hl-todo-previous :which-key "Go to previous TODO")
-	  "tdi" '(hl-todo-insert :which-key "Insert TODO")
-	  "tdg" '(hl-todo-rgrep :which-key "Show all TODOS")
-
-	  ;; narrow
-	  "N" '(:ignore t :which-key "Narrow")
-	  "Nr" '(narrow-to-region :which-key "narrow-to-region")
-	  "Nw" '(widen :which-key "widen")
-
-	  ;; git
-	  "g" '(:ignore t :which-key "Git") ; prefix
-	  "gg" '(magit-status :which-key "Git status")))
+		"cf" '(:ignore t :which-key "Fold")
+		"cfh" '(hs-hide-block :which-key "hs-hide-block")
+		"cfs" '(hs-show-block :which-key "hs-show-block")
+		"cfa" '(hs-show-all :which-key "hs-show-all")
+		"nh" '(git-gutter:next-hunk :which-key "Next hunk")
+		"ph" '(git-gutter:previous-hunk :which-key "Previous hunk")
 
 
-      ;; evil bindings
-      ;; normal/visual mode hotkeys
-      (general-define-key
-	  :states '(normal visual)
-	  ;; evil numbers
-	  "g=" 'evil-numbers/inc-at-pt
-	  "g-" 'evil-numbers/dec-at-pt
+		;; editor
+		"e" '(:ignore t :which-key "Editor")
+		"ed" '(dashboard-open :which-key "Open dashboard")
 
-	  ;; go to references
-	  "gr" 'xref-find-references
-	  "gD" 'xref-find-references
+		;; buffer
+		"b" '(:ignore t :which-key "Buffer")
+		"bb" '(counsel-projectile-switch-to-buffer :which-key "Switch buffer")
+		"bi" '(ibuffer :which-key "Ibuffer")
+		"b[" '(previous-buffer :which-key "Previous buffer")
+		"b]" '(next-buffer :which-key "Next buffer")
+		"bc" '(kill-current-buffer :which-key "Close buffer")
+		"bl" '(evil-switch-to-windows-last-buffer :which-key "Switch to last buffer")
 
-	  ;; movement
-	  "C-n" 'evil-next-visual-line 
-	  "C-p" 'evil-previous-visual-line
-	  "C-h" 'evil-window-left
-	  "C-j" 'evil-window-down
-	  "C-k" 'evil-window-up
-	  "C-l" 'evil-window-right)
+		"s" '(:ignore t :wk "Split")
+		"ss" '(evil-window-split :wk "Horizontal split window")
+		"sv" '(evil-window-vsplit :wk "Vertical split window")
 
+		"w" '(:ignore t :wk "Windows")
+		"wk" '(evil-window-delete :wk "Close window")
+		"wc" '(evil-window-delete :wk "Close window")
+		"wn" '(evil-window-new :wk "New window")
+		"ws" '(evil-window-split :wk "Horizontal split window")
+		"wv" '(evil-window-vsplit :wk "Vertical split window")
+		"wh" '(evil-window-left :wk "Window left")
+		"wj" '(evil-window-down :wk "Window down")
+		"wk" '(evil-window-up :wk "Window up")
+		"wl" '(evil-window-right :wk "Window right")
+		"ww" '(evil-window-next :wk "Goto next window")
+		"wH" '(buf-move-left :wk "Buffer move left")
+		"wJ" '(buf-move-down :wk "Buffer move down")
+		"wK" '(buf-move-up :wk "Buffer move up")
+		"wL" '(buf-move-right :wk "Buffer move right")
+
+		;; open
+		"o" '(:ignore t :which-key "Open")
+		"oc" '(open-init-file :which-key "Open Emacs.org")
+		"ot" '(vterm-toggle :which-key "vterm-toggle")
+		"oT" '(vterm :which-key "Open vterm current buffer")
+
+		;; project
+		"p" '(:ignore t :which-key "Project")
+		"pp" '(projectile-switch-project :which-key "Switch Project")
+		"po" '(projectile-find-other-file :which-key "projectile-find-other-file")
+		"pf" '(projectile-find-file :which-key "Projectile find file")
+
+		;; help
+		"h" '(:ignore t :which-key "Help")
+		"hf" '(helpful-callable :which-key "describe-function")
+		"hk" '(helpful-key :which-key "describe-key")
+		"hv" '(helpful-variable :which-key "describe-variable")
+		"hp" '(helpful-at-point :which-key "describe-at-point")
+		"ho" '(helpful-symbol :which-key "describe-symbol")
+		"hm" '(describe-mode :which-key "describe-mode")
+		"hF" '(describe-face :which-key "describe-face")
+		"hw" '(where-is :which-key "where-is")
+		"h." '(display-local-help :which-key "display-local-help")
+		"hc" '(:ignore t :which-key "Code")
+		"hcp" '(lsp-describe-thing-at-point :which-key "Lsp describe thind at point")
+		"hcd" '(lsp-ui-doc-toggle :which-key "Toggle documentation at point")
+
+		;; zoom
+		;; the hydra is nice but the rest is kind of janky, need to play around with this more
+		"=" '(text-scale-increase :which-key "text-scale-increase")
+		"-" '(text-scale-decrease :which-key "text-scale-decrease")
+
+		;; window
+		"w" '(:ignore t :which-key "Window")
+		"ww" '(ace-window :which-key "ace-window")
+
+		;; toggles
+		"t" '(:ignore t :which-key "Toggles")
+		"tw" '(visual-line-mode :which-key "visual-line-mode")
+		"tt" '(load-theme :which-key "load theme")
+		"td" '(:ignore t :which-key "Todos")
+		"tdn" '(hl-todo-next :which-key "Go to next TODO")
+		"tdp" '(hl-todo-previous :which-key "Go to previous TODO")
+		"tdi" '(hl-todo-insert :which-key "Insert TODO")
+		"tdg" '(hl-todo-rgrep :which-key "Show all TODOS")
+
+		;; narrow
+		"N" '(:ignore t :which-key "Narrow")
+		"Nr" '(narrow-to-region :which-key "narrow-to-region")
+		"Nw" '(widen :which-key "widen")
+
+		;; git
+		"g" '(:ignore t :which-key "Git") ; prefix
+		"gg" '(magit-status :which-key "Git status")))
+
+
+	    ;; evil bindings
+	    ;; normal/visual mode hotkeys
+	    (general-define-key
+		:states '(normal visual)
+		;; go to references
+		"gr" 'xref-find-references
+		"gD" 'xref-find-references
+
+		;; movement
+		"H" 'previous-buffer
+		"L" 'next-buffer
+		"C-n" 'evil-next-visual-line 
+		"C-p" 'evil-previous-visual-line
+		"C-h" 'evil-window-left
+		"C-j" 'evil-window-down
+		"C-k" 'evil-window-up
+		"C-l" 'evil-window-right)
     #+end_src
 
 * UI Configuration
@@ -460,24 +467,12 @@
 
 ** Vterm
     #+begin_src emacs-lisp
-	(use-package vterm-toggle
-	:after vterm
-	:config
-	(setq vterm-toggle-fullscreen-p nil)
-	(setq vterm-toggle-scope 'project)
-	(add-to-list 'display-buffer-alist
-		    '((lambda (buffer-or-name _)
-			    (let ((buffer (get-buffer buffer-or-name)))
-			    (with-current-buffer buffer
-				(or (equal major-mode 'vterm-mode)
-				    (string-prefix-p vterm-buffer-name (buffer-name buffer))))))
-			(display-buffer-reuse-window display-buffer-at-bottom)
-			;;(display-buffer-reuse-window display-buffer-in-direction)
-			;;display-buffer-in-direction/direction/dedicated is added in emacs27
-			;;(direction . bottom)
-			;;(dedicated . t) ;dedicated is supported in emacs27
-			(reusable-frames . visible)
-			(window-height . 0.3))))
+      (use-package vterm-toggle
+      :after vterm
+      :config
+      (setq vterm-toggle-fullscreen-p nil)
+      (setq vterm-toggle-scope 'project)
+      (setq vterm-toggle-fullscreen-p nil))
     #+end_src
 
 ** Hydra
@@ -629,18 +624,6 @@
 
 #+end_src
 
-** Highlight Indent
-    #+begin_src emacs-lisp
-      (use-package highlight-indent-guides
-	:ensure t
-	:defer t
-	:hook (prog-mode . highlight-indent-guides-mode)
-	:config
-	(setq highlight-indent-guides-method 'character)
-	(setq highlight-indent-guides-character ?\|)
-	(setq highlight-indent-guides-responsive 'top))
-    #+end_src
-
 * Org Mode
 ** Basic Config
 
@@ -748,16 +731,23 @@
 
 **** lsp-mode
     #+begin_src emacs-lisp
+      (defun my/evil-lsp-ui-keybindings ()
+	  (general-nmap
+	  :keymaps 'local
+	  "K" 'lsp-ui-doc-glance))
+
       (use-package lsp-mode
 	:commands (lsp lsp-deferred)
-	  :hook ((typescript-mode . lsp)
-	    (c-mode . lsp)
-	    (hs-minor-mode . lsp))
-	  :init
-	  (setq lsp-keymap-prefix "C-c l")
-	  :config
-	  (lsp-enable-which-key-integration t)
-	  (setq lsp-headerline-breadcrumb-enable nil))
+	:hook (
+	       (lsp-ui-mode . my/evil-lsp-ui-keybindings)
+	       (typescript-mode . lsp)
+	       (c-mode . lsp)
+	       (hs-minor-mode . lsp))
+	    :init
+	    (setq lsp-keymap-prefix "C-c l")
+	    :config
+	    (lsp-enable-which-key-integration t)
+	    (setq lsp-headerline-breadcrumb-enable nil))
     #+end_src
 
 **** lsp-ui
@@ -890,6 +880,11 @@
       (use-package counsel-projectile
 	:after projectile
 	:config (counsel-projectile-mode))
+
+      (use-package ibuffer-projectile 
+	:after projectile
+	:hook
+	(ibuffer . (ibuffer-projectile-set-filter-groups)))
     #+end_src
 
 ** Highlight TODO

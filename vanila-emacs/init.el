@@ -50,19 +50,33 @@
 
 ;; Disable line numbers for some modes
 (dolist (mode '(org-mode-hook
-		vterm-mode-hook
-		term-mode-hook
-		shell-mode-hook
-		treemacs-mode-hook
-		eshell-mode-hook))
-  (add-hook mode (lambda () (display-line-numbers-mode 0))))
+		      vterm-mode-hook
+		      term-mode-hook
+		      shell-mode-hook
+		      treemacs-mode-hook
+		      eshell-mode-hook))
+	(add-hook mode (lambda () (display-line-numbers-mode 0))))
 
-;;; Window auto focus
+      ;;; Window auto focus
 (setq split-window-preferred-function 'my/split-window-func)
 (defun my/split-window-func (&optional window)
-  (let ((new-window (split-window-sensibly window)))
-    (if (not (active-minibuffer-window))
-	(select-window new-window))))
+	(let ((new-window (split-window-sensibly window)))
+	  (if (not (active-minibuffer-window))
+	      (select-window new-window))))
+
+;; scroll one line at a time (less "jumpy" than defaults)
+(setq mouse-wheel-scroll-amount '(1 ((shift) . 1))) ;; one line at a time
+(setq mouse-wheel-progressive-speed nil) ;; don't accelerate scrolling
+(setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
+(setq scroll-step 1) ;; keyboard scroll one line at a time
+
+;; Compilation colors
+(require 'ansi-color)
+(defun colorize-compilation-buffer ()
+  (read-only-mode)
+  (ansi-color-apply-on-region compilation-filter-start (point))
+  (read-only-mode))
+(add-hook 'compilation-filter-hook 'colorize-compilation-buffer)
 
 (set-face-attribute 'default nil :font "IosevkaTerm Nerd Font" :height efs/default-font-size)
 
@@ -200,10 +214,9 @@ one, an error is signaled."
     :keymaps 'override 
 
     "u" '(universal-argument :which-key "Universal argument")
-    ";" '(eval-region :which-key "eval-region")
+    "." '(eval-region :which-key "eval-region")
     "C-SPC" '(projectile-find-file-other-frame :which-key "Projectile find file (new frame)")
     "S-SPC" '(projectile-find-file-other-frame :which-key "Projectile find file (new frame)")
-    "." '(find-file :which-key "Find file")
     ">" '(find-file-other-frame :which-key "Find file (new frame)")
     "d" '(dired-jump :which-key "dired-jump")
     "a" '(ace-window :which-key "ace-window")
@@ -244,7 +257,6 @@ one, an error is signaled."
     "cfa" '(hs-show-all :which-key "hs-show-all")
     "nh" '(git-gutter:next-hunk :which-key "Next hunk")
     "ph" '(git-gutter:previous-hunk :which-key "Previous hunk")
-    ;; "ch" '(:ignore t :which-key "Help")
 
 
     ;; editor
@@ -254,12 +266,11 @@ one, an error is signaled."
     ;; buffer
     "b" '(:ignore t :which-key "Buffer")
     "bb" '(counsel-projectile-switch-to-buffer :which-key "Switch buffer")
+    "bi" '(ibuffer :which-key "Ibuffer")
     "b[" '(previous-buffer :which-key "Previous buffer")
     "b]" '(next-buffer :which-key "Next buffer")
     "bc" '(kill-current-buffer :which-key "Close buffer")
-    "bC" '(kill-other-buffers :which-key "Close other buffers")
     "bl" '(evil-switch-to-windows-last-buffer :which-key "Switch to last buffer")
-    "br" '(revert-buffer-no-confirm :which-key "Revert buffer")
 
     "s" '(:ignore t :wk "Split")
     "ss" '(evil-window-split :wk "Horizontal split window")
@@ -341,15 +352,13 @@ one, an error is signaled."
 ;; normal/visual mode hotkeys
 (general-define-key
     :states '(normal visual)
-    ;; evil numbers
-    "g=" 'evil-numbers/inc-at-pt
-    "g-" 'evil-numbers/dec-at-pt
-
     ;; go to references
     "gr" 'xref-find-references
     "gD" 'xref-find-references
 
     ;; movement
+    "H" 'previous-buffer
+    "L" 'next-buffer
     "C-n" 'evil-next-visual-line 
     "C-p" 'evil-previous-visual-line
     "C-h" 'evil-window-left
@@ -368,19 +377,7 @@ one, an error is signaled."
 :config
 (setq vterm-toggle-fullscreen-p nil)
 (setq vterm-toggle-scope 'project)
-(add-to-list 'display-buffer-alist
-	    '((lambda (buffer-or-name _)
-		    (let ((buffer (get-buffer buffer-or-name)))
-		    (with-current-buffer buffer
-			(or (equal major-mode 'vterm-mode)
-			    (string-prefix-p vterm-buffer-name (buffer-name buffer))))))
-		(display-buffer-reuse-window display-buffer-at-bottom)
-		;;(display-buffer-reuse-window display-buffer-in-direction)
-		;;display-buffer-in-direction/direction/dedicated is added in emacs27
-		;;(direction . bottom)
-		;;(dedicated . t) ;dedicated is supported in emacs27
-		(reusable-frames . visible)
-		(window-height . 0.3))))
+(setq vterm-toggle-fullscreen-p nil))
 
 (use-package hydra)
 
@@ -493,15 +490,6 @@ one, an error is signaled."
   ([remap describe-variable] . counsel-describe-variable)
   ([remap describe-key] . helpful-key))
 
-(use-package highlight-indent-guides
-  :ensure t
-  :defer t
-  :hook (prog-mode . highlight-indent-guides-mode)
-  :config
-  (setq highlight-indent-guides-method 'character)
-  (setq highlight-indent-guides-character ?\|)
-  (setq highlight-indent-guides-responsive 'top))
-
 (require 'org-tempo)
 
 (electric-indent-mode -1)
@@ -575,16 +563,23 @@ one, an error is signaled."
   :config
   (add-hook 'prog-mode-hook 'makefile-executor-mode))
 
+(defun my/evil-lsp-ui-keybindings ()
+    (general-nmap
+    :keymaps 'local
+    "K" 'lsp-ui-doc-glance))
+
 (use-package lsp-mode
   :commands (lsp lsp-deferred)
-    :hook ((typescript-mode . lsp)
-      (c-mode . lsp)
-      (hs-minor-mode . lsp))
-    :init
-    (setq lsp-keymap-prefix "C-c l")
-    :config
-    (lsp-enable-which-key-integration t)
-    (setq lsp-headerline-breadcrumb-enable nil))
+  :hook (
+	 (lsp-ui-mode . my/evil-lsp-ui-keybindings)
+	 (typescript-mode . lsp)
+	 (c-mode . lsp)
+	 (hs-minor-mode . lsp))
+      :init
+      (setq lsp-keymap-prefix "C-c l")
+      :config
+      (lsp-enable-which-key-integration t)
+      (setq lsp-headerline-breadcrumb-enable nil))
 
 (use-package lsp-ui 
   :after lsp-mode
@@ -691,6 +686,11 @@ one, an error is signaled."
 (use-package counsel-projectile
   :after projectile
   :config (counsel-projectile-mode))
+
+(use-package ibuffer-projectile 
+  :after projectile
+  :hook
+  (ibuffer . (ibuffer-projectile-set-filter-groups)))
 
 (use-package hl-todo 
   :defer t
