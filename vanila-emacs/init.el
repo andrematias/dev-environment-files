@@ -27,42 +27,42 @@
 (setq use-package-always-ensure t)
 
 (setq confirm-kill-emacs 'y-or-n-p)
-  ;;(setq split-width-threshold nil)
-  (setq inhibit-startup-message t)
+;;(setq split-width-threshold nil)
+(setq inhibit-startup-message t)
+;; Remove messages from the *Messages* buffer.
+(setq-default message-log-max nil)
 
-  (set-window-margins (selected-window) 1 1)
-  (scroll-bar-mode -1)        ; Disable visible scrollbar
-  (tool-bar-mode -1)          ; Disable the toolbar
-  (tooltip-mode -1)           ; Disable tooltips
-  (set-fringe-mode 10)        ; Give some breathing room
+(setq initial-buffer-choice (lambda () (get-buffer-create "*dashboard*"))) 
 
-  (menu-bar-mode -1)          ; Disable the menu bar
+(set-window-margins (selected-window) 1 1)
+(scroll-bar-mode -1)        ; Disable visible scrollbar
+(tool-bar-mode -1)          ; Disable the toolbar
+(tooltip-mode -1)           ; Disable tooltips
+(set-fringe-mode 10)        ; Give some breathing room
+(menu-bar-mode -1)          ; Disable the menu bar
 
-  ;; Set up the visible bell
-  (setq visible-bell t)
+;; Set up the visible bell
+(setq visible-bell t)
 
-  (column-number-mode)
-  (global-display-line-numbers-mode t)
-  ;;(setq display-line-numbers-type 'relative)
+(column-number-mode)
+(global-display-line-numbers-mode t)
+;;(setq display-line-numbers-type 'relative)
 
-  ;; Disable line numbers for some modes
-  (dolist (mode '(org-mode-hook
-		  vterm-mode-hook
-		  term-mode-hook
-		  shell-mode-hook
-		  treemacs-mode-hook
-		  eshell-mode-hook))
-      (add-hook mode (lambda () (display-line-numbers-mode 0))))
+;; Disable line numbers for some modes
+(dolist (mode '(org-mode-hook
+		vterm-mode-hook
+		term-mode-hook
+		shell-mode-hook
+		treemacs-mode-hook
+		eshell-mode-hook))
+  (add-hook mode (lambda () (display-line-numbers-mode 0))))
 
 ;;; Window auto focus
-(defun split-window--select-window (orig-func &rest args)
-    "Switch to the other window after a `split-window'"
-    (let ((cur-window (selected-window))
-	(new-window (apply orig-func args)))
-    (when (equal (window-buffer cur-window) (window-buffer new-window))
-	(select-window new-window))
-    new-window))
-(advice-add 'split-window :around #'split-window--select-window)
+(setq split-window-preferred-function 'my/split-window-func)
+(defun my/split-window-func (&optional window)
+  (let ((new-window (split-window-sensibly window)))
+    (if (not (active-minibuffer-window))
+	(select-window new-window))))
 
 (set-face-attribute 'default nil :font "IosevkaTerm Nerd Font" :height efs/default-font-size)
 
@@ -205,12 +205,13 @@ one, an error is signaled."
     "S-SPC" '(projectile-find-file-other-frame :which-key "Projectile find file (new frame)")
     "." '(find-file :which-key "Find file")
     ">" '(find-file-other-frame :which-key "Find file (new frame)")
-    "x" '(open-scratch-buffer :which-key "Open scratch buffer")
     "d" '(dired-jump :which-key "dired-jump")
     "a" '(ace-window :which-key "ace-window")
+    "m" '(counsel-imenu :which-key "iMenu Symbols")
 
-    ;; treemacs and files
+    ;; files
     "f" '(:ignore t :which-key "File Explorer")
+    "fr" '(counsel-recentf :which-key "Recent files")
     "ff" '(find-file :which-key "Find file")
     "fg" '(counsel-ag :which-key "Grep text")
     "fe" '(treemacs :which-key "File Explorer")
@@ -218,6 +219,7 @@ one, an error is signaled."
 
     ;; code + lsp
     "c"   '(:ignore t :which-key "Code")
+    "cs" '(counsel-imenu :which-key "iMenu Symbols")
     "cp" '(point-to-register :which-key "point-to-register")
     "cj" '(jump-to-register :which-key "jump-to-register")
     "cu" '(undo :which-key "undo")
@@ -225,21 +227,21 @@ one, an error is signaled."
     "cc"  '(compile :which-key "Compile")
     "cm"  '(makefile-executor-execute-project-target :which-key "Compile Project Makefile Target")
     "ck"  '(kill-compilation :which-key "Kill compilation")
+
     "cl" '(:ignore t :which-key "LSP")
     "clr" '(lsp-rename :which-key "Lsp Rename Symbol")
     "clF" '(lsp-format-buffer :which-key "Lsp Format Buffer")
     "clf" '(lsp-format-region :which-key "Lsp Format region")
     "cla" '(lsp-execute-code-action :which-key "Lsp code action")
-    "clh" '(lsp-describe-thing-at-point :which-key "Lsp describe thind at point")
     "cls" '(lsp-treemacs-symbols :which-key "Show symbols")
     "cle" '(lsp-treemacs-errors-list :which-key "Show errors list")
     "cli" '(lsp-treemacs-implementations :which-key "Show implementations list")
     "cld" '(lsp-treemacs-references :which-key "Show references list")
+
     "cf" '(:ignore t :which-key "Fold")
     "cfh" '(hs-hide-block :which-key "hs-hide-block")
     "cfs" '(hs-show-block :which-key "hs-show-block")
     "cfa" '(hs-show-all :which-key "hs-show-all")
-    "cd" '(lsp-ui-doc-toggle :which-key "Toggle documentation at point")
     "nh" '(git-gutter:next-hunk :which-key "Next hunk")
     "ph" '(git-gutter:previous-hunk :which-key "Previous hunk")
     ;; "ch" '(:ignore t :which-key "Help")
@@ -251,13 +253,17 @@ one, an error is signaled."
 
     ;; buffer
     "b" '(:ignore t :which-key "Buffer")
-    "bb" '(counsel-switch-buffer :which-key "Switch buffer")
+    "bb" '(counsel-projectile-switch-to-buffer :which-key "Switch buffer")
     "b[" '(previous-buffer :which-key "Previous buffer")
     "b]" '(next-buffer :which-key "Next buffer")
     "bc" '(kill-current-buffer :which-key "Close buffer")
     "bC" '(kill-other-buffers :which-key "Close other buffers")
     "bl" '(evil-switch-to-windows-last-buffer :which-key "Switch to last buffer")
     "br" '(revert-buffer-no-confirm :which-key "Revert buffer")
+
+    "s" '(:ignore t :wk "Split")
+    "ss" '(evil-window-split :wk "Horizontal split window")
+    "sv" '(evil-window-vsplit :wk "Vertical split window")
 
     "w" '(:ignore t :wk "Windows")
     "wk" '(evil-window-delete :wk "Close window")
@@ -298,7 +304,9 @@ one, an error is signaled."
     "hF" '(describe-face :which-key "describe-face")
     "hw" '(where-is :which-key "where-is")
     "h." '(display-local-help :which-key "display-local-help")
-    "ht" '(load-theme :which-key "load theme")
+    "hc" '(:ignore t :which-key "Code")
+    "hcp" '(lsp-describe-thing-at-point :which-key "Lsp describe thind at point")
+    "hcd" '(lsp-ui-doc-toggle :which-key "Toggle documentation at point")
 
     ;; zoom
     ;; the hydra is nice but the rest is kind of janky, need to play around with this more
@@ -312,6 +320,7 @@ one, an error is signaled."
     ;; toggles
     "t" '(:ignore t :which-key "Toggles")
     "tw" '(visual-line-mode :which-key "visual-line-mode")
+    "tt" '(load-theme :which-key "load theme")
     "td" '(:ignore t :which-key "Todos")
     "tdn" '(hl-todo-next :which-key "Go to next TODO")
     "tdp" '(hl-todo-previous :which-key "Go to previous TODO")
@@ -342,7 +351,17 @@ one, an error is signaled."
 
     ;; movement
     "C-n" 'evil-next-visual-line 
-    "C-p" 'evil-previous-visual-line)
+    "C-p" 'evil-previous-visual-line
+    "C-h" 'evil-window-left
+    "C-j" 'evil-window-down
+    "C-k" 'evil-window-up
+    "C-l" 'evil-window-right)
+
+(use-package all-the-icons)
+(use-package nerd-icons)
+
+(use-package mood-line
+  :init (mood-line-mode 1))
 
 (use-package vterm-toggle
 :after vterm
@@ -390,13 +409,13 @@ one, an error is signaled."
   :after (treemacs magit)
   :ensure t)
 
-(use-package nerd-icons :demand t)
-
 (use-package dashboard
     :after nerd-icons
     :ensure t
     :config
     (dashboard-setup-startup-hook)
+    (blink-cursor-mode -1)
+    (set-face-foreground 'highlight nil)
     :init
     (setq dashboard-startup-banner "~/.emacs.d/emacs_logo.png")
     (setq dashboard-items '((recents  . 5)
@@ -417,7 +436,7 @@ one, an error is signaled."
   (doom-themes-treemacs-config)
   (doom-themes-org-config))
 
-(load-theme 'modus-vivendi t)
+(load-theme 'modus-operandi t)
 
 (use-package minions
   :config (minions-mode 1))
@@ -446,7 +465,9 @@ one, an error is signaled."
 	("C-d" . ivy-reverse-i-search-kill))
 :config
   (ivy-mode 1)
-  (setq ivy-initial-inputs-alist nil
+  (setq 
+   ivy-height 20
+   ivy-initial-inputs-alist nil
 	  ivy-use-virtual-buffers t))
 
 (use-package ivy-prescient 
@@ -456,16 +477,6 @@ one, an error is signaled."
   :after (ivy)
   :init
   (ivy-rich-mode 1))
-
-(use-package nerd-icons-ivy-rich
-    :after (ivy)
-    :ensure t
-    :init
-    (nerd-icons-ivy-rich-mode 1)
-    (ivy-rich-mode 1)
-    :config
-    (setq nerd-icons-ivy-rich-project t)
-    (setq nerd-icons-ivy-rich-icon-size 1.0))
 
 (use-package counsel
   :demand t
