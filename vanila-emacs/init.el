@@ -19,7 +19,7 @@
 (unless package-archive-contents
     (package-refresh-contents))
 
-    ;; Initialize use-package on non-Linux platforms
+;; Initialize use-package on non-Linux platforms
 (unless (package-installed-p 'use-package)
     (package-install 'use-package))
 
@@ -27,32 +27,42 @@
 (setq use-package-always-ensure t)
 
 (setq confirm-kill-emacs 'y-or-n-p)
-;;(setq split-width-threshold nil)
-(setq inhibit-startup-message t)
+  ;;(setq split-width-threshold nil)
+  (setq inhibit-startup-message t)
 
-(set-window-margins (selected-window) 1 1)
-(scroll-bar-mode -1)        ; Disable visible scrollbar
-(tool-bar-mode -1)          ; Disable the toolbar
-(tooltip-mode -1)           ; Disable tooltips
-(set-fringe-mode 10)        ; Give some breathing room
+  (set-window-margins (selected-window) 1 1)
+  (scroll-bar-mode -1)        ; Disable visible scrollbar
+  (tool-bar-mode -1)          ; Disable the toolbar
+  (tooltip-mode -1)           ; Disable tooltips
+  (set-fringe-mode 10)        ; Give some breathing room
 
-(menu-bar-mode t)            ; Disable the menu bar
+  (menu-bar-mode -1)          ; Disable the menu bar
 
-;; Set up the visible bell
-(setq visible-bell t)
+  ;; Set up the visible bell
+  (setq visible-bell t)
 
-(column-number-mode)
-(global-display-line-numbers-mode t)
-(setq display-line-numbers-type 'relative)
+  (column-number-mode)
+  (global-display-line-numbers-mode t)
+  ;;(setq display-line-numbers-type 'relative)
 
-;; Disable line numbers for some modes
-(dolist (mode '(org-mode-hook
-		vterm-mode-hook
-		term-mode-hook
-		shell-mode-hook
-		treemacs-mode-hook
-		eshell-mode-hook))
-    (add-hook mode (lambda () (display-line-numbers-mode 0))))
+  ;; Disable line numbers for some modes
+  (dolist (mode '(org-mode-hook
+		  vterm-mode-hook
+		  term-mode-hook
+		  shell-mode-hook
+		  treemacs-mode-hook
+		  eshell-mode-hook))
+      (add-hook mode (lambda () (display-line-numbers-mode 0))))
+
+;;; Window auto focus
+(defun split-window--select-window (orig-func &rest args)
+    "Switch to the other window after a `split-window'"
+    (let ((cur-window (selected-window))
+	(new-window (apply orig-func args)))
+    (when (equal (window-buffer cur-window) (window-buffer new-window))
+	(select-window new-window))
+    new-window))
+(advice-add 'split-window :around #'split-window--select-window)
 
 (set-face-attribute 'default nil :font "IosevkaTerm Nerd Font" :height efs/default-font-size)
 
@@ -205,6 +215,7 @@ one, an error is signaled."
     "fg" '(counsel-ag :which-key "Grep text")
     "fe" '(treemacs :which-key "File Explorer")
 
+
     ;; code + lsp
     "c"   '(:ignore t :which-key "Code")
     "cp" '(point-to-register :which-key "point-to-register")
@@ -212,6 +223,7 @@ one, an error is signaled."
     "cu" '(undo :which-key "undo")
     "cr" '(query-replace :which-key "query-replace")
     "cc"  '(compile :which-key "Compile")
+    "cm"  '(makefile-executor-execute-project-target :which-key "Compile Project Makefile Target")
     "ck"  '(kill-compilation :which-key "Kill compilation")
     "cl" '(:ignore t :which-key "LSP")
     "clr" '(lsp-rename :which-key "Lsp Rename Symbol")
@@ -219,10 +231,19 @@ one, an error is signaled."
     "clf" '(lsp-format-region :which-key "Lsp Format region")
     "cla" '(lsp-execute-code-action :which-key "Lsp code action")
     "clh" '(lsp-describe-thing-at-point :which-key "Lsp describe thind at point")
+    "cls" '(lsp-treemacs-symbols :which-key "Show symbols")
+    "cle" '(lsp-treemacs-errors-list :which-key "Show errors list")
+    "cli" '(lsp-treemacs-implementations :which-key "Show implementations list")
+    "cld" '(lsp-treemacs-references :which-key "Show references list")
     "cf" '(:ignore t :which-key "Fold")
     "cfh" '(hs-hide-block :which-key "hs-hide-block")
     "cfs" '(hs-show-block :which-key "hs-show-block")
     "cfa" '(hs-show-all :which-key "hs-show-all")
+    "cd" '(lsp-ui-doc-toggle :which-key "Toggle documentation at point")
+    "nh" '(git-gutter:next-hunk :which-key "Next hunk")
+    "ph" '(git-gutter:previous-hunk :which-key "Previous hunk")
+    ;; "ch" '(:ignore t :which-key "Help")
+
 
     ;; editor
     "e" '(:ignore t :which-key "Editor")
@@ -271,6 +292,7 @@ one, an error is signaled."
     "hf" '(helpful-callable :which-key "describe-function")
     "hk" '(helpful-key :which-key "describe-key")
     "hv" '(helpful-variable :which-key "describe-variable")
+    "hp" '(helpful-at-point :which-key "describe-at-point")
     "ho" '(helpful-symbol :which-key "describe-symbol")
     "hm" '(describe-mode :which-key "describe-mode")
     "hF" '(describe-face :which-key "describe-face")
@@ -290,6 +312,11 @@ one, an error is signaled."
     ;; toggles
     "t" '(:ignore t :which-key "Toggles")
     "tw" '(visual-line-mode :which-key "visual-line-mode")
+    "td" '(:ignore t :which-key "Todos")
+    "tdn" '(hl-todo-next :which-key "Go to next TODO")
+    "tdp" '(hl-todo-previous :which-key "Go to previous TODO")
+    "tdi" '(hl-todo-insert :which-key "Insert TODO")
+    "tdg" '(hl-todo-rgrep :which-key "Show all TODOS")
 
     ;; narrow
     "N" '(:ignore t :which-key "Narrow")
@@ -390,16 +417,10 @@ one, an error is signaled."
   (doom-themes-treemacs-config)
   (doom-themes-org-config))
 
-(load-theme 'modus-operandi t)
+(load-theme 'modus-vivendi t)
 
-(use-package doom-modeline
-  :init (doom-modeline-mode 1)
-  :custom (
-	   (setq doom-modeline-buffer-encoding 'nondefault)
-	   (setq doom-modeline-modal t)
-	   (doom-modeline-height 15)
-	   (doom-modeline-icon nil)
-	   (doom-modeline-lsp t)))
+(use-package minions
+  :config (minions-mode 1))
 
 (use-package which-key
 :init (which-key-mode)
@@ -520,6 +541,29 @@ one, an error is signaled."
     (blink-cursor-mode -1)
     (display-line-numbers-mode nil)))
 
+(use-package yasnippet
+  :ensure t
+  :hook ((text-mode
+	  prog-mode
+	  conf-mode
+	  snippet-mode) . yas-minor-mode-on)
+  :init
+  (setq yas-snippet-dir "~/.emacs.d/snippets"))
+
+(use-package tree-sitter
+  :demand t
+  :config
+  (global-tree-sitter-mode)
+  (add-hook 'tree-sitter-after-on-hook 'tree-sitter-hl-mode))
+
+(use-package tree-sitter-langs 
+  :after tree-sitter)
+
+(use-package makefile-executor
+  :demand t
+  :config
+  (add-hook 'prog-mode-hook 'makefile-executor-mode))
+
 (use-package lsp-mode
   :commands (lsp lsp-deferred)
     :hook ((typescript-mode . lsp)
@@ -533,12 +577,27 @@ one, an error is signaled."
 
 (use-package lsp-ui 
   :after lsp-mode
-  :commands lsp-ui-mode)
+  :commands lsp-ui-mode
+  :custom
+  (lsp-ui-doc-position 'at-point))
 
-(use-package flycheck-inline
-  :hook (lsp-mode . flycheck-inline-mode))
+  (use-package flycheck-inline
+    :hook (lsp-mode . flycheck-inline-mode))
 
 (use-package lsp-ivy :after lsp-mode)
+
+(use-package lsp-treemacs :after lsp-mode)
+
+(use-package helpful
+  :config
+  (setq counsel-describe-function-function #'helpful-callable)
+  (setq counsel-describe-variable-function #'helpful-variable)
+  (global-set-key (kbd "C-c C-d") #'helpful-at-point)
+  (global-set-key (kbd "C-h F") #'helpful-function)
+  (global-set-key (kbd "C-h f") #'helpful-callable)
+  (global-set-key (kbd "C-h v") #'helpful-variable)
+  (global-set-key (kbd "C-h k") #'helpful-key)
+  (global-set-key (kbd "C-h x") #'helpful-command))
 
 ;;; dap for c/c++
 (defun dap-for-cc ()
@@ -621,6 +680,18 @@ one, an error is signaled."
 (use-package counsel-projectile
   :after projectile
   :config (counsel-projectile-mode))
+
+(use-package hl-todo 
+  :defer t
+  :config (setq hl-todo-keyword-faces
+		'(("TODO"   . "#FF0000")
+		  ("FIXME"  . "#FF0000")
+		  ("DEBUG"  . "#A020F0")
+		  ("GOTCHA" . "#FF4500")
+		  ("STUB"   . "#1E90FF"))))
+
+(use-package git-gutter)
+(add-hook 'prog-mode-hook 'git-gutter-mode)
 
 (use-package magit
     :commands magit-status
