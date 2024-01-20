@@ -388,6 +388,7 @@ one, an error is signaled."
 (use-package doom-modeline
   :ensure t
   :config
+  (setq doom-modeline-minor-modes t)
   (setq doom-modeline-modal t)
   (setq doom-modeline-modal-modern-icon nil)
   (setq doom-modeline-icon t)
@@ -396,7 +397,9 @@ one, an error is signaled."
   (setq doom-modeline-buffer-modification-icon t)
   (setq doom-modeline-height 30)
   (setq nerd-icons-scale-factor 0.8)
-  :init (doom-modeline-mode 1))
+  :init 
+  (doom-modeline-mode 1)
+  (minions-mode 1))
 
 
   ;; (use-package mood-line
@@ -689,7 +692,8 @@ one, an error is signaled."
 (use-package company
     :after lsp-mode
     :hook
-        (lsp-mode . company-mode)
+	(lsp-mode . company-mode)
+	(emacs-lisp-mode . (lambda () (setq-local company-backends '(company-elisp))))
     :bind (:map company-active-map
 	("<tab>" . company-complete-selection))
 	(:map lsp-mode-map
@@ -697,6 +701,8 @@ one, an error is signaled."
     :custom
     (company-minimum-prefix-length 1)
     (company-idle-delay 0.0))
+
+(add-hook 'after-init-hook 'global-company-mode)
 
 (use-package company-box
     :hook (company-mode . company-box-mode))
