@@ -50,3 +50,5 @@
 ;; (unpin! t)
 
 (package! dap-mode)
+(package! treemacs)
+(package! lsp-treemacs)

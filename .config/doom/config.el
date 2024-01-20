@@ -9,10 +9,14 @@
 
 ;;; Doom Modeline
 (after! doom-modeline
-  (setq doom-modeline-height 10)
   (setq doom-modeline-icon 'nil)
   (setq doom-modeline-buffer-encoding 'nondefault)
   (setq doom-modeline-hud 'nondefault))
 
 ;;; DAP configurations
 (after! dap-mode (load! "./dap.el"))
+
+;;; Treemacs Keybindings
+(map! :leader
+(:prefix ("f" . "File Explorer Treemacs")
+        :desc "Toggle treemacs"        :n "e" #'treemacs))
