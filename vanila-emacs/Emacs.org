@@ -141,6 +141,11 @@
 	(ansi-color-apply-on-region compilation-filter-start (point))
 	(read-only-mode))
       (add-hook 'compilation-filter-hook 'colorize-compilation-buffer)
+
+      ;; Consider - and _ as word
+      (with-eval-after-load 'evil
+	(defalias #'forward-evil-word #'forward-evil-symbol)
+	(setq-default evil-symbol-word-search t))
     #+end_src
     
 ** Font Configuration
@@ -564,6 +569,13 @@
 ** Color Theme
 *** Doom Themes
     #+begin_src emacs-lisp
+      (use-package catppuccin-theme
+	:config 
+	(setq catppuccin-flavor 'mocha) 
+	;; (catppuccin-set-color 'base "#141516")
+	;; (catppuccin-set-color 'base "#141516" 'mocha)
+	(catppuccin-reload))
+
       (use-package doom-themes
 	:ensure t
 	:config
@@ -577,7 +589,7 @@
 
 *** Theme selected
     #+begin_src emacs-lisp
-      (load-theme 'doom-1337 t)
+      (load-theme 'catppuccin t)
     #+end_src
     
 ** Better Modeline
@@ -975,6 +987,8 @@
 	#+end_src
 **** Python
 	#+begin_src emacs-lisp
+	  (use-package python-mode)
+
 	  (use-package lsp-pyright
 		    :ensure t
 		    :after lsp-mode
@@ -1008,6 +1022,11 @@
 
 	;; Indent
 	(setq c-basic-offset 4)
+    #+end_src
+
+**** Lua
+    #+begin_src emacs-lisp
+      (use-package lua-mode)
     #+end_src
 
 * Terminals

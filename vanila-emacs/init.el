@@ -78,6 +78,11 @@
   (read-only-mode))
 (add-hook 'compilation-filter-hook 'colorize-compilation-buffer)
 
+;; Consider - and _ as word
+(with-eval-after-load 'evil
+  (defalias #'forward-evil-word #'forward-evil-symbol)
+  (setq-default evil-symbol-word-search t))
+
 (set-face-attribute 'default nil :font "IosevkaTerm Nerd Font" :height efs/default-font-size)
 
 ;; Set the fixed pitch face
@@ -456,6 +461,13 @@ one, an error is signaled."
     (setq dashboard-set-file-icons t)
     (setq dashboard-center-content t))
 
+(use-package catppuccin-theme
+  :config 
+  (setq catppuccin-flavor 'mocha) 
+  ;; (catppuccin-set-color 'base "#141516")
+  ;; (catppuccin-set-color 'base "#141516" 'mocha)
+  (catppuccin-reload))
+
 (use-package doom-themes
   :ensure t
   :config
@@ -466,7 +478,7 @@ one, an error is signaled."
   (doom-themes-treemacs-config)
   (doom-themes-org-config))
 
-(load-theme 'doom-1337 t)
+(load-theme 'catppuccin t)
 
 (use-package minions
   :config (minions-mode 1))
@@ -757,6 +769,8 @@ one, an error is signaled."
   :demand t
   :ensure t)
 
+(use-package python-mode)
+
 (use-package lsp-pyright
 	  :ensure t
 	  :after lsp-mode
@@ -787,6 +801,8 @@ one, an error is signaled."
 
 ;; Indent
 (setq c-basic-offset 4)
+
+(use-package lua-mode)
 
 (use-package vterm
     :commands vterm
