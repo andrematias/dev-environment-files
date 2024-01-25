@@ -15,7 +15,7 @@
   - [[#general][General]]
 - [[#ui-configuration][UI Configuration]]
   - [[#icons][Icons]]
-  - [[#modline][Modline]]
+  - [[#modeline][Modeline]]
   - [[#vterm][Vterm]]
   - [[#hydra][Hydra]]
   - [[#treemacs][Treemacs]]
@@ -460,11 +460,10 @@
 
 ** Icons
     #+begin_src emacs-lisp
-      (use-package all-the-icons)
       (use-package nerd-icons)
     #+end_src
 
-** Modline
+** Modeline
     #+begin_src emacs-lisp
 	;; (custom-set-faces
 	;; ;; '(mode-line ((t (:background "black" :foreground "gray70" :box (:line-width 4 :color "black"))))))
@@ -492,12 +491,16 @@
 	(setq doom-modeline-major-mode-icon t)
 	(setq doom-modeline-buffer-state-icon t)
 	(setq doom-modeline-buffer-modification-icon t)
-	(setq doom-modeline-height 30)
+	;; (setq doom-modeline-height 10)
 	(setq nerd-icons-scale-factor 0.8)
+	;; (setq doom-modeline-height 1)
+	;; (custom-set-faces
+	;;  '(mode-line ((t (:family "IosevkaTerm Nerd Font" :height 150))))
+	;;  '(mode-line-active ((t (:family "IosevkaTerm Nerd Font" :height 150)))) ; For 29+
+	;;  '(mode-line-inactive ((t (:family "IosevkaTerm Nerd Font" :height 150)))))
 	:init 
 	(doom-modeline-mode 1)
 	(minions-mode 1))
-
 
 	;; (use-package mood-line
 	;;     :init (mood-line-mode 1))
@@ -506,33 +509,35 @@
 ** Vterm
     #+begin_src emacs-lisp
       (use-package vterm-toggle
-      :after vterm
-      :config
-      (setq vterm-toggle-fullscreen-p nil)
-      (setq vterm-toggle-scope 'project)
-      (setq vterm-toggle-fullscreen-p nil))
+	:ensure t
+	:after vterm
+	:config
+	(setq vterm-toggle-fullscreen-p nil)
+	(setq vterm-toggle-scope 'project)
+	(setq vterm-toggle-fullscreen-p nil))
     #+end_src
 
 ** Hydra
     #+begin_src emacs-lisp
-	(use-package hydra)
+	(use-package hydra :ensure t)
     #+end_src
 
-** Treemacs
+** TODO Treemacs
 
     #+begin_src emacs-lisp
-      (use-package treemacs-nerd-icons
-	:after (treemacs)
-	:config
-	(treemacs-load-theme "nerd-icons"))
-
-      (use-package treemacs
+      (use-package treemacs	
 	:config
 	(treemacs-project-follow-mode t)
 	;; To disable modeline uncomment bellow
 	(setq treemacs-user-mode-line-format 'none)
 	;;(setq treemacs-user-header-line-format "File Explorer")
 	:ensure t)
+
+      (use-package treemacs-nerd-icons
+	:ensure t
+	:after (treemacs projectile)
+	:config
+	(treemacs-load-theme "nerd-icons"))
 
       (use-package treemacs-evil
 	:after (treemacs evil)
@@ -570,9 +575,10 @@
 *** Doom Themes
     #+begin_src emacs-lisp
       (use-package catppuccin-theme
+	:ensure t
 	:config 
 	(setq catppuccin-flavor 'mocha) 
-	;; (catppuccin-set-color 'base "#141516")
+	(catppuccin-set-color 'base "#141516")
 	;; (catppuccin-set-color 'base "#141516" 'mocha)
 	(catppuccin-reload))
 

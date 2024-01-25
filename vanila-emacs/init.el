@@ -371,7 +371,6 @@ one, an error is signaled."
     "C-k" 'evil-window-up
     "C-l" 'evil-window-right)
 
-(use-package all-the-icons)
 (use-package nerd-icons)
 
 ;; (custom-set-faces
@@ -400,37 +399,43 @@ one, an error is signaled."
   (setq doom-modeline-major-mode-icon t)
   (setq doom-modeline-buffer-state-icon t)
   (setq doom-modeline-buffer-modification-icon t)
-  (setq doom-modeline-height 30)
+  ;; (setq doom-modeline-height 10)
   (setq nerd-icons-scale-factor 0.8)
+  ;; (setq doom-modeline-height 1)
+  ;; (custom-set-faces
+  ;;  '(mode-line ((t (:family "IosevkaTerm Nerd Font" :height 150))))
+  ;;  '(mode-line-active ((t (:family "IosevkaTerm Nerd Font" :height 150)))) ; For 29+
+  ;;  '(mode-line-inactive ((t (:family "IosevkaTerm Nerd Font" :height 150)))))
   :init 
   (doom-modeline-mode 1)
   (minions-mode 1))
-
 
   ;; (use-package mood-line
   ;;     :init (mood-line-mode 1))
 
 (use-package vterm-toggle
-:after vterm
-:config
-(setq vterm-toggle-fullscreen-p nil)
-(setq vterm-toggle-scope 'project)
-(setq vterm-toggle-fullscreen-p nil))
-
-(use-package hydra)
-
-(use-package treemacs-nerd-icons
-  :after (treemacs)
+  :ensure t
+  :after vterm
   :config
-  (treemacs-load-theme "nerd-icons"))
+  (setq vterm-toggle-fullscreen-p nil)
+  (setq vterm-toggle-scope 'project)
+  (setq vterm-toggle-fullscreen-p nil))
 
-(use-package treemacs
+(use-package hydra :ensure t)
+
+(use-package treemacs	
   :config
   (treemacs-project-follow-mode t)
   ;; To disable modeline uncomment bellow
   (setq treemacs-user-mode-line-format 'none)
   ;;(setq treemacs-user-header-line-format "File Explorer")
   :ensure t)
+
+(use-package treemacs-nerd-icons
+  :ensure t
+  :after (treemacs projectile)
+  :config
+  (treemacs-load-theme "nerd-icons"))
 
 (use-package treemacs-evil
   :after (treemacs evil)
@@ -462,9 +467,10 @@ one, an error is signaled."
     (setq dashboard-center-content t))
 
 (use-package catppuccin-theme
+  :ensure t
   :config 
   (setq catppuccin-flavor 'mocha) 
-  ;; (catppuccin-set-color 'base "#141516")
+  (catppuccin-set-color 'base "#141516")
   ;; (catppuccin-set-color 'base "#141516" 'mocha)
   (catppuccin-reload))
 

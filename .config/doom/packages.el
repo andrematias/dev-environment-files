@@ -52,3 +52,6 @@
 (package! dap-mode)
 (package! treemacs)
 (package! lsp-treemacs)
+
+
+(package! minions)

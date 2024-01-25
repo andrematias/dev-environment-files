@@ -9,8 +9,21 @@
 
 ;;; Doom Modeline
 (after! doom-modeline
-  (setq doom-modeline-height 30)
+  (minions-mode 1)
+  (setq doom-modeline-minor-modes t)
+  (setq doom-modeline-modal t)
+  (setq doom-modeline-modal-modern-icon nil)
   (setq doom-modeline-icon t)
+  (setq doom-modeline-major-mode-icon t)
+  (setq doom-modeline-buffer-state-icon t)
+  (setq doom-modeline-buffer-modification-icon t)
+  (setq doom-modeline-height 10)
+  (setq nerd-icons-scale-factor 0.8)
+  ;; (setq doom-modeline-height 1)
+  ;; (custom-set-faces
+  ;;  '(mode-line ((t (:family "IosevkaTerm Nerd Font" :height 150))))
+  ;;  '(mode-line-active ((t (:family "IosevkaTerm Nerd Font" :height 150)))) ; For 29+
+  ;;  '(mode-line-inactive ((t (:family "IosevkaTerm Nerd Font" :height 150)))))
   (setq doom-modeline-buffer-encoding 'nondefault)
   (setq doom-modeline-hud 'nondefault))
 
