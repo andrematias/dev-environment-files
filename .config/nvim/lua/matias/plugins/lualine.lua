@@ -27,26 +27,26 @@ return {
           },
         },
         lualine_b = {},
-        lualine_c = {
-          {
-            "buffers",
-            show_filename_only = true,
-            hide_filename_extension = false,
-            show_modified_status = true,
-            mode = 0,
-            use_mode_colors = false,
-            symbols = {
-              modified = " ●",
-              alternate_file = " ",
-              directory = "",
-            },
-            filetype_names = {
-              NvimTree = "",
-              TelescopePrompt = "",
-              aerial = "",
-            },
-          },
-        },
+        -- lualine_c = {
+        --   {
+        --     "buffers",
+        --     show_filename_only = true,
+        --     hide_filename_extension = false,
+        --     show_modified_status = true,
+        --     mode = 0,
+        --     use_mode_colors = false,
+        --     symbols = {
+        --       modified = " ●",
+        --       alternate_file = " ",
+        --       directory = "",
+        --     },
+        --     filetype_names = {
+        --       NvimTree = "",
+        --       TelescopePrompt = "",
+        --       aerial = "",
+        --     },
+        --   },
+        -- },
         lualine_x = {
           { "selectioncount" },
           { "searchcount" },
