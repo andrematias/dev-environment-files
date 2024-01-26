@@ -38,3 +38,21 @@ autocmd("Filetype", {
   pattern = { "md", "markdown", "mkd" },
   command = "setlocal syntax=markdown foldmethod=manual",
 })
+
+-- Terminal mode
+augroup("TerminalMode", { clear = true })
+
+autocmd("TermOpen", {
+  group = "TerminalMode",
+  command = "setlocal nonumber norelativenumber",
+})
+
+autocmd("TermOpen", {
+  group = "TerminalMode",
+  command = "startinsert",
+})
+
+autocmd("TermEnter", {
+  group = "TerminalMode",
+  command = "setlocal signcolumn=no",
+})
