@@ -49,3 +49,6 @@ end, { desc = "Set dark background" })
 keymap.set("n", "<leader>tl", function()
   vim.opt.background = "light"
 end, { desc = "Set light background" })
+
+-- Terminal mode
+keymap.set("t", "<ESC>", "<C-\\><C-n>", { desc = "Set terminal to normal mode" })
