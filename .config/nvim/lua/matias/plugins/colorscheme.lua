@@ -133,22 +133,25 @@ return {
   -- VsCode theme
   {
     "Mofiqul/vscode.nvim",
-    config = function ()
-      local c = require('vscode.colors').get_colors()
-      require('vscode').setup({
-          -- style = 'light',
-          transparent = false,
-          italic_comments = false,
+    config = function()
+      local c = require("vscode.colors").get_colors()
+      require("vscode").setup({
+        -- style = 'light',
+        transparent = false,
+        italic_comments = false,
 
-          -- Disable nvim-tree background color
-          disable_nvimtree_bg = true,
+        -- Disable nvim-tree background color
+        disable_nvimtree_bg = true,
 
-          group_overrides = {
-              Cursor = { fg=c.vscDarkBlue, bg=c.vscLightGreen, bold=true },
-          }
+        group_overrides = {
+          Cursor = { fg = c.vscDarkBlue, bg = c.vscLightGreen, bold = true },
+          FileExplorer = { bg = c.base },
+          CursorLineNr = { fg = c.vscUiOrange },
+          CursorLine = { bg = c.base },
+        },
       })
 
       vim.cmd.colorscheme("vscode")
-    end
-  }
+    end,
+  },
 }
