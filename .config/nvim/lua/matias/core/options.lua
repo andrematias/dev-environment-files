@@ -41,7 +41,7 @@ opt.splitbelow = true -- split horizontal window to the bottom
 
 opt.showmode = false
 opt.swapfile = false -- turn off swapfile
-opt.cmdheight = 1 -- 0 to hide command line input
+opt.cmdheight = 0 -- 0 to hide command line input
 opt.showbreak = " 󰌑 " -- show a icon in lines breaked
 opt.textwidth = 100 -- set line width to 100 characters
 opt.showmatch = true --highlight matching parenthesis
@@ -92,5 +92,3 @@ local disabled_built_ins = {
 for _, plugin in pairs(disabled_built_ins) do
   g["loaded_" .. plugin] = 1
 end
-
-
