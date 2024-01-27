@@ -28,7 +28,9 @@ keymap.set("n", "<leader>sc", "<cmd>close<CR>", { desc = "Close current split" }
 
 keymap.set("n", "<leader>to", "<cmd>enew<CR>", { desc = "Open new buffer" }) -- open new buffer
 keymap.set("n", "<leader>bc", "<cmd>Bdelete<CR>", { desc = "Close current buffer" }) -- close current buffer
+keymap.set("n", "<leader>]", "<cmd>bn<CR>", { desc = "Go to next buffer" }) --  go to next buffer
 keymap.set("n", "<leader>bn", "<cmd>bn<CR>", { desc = "Go to next buffer" }) --  go to next buffer
+keymap.set("n", "<leader>[", "<cmd>bp<CR>", { desc = "Go to previous buffer" }) --  go to previous buffer
 keymap.set("n", "<leader>bp", "<cmd>bp<CR>", { desc = "Go to previous buffer" }) --  go to previous buffer
 keymap.set("n", "<leader>bf", "<cmd>new %<CR>", { desc = "Open current buffer in new buffer" }) --  move current buffer to new buffer
 keymap.set("n", "<leader>c", "<cmd>Bdelete<CR>", { desc = "Close current buffer" }) -- close current buffer
