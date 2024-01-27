@@ -126,7 +126,7 @@ return {
       })
 
       -- setup must be called before loading
-      -- vim.cmd.colorscheme("catppuccin")
+      vim.cmd.colorscheme("catppuccin")
     end,
   },
 
@@ -151,7 +151,7 @@ return {
         },
       })
 
-      vim.cmd.colorscheme("vscode")
+      -- vim.cmd.colorscheme("vscode")
     end,
   },
 }
