@@ -38,13 +38,14 @@ if vim.g.neovide then
   })
 
   if vim.loop.os_uname().sysname == "Darwin" then
-    vim.opt.guifont = "IosevkaTerm Nerd Font:h16"
+    vim.opt.guifont = "IosevkaTerm Nerd Font:h18"
     vim.g.neovide_refresh_rate = 60
   else
     vim.opt.guifont = "IosevkaTerm Nerd Font:h12"
     vim.g.neovide_refresh_rate = 144
   end
 
+  vim.opt.guicursor = "n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20"
   vim.opt.linespace = 1
   vim.g.neovide_cursor_animation_length = 0.10
   vim.g.neovide_cursor_trail_size = 0.5
@@ -57,6 +58,7 @@ if vim.g.neovide then
   vim.g.neovide_scroll_animation_length = 0.5
   vim.g.neovide_scroll_animation_far_lines = 4
   vim.g.neovide_cursor_antialiasing = true
+  vim.g.neovide_floating_shadow = false
   vim.g.neovide_cursor_vfx_mode = "ripple"
   -- vim.g.neovide_cursor_vfx_mode = "railgun"
   -- vim.g.neovide_cursor_vfx_mode = "sonicboom"
