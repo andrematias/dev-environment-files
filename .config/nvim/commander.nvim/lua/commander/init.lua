@@ -57,7 +57,7 @@ autocmd("TermOpen", {
 
 autocmd("TermOpen", {
   group = "CommanderMode",
-  command = "stopinsert",
+  command = "startinsert",
 })
 
 autocmd("TermEnter", {
