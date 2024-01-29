@@ -26,7 +26,13 @@ keymap.set("n", "<leader>sh", "<C-w>s", { desc = "Split window horizontally" }) 
 keymap.set("n", "<leader>se", "<C-w>=", { desc = "Make splits equal size" }) -- make split windows equal width & height
 keymap.set("n", "<leader>sc", "<cmd>close<CR>", { desc = "Close current split" }) -- close current split window
 
-keymap.set("n", "<leader>to", "<cmd>enew<CR>", { desc = "Open new buffer" }) -- open new buffer
+--tabs
+keymap.set("n", "<leader>tn", "<cmd>tabnext<CR>", { desc = "Next tab" })
+keymap.set("n", "<leader>tp", "<cmd>tabprevious<CR>", { desc = "Previous tab" })
+keymap.set("n", "<leader>t0", "<cmd>tabnew<CR>", { desc = "Open new tab" })
+
+--buffers
+keymap.set("n", "<leader>bo", "<cmd>enew<CR>", { desc = "Open new buffer" }) -- open new buffer
 keymap.set("n", "<leader>bc", "<cmd>Bdelete<CR>", { desc = "Close current buffer" }) -- close current buffer
 keymap.set("n", "<leader>]", "<cmd>bn<CR>", { desc = "Go to next buffer" }) --  go to next buffer
 keymap.set("n", "<leader>bn", "<cmd>bn<CR>", { desc = "Go to next buffer" }) --  go to next buffer
