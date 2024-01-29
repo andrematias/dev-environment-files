@@ -29,11 +29,14 @@ keymap.set("n", "<leader>sc", "<cmd>close<CR>", { desc = "Close current split" }
 --tabs
 keymap.set("n", "<leader>tn", "<cmd>tabnext<CR>", { desc = "Next tab" })
 keymap.set("n", "<leader>tp", "<cmd>tabprevious<CR>", { desc = "Previous tab" })
-keymap.set("n", "<leader>t0", "<cmd>tabnew<CR>", { desc = "Open new tab" })
+keymap.set("n", "<leader>to", "<cmd>tabnew<CR>", { desc = "Open new tab" })
+keymap.set("n", "<leader>tc", "<cmd>tabclose<CR>", { desc = "Close current tab" })
+keymap.set("n", "<leader>td", "<cmd>tabclose<CR>", { desc = "Close current tab" })
 
 --buffers
 keymap.set("n", "<leader>bo", "<cmd>enew<CR>", { desc = "Open new buffer" }) -- open new buffer
 keymap.set("n", "<leader>bc", "<cmd>Bdelete<CR>", { desc = "Close current buffer" }) -- close current buffer
+keymap.set("n", "<leader>bd", "<cmd>Bdelete<CR>", { desc = "Close current buffer" }) -- close current buffer
 keymap.set("n", "<leader>]", "<cmd>bn<CR>", { desc = "Go to next buffer" }) --  go to next buffer
 keymap.set("n", "<leader>bn", "<cmd>bn<CR>", { desc = "Go to next buffer" }) --  go to next buffer
 keymap.set("n", "<leader>[", "<cmd>bp<CR>", { desc = "Go to previous buffer" }) --  go to previous buffer
