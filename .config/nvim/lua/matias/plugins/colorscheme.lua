@@ -8,7 +8,7 @@ return {
         flavour = "mocha", -- latte, frappe, macchiato, mocha
         background = { -- :h background
           light = "latte",
-          dark = "mocha",
+          dark = "macchiato",
         },
         transparent_background = false, -- disables setting the background color.
         show_end_of_buffer = false, -- shows the '~' characters after the end of buffers
@@ -126,7 +126,7 @@ return {
       })
 
       -- setup must be called before loading
-      vim.cmd.colorscheme("catppuccin")
+      -- vim.cmd.colorscheme("catppuccin")
     end,
   },
 
@@ -152,6 +152,43 @@ return {
       })
 
       -- vim.cmd.colorscheme("vscode")
+    end,
+  },
+  {
+    "ellisonleao/gruvbox.nvim",
+    config = function()
+      require("gruvbox").setup({
+        terminal_colors = true, -- add neovim terminal colors
+        undercurl = true,
+        underline = true,
+        bold = true,
+        italic = {
+          strings = true,
+          emphasis = true,
+          comments = true,
+          operators = false,
+          folds = true,
+        },
+        strikethrough = true,
+        invert_selection = false,
+        invert_signs = false,
+        invert_tabline = false,
+        invert_intend_guides = false,
+        inverse = false, -- invert background for search, diffs, statuslines and errors
+        contrast = "hard", -- can be "hard", "soft" or empty string
+        palette_overrides = {},
+        overrides = {
+          SignColumn = { bg = "none" },
+          StatusLine = { bg = "none", fg = "gray" },
+          GruvboxRedSign = { bg = "none" },
+          GruvboxGreenSign = { bg = "none" },
+          GruvboxOrangeSign = { bg = "none" },
+          GruvboxYellowSign = { bg = "none" },
+        },
+        dim_inactive = false,
+        transparent_mode = false,
+      })
+      vim.cmd.colorscheme("gruvbox")
     end,
   },
 }
