@@ -29,8 +29,8 @@ M.split_commander = function()
   vim.cmd("split | terminal " .. get_input())
 end
 
-M.full_commander = function()
-  vim.cmd("new | terminal " .. get_input())
+M.tab_commander = function()
+  vim.cmd("tabnew | terminal " .. get_input())
 end
 
 M.local_commander = function()
@@ -45,7 +45,7 @@ end
 api.nvim_create_user_command("Commander", M.vsplit_commander, {})
 api.nvim_create_user_command("CommanderSV", M.vsplit_commander, {})
 api.nvim_create_user_command("CommanderSH", M.split_commander, {})
-api.nvim_create_user_command("CommanderF", M.full_commander, {})
+api.nvim_create_user_command("CommanderT", M.tab_commander, {})
 api.nvim_create_user_command("CommanderL", M.local_commander, {})
 
 -- Auto commands for Command Mode
