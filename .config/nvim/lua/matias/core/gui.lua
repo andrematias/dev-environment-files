@@ -45,7 +45,7 @@ if vim.g.neovide then
     vim.g.neovide_refresh_rate = 144
   end
 
-  vim.opt.guicursor = "n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20"
+  vim.opt.guicursor = "n-sm:block,c-i-ci-ve:ver25,v-r-cr-o:hor20"
   vim.opt.linespace = 1
   vim.g.neovide_cursor_animation_length = 0.10
   vim.g.neovide_cursor_trail_size = 0.5
