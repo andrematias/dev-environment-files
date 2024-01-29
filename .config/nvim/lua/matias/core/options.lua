@@ -57,6 +57,7 @@ opt.synmaxcol = 240 -- Max column for syntax highlight
 opt.updatetime = 250 -- ms to wait for trigger an event
 opt.mouse = "a" -- Enable mouse support
 opt.laststatus = 3 -- Enable global status line
+opt.showtabline = 0
 
 -- Disable nvim intro
 opt.shortmess:append("sI")
