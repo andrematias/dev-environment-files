@@ -4,8 +4,9 @@ return {
   opts = {
     name = ".venv",
   },
-  keys = {
-    { "<leader>vs", "<cmd>VenvSelect<cr>" },
-    { "<leader>vc", "<cmd>VenvSelectCached<cr>" },
-  },
+  config = function()
+    local keymap = vim.keymap
+    keymap.set("n", "<leader>vs", "<cmd>VenvSelect<cr>", { desc = "Select python virtual environment" })
+    keymap.set("n", "<leader>vc", "<cmd>VenvSelectCached<cr>", { desc = "Select current python virtual environment" })
+  end,
 }
