@@ -13,6 +13,8 @@ return {
         section_separators = "",
         -- component_separators = "|",
         -- section_separators = { left = "", right = "" },
+        -- component_separators = { left = "", right = "" },
+        -- section_separators = { left = "", right = "" },
         disabled_filetypes = { "alpha", "dashboard" },
         always_divide_middle = false,
       },
@@ -31,8 +33,8 @@ return {
             },
             symbols = {
               modified = " ●",
-              alternate_file = " ",
-              directory = "",
+              alternate_file = "",
+              directory = "",
             },
             filetype_names = {
               alpha = "",
@@ -58,12 +60,13 @@ return {
             -- function()
             --   return " "
             -- end,
-            -- function()
-            --   return "󱍢 "
-            -- end,
             function()
-              return string.upper(vim.fn.mode())
+              return "󱍢"
             end,
+            separator = { left = "", right = "" },
+            -- function()
+            --   return string.upper(vim.fn.mode())
+            -- end,
             padding = { left = 1, right = 1 },
           },
         },
@@ -74,10 +77,24 @@ return {
           { "searchcount" },
           { "progress" },
         },
-        lualine_y = { "branch", "diagnostics" },
-        lualine_z = { "tabs" },
+        lualine_y = {
+          "branch",
+          {
+            "diagnostics",
+            update_in_insert = true,
+            symbols = { error = " ", warn = " ", info = " ", hint = " " },
+          },
+        },
+        lualine_z = {
+          {
+            "tabs",
+            symbols = {
+              modified = "●", -- Text to show when the file is modified.
+            },
+          },
+        },
       },
-      extensions = { "mason" },
+      extensions = { "mason", "lazy", "nvim-dap-ui", "nerdtree", "quickfix" },
       inactive_sections = {
         lualine_a = {},
         lualine_b = {},
