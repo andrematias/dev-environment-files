@@ -179,7 +179,7 @@ return {
         palette_overrides = {},
         overrides = {
           SignColumn = { bg = "none" },
-          StatusLine = { bg = "none", fg = "gray" },
+          StatusLine = { bg = "none", fg = "white" },
           GruvboxRedSign = { bg = "none" },
           GruvboxGreenSign = { bg = "none" },
           GruvboxOrangeSign = { bg = "none" },
