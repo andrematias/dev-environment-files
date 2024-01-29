@@ -1,6 +1,6 @@
 return {
   "nvim-lualine/lualine.nvim",
-  enabled = false,
+  enabled = true,
   dependencies = { "nvim-tree/nvim-web-devicons" },
   config = function()
     local lualine = require("lualine")
@@ -37,10 +37,10 @@ return {
           {
             "buffers",
             show_filename_only = true,
-            hide_filename_extension = false,
+            hide_filename_extension = true,
             show_modified_status = true,
             mode = 0,
-            use_mode_colors = false,
+            use_mode_colors = true,
             symbols = {
               modified = " ●",
               alternate_file = " ",
