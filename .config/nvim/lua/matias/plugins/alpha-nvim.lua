@@ -26,8 +26,9 @@ return {
       dashboard.button("e", "  New File", "<cmd>ene<CR>"),
       dashboard.button("SPC ee", "  Toggle file explorer", "<cmd>NvimTreeToggle<CR>"),
       dashboard.button("SPC ff", "󰱼  Find File", "<cmd>Telescope find_files<CR>"),
+      dashboard.button("SPC fr", "󰱼  Recent Files", "<cmd>Telescope oldfiles<CR>"),
       dashboard.button("SPC fs", "  Find Word", "<cmd>Telescope live_grep<CR>"),
-      dashboard.button("c", "  Edit Configurations", "<cmd>e $HOME/.config/nvim/init.lua<CR>"),
+      dashboard.button("c", "  Edit Configurations", "<cmd>e $HOME/.config/nvim/<CR>"),
       dashboard.button("q", "  Quit NVIM", "<cmd>qa<CR>"),
     }
 
