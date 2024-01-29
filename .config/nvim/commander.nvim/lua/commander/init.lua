@@ -26,7 +26,7 @@ M.vsplit_commander = function()
 end
 
 M.split_commander = function()
-  vim.cmd("vsplit | terminal " .. get_input())
+  vim.cmd("split | terminal " .. get_input())
 end
 
 M.full_commander = function()
