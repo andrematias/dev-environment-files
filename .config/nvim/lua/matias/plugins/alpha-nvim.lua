@@ -22,12 +22,12 @@ return {
 
     -- Set menu
     dashboard.section.buttons.val = {
-      dashboard.button("p", "  Projects", "<cmd>Telescope projects<CR>"),
+      dashboard.button("SPC f p", "  Projects"),
+      dashboard.button("SPC e e", "  Toggle file explorer"),
+      dashboard.button("SPC f f", "󰱼  Find File"),
+      dashboard.button("SPC f r", "󰣜  Recent Files"),
+      dashboard.button("SPC f s", "  Find Word"),
       dashboard.button("e", "  New File", "<cmd>ene<CR>"),
-      dashboard.button("SPC ee", "  Toggle file explorer", "<cmd>NvimTreeToggle<CR>"),
-      dashboard.button("SPC ff", "󰱼  Find File", "<cmd>Telescope find_files<CR>"),
-      dashboard.button("SPC fr", "󰱼  Recent Files", "<cmd>Telescope oldfiles<CR>"),
-      dashboard.button("SPC fs", "  Find Word", "<cmd>Telescope live_grep<CR>"),
       dashboard.button("c", "  Edit Configurations", "<cmd>e $HOME/.config/nvim/<CR>"),
       dashboard.button("q", "  Quit NVIM", "<cmd>qa<CR>"),
     }
