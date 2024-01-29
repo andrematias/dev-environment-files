@@ -19,7 +19,7 @@ opt.ignorecase = true -- ignore case when searching
 opt.smartcase = true -- if you include mixed case in your search, assumes you want case-sensitive
 
 -- cursor line
-opt.cursorline = true -- highlight the current cursor line
+opt.cursorline = false -- highlight the current cursor line
 
 -- appearance
 
@@ -41,7 +41,7 @@ opt.splitbelow = true -- split horizontal window to the bottom
 
 opt.showmode = false
 opt.swapfile = false -- turn off swapfile
-opt.cmdheight = 0 -- 0 to hide command line input
+opt.cmdheight = 1 -- 0 to hide command line input
 opt.showbreak = " 󰌑 " -- show a icon in lines breaked
 opt.textwidth = 100 -- set line width to 100 characters
 opt.showmatch = true --highlight matching parenthesis
@@ -56,6 +56,7 @@ opt.lazyredraw = true -- Faster scrolling
 opt.synmaxcol = 240 -- Max column for syntax highlight
 opt.updatetime = 250 -- ms to wait for trigger an event
 opt.mouse = "a" -- Enable mouse support
+opt.laststatus = 3 -- Enable global status line
 
 -- Disable nvim intro
 opt.shortmess:append("sI")
