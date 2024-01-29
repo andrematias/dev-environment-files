@@ -158,7 +158,7 @@ return {
     "ellisonleao/gruvbox.nvim",
     config = function()
       require("gruvbox").setup({
-        terminal_colors = true, -- add neovim terminal colors
+        terminal_colors = true,
         undercurl = true,
         underline = true,
         bold = true,
@@ -180,6 +180,7 @@ return {
         overrides = {
           SignColumn = { bg = "none" },
           StatusLine = { bg = "none", fg = "white" },
+          GruvboxAquaSign = { bg = "none" },
           GruvboxRedSign = { bg = "none" },
           GruvboxGreenSign = { bg = "none" },
           GruvboxOrangeSign = { bg = "none" },
