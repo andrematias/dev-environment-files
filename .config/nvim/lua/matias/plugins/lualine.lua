@@ -23,7 +23,7 @@ return {
           {
             "buffers",
             show_filename_only = true,
-            hide_filename_extension = true,
+            hide_filename_extension = false,
             show_modified_status = true,
             mode = 0,
             use_mode_colors = false,
