@@ -50,6 +50,10 @@ return {
         },
       },
       pickers = {
+        buffers = {
+          theme = "dropdown",
+          previews = false,
+        },
         find_files = {
           find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
         },
@@ -73,5 +77,6 @@ return {
     keymap.set("n", "<leader>fb", "<cmd>Telescope buffers theme=dropdown<cr>", { desc = "Fuzzy find files buffers" })
     keymap.set("n", "<leader>ft", "<cmd>Telescope treesitter theme=dropdown<cr>", { desc = "Fuzzy find symbols" })
     keymap.set("n", "<leader>fp", "<cmd>Telescope projects theme=dropdown<cr>", { desc = "Fuzzy find projects" })
+    keymap.set("n", "<leader>tt", "<cmd>Telescope colorscheme theme=dropdown<cr>", { desc = "Fuzzy find colorscheme" })
   end,
 }
