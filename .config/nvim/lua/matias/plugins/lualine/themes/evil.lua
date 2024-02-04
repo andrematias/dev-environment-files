@@ -127,7 +127,7 @@ ins_left({
 ins_left({
   "diagnostics",
   sources = { "nvim_diagnostic" },
-  symbols = { error = " ", warn = " ", info = " ", hint = " " },
+  symbols = { error = "● ", warn = "● ", info = "● ", hint = "● " },
   diagnostics_color = {
     color_error = { fg = colors.red },
     color_warn = { fg = colors.yellow },
@@ -146,6 +146,14 @@ ins_right({ "progress", color = { fg = colors.fg } })
 ins_right({
   "filesize",
   cond = conditions.buffer_not_empty,
+})
+
+ins_right({
+  "tabs",
+  tabs_color = {
+    active = { fg = colors.orange, bg = colors.bg, gui = "bold" },
+    inactive = { fg = colors.fg, bg = colors.bg },
+  },
 })
 
 lualine.setup(config)
