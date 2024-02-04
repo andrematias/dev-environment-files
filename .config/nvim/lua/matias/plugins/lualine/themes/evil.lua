@@ -125,6 +125,12 @@ ins_left({
 })
 
 ins_left({
+  function()
+    return "%="
+  end,
+})
+
+ins_right({
   "diagnostics",
   sources = { "nvim_diagnostic" },
   symbols = { error = "● ", warn = "● ", info = "● ", hint = "● " },
@@ -133,12 +139,6 @@ ins_left({
     color_warn = { fg = colors.yellow },
     color_info = { fg = colors.cyan },
   },
-})
-
-ins_left({
-  function()
-    return "%="
-  end,
 })
 
 ins_right({ "progress", color = { fg = colors.fg } })
