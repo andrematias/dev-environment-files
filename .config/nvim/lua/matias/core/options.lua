@@ -1,3 +1,4 @@
+local wopt = vim.wo -- for conciseness
 local opt = vim.opt -- for conciseness
 local g = vim.g -- Global variables
 
@@ -41,7 +42,7 @@ opt.splitbelow = true -- split horizontal window to the bottom
 
 opt.showmode = false
 opt.swapfile = false -- turn off swapfile
-opt.cmdheight = 1 -- 0 to hide command line input
+opt.cmdheight = 0 -- 0 to hide command line input
 opt.showbreak = " 󰌑 " -- show a icon in lines breaked
 opt.textwidth = 100 -- set line width to 100 characters
 opt.showmatch = true --highlight matching parenthesis
@@ -58,6 +59,7 @@ opt.updatetime = 250 -- ms to wait for trigger an event
 opt.mouse = "a" -- Enable mouse support
 opt.laststatus = 3 -- Enable global status line
 opt.showtabline = 0
+wopt.foldmethod = "manual"
 
 -- Disable nvim intro
 opt.shortmess:append("sI")
