@@ -22,7 +22,7 @@ augroup("setPencilMode", { clear = true })
 autocmd("Filetype", {
   group = "setPencilMode",
   pattern = { "mkd", "markdown" },
-  command = "PencilSoft",
+  command = "PencilSoft | setlocal conceallevel=2",
 })
 
 autocmd("Filetype", {
