@@ -102,7 +102,7 @@ return {
         terminal_colors = true,
         undercurl = true,
         underline = true,
-        bold = true,
+        bold = false,
         italic = {
           strings = true,
           emphasis = true,
@@ -117,7 +117,9 @@ return {
         invert_intend_guides = false,
         inverse = true, -- invert background for search, diffs, statuslines and errors
         contrast = "hard", -- can be "hard", "soft" or empty string
-        palette_overrides = {},
+        palette_overrides = {
+          light0_hard = "#fbf1c7",
+        },
         overrides = {
           SignColumn = { bg = "none" },
           StatusLine = { bg = "none", fg = "white" },
