@@ -207,6 +207,7 @@ exec --no-startup-id nm-applet
 ####################################################################
 
 # for_window [instance="keepassx"] floating enable
+for_window [title="Program Error*"] floating enable
 for_window [title="Seer Console*"] floating enable
 for_window [instance="pavucontrol"] floating enable
 for_window [title="Picture-in-Picture"] sticky enable 
