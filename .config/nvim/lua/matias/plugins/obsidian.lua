@@ -29,21 +29,33 @@ return {
         },
         -- Use bullet marks for non-checkbox lists.
         bullets = { char = "•", hl_group = "ObsidianBullet" },
-        external_link_icon = { char = "", hl_group = "ObsidianExtLinkIcon" },
+        external_link_icon = { char = "", hl_group = "ObsidianExtLinkIcon" },
         reference_text = { hl_group = "ObsidianRefText" },
         highlight_text = { hl_group = "ObsidianHighlightText" },
         tags = { hl_group = "ObsidianTag" },
         hl_groups = {
-          ObsidianTodo = { bold = true, fg = "#f78c6c" },
-          ObsidianDone = { bold = true, fg = "#89ddff" },
-          ObsidianRightArrow = { bold = true, fg = "#f78c6c" },
-          ObsidianHalf = { bold = true, fg = "#ff5370" },
-          ObsidianBullet = { bold = true, fg = "#89ddff" },
+          ObsidianTodo = { bold = true },
+          ObsidianDone = { bold = true },
+          ObsidianRightArrow = { bold = true },
+          ObsidianHalf = { bold = true },
+          ObsidianBullet = { bold = true },
           ObsidianRefText = { underline = true, fg = "#c792ea" },
           ObsidianExtLinkIcon = { fg = "#c792ea" },
           ObsidianTag = { italic = true, fg = "#89ddff" },
           ObsidianHighlightText = { bg = "#75662e" },
         },
+      },
+      templates = {
+        subdir = "Templates",
+        date_format = "%Y-%m-%d",
+        time_format = "%H:%M",
+        substitutions = {},
+      },
+      daily_notes = {
+        folder = "Diary",
+        date_format = "%Y-%m-%d",
+        alias_format = "%B %-d, %Y",
+        template = nil,
       },
       -- Specify how to handle attachments.
       attachments = {
@@ -61,5 +73,15 @@ return {
         end,
       },
     })
+
+    local keymap = vim.keymap -- for conciseness
+
+    keymap.set("n", "<leader>oo", "<cmd>ObsidianFollowLink<cr>", { desc = "Open current obsidian link" })
+    keymap.set("n", "<leader>ot", "<cmd>ObsidianToday<cr>", { desc = "Open a new obsidian note" })
+    keymap.set("n", "<leader>on", "<cmd>ObsidianNew<cr>", { desc = "Open a new obsidian note" })
+    keymap.set("n", "<leader>og", "<cmd>ObsidianSearch<cr>", { desc = "Search text in obsidian notes" })
+    keymap.set("n", "<leader>os", "<cmd>ObsidianQuickSwitch<cr>", { desc = "Search obsidian notes" })
+    keymap.set("v", "<leader>ol", "<cmd>ObsidianLink<cr>", { desc = "Obsidian Link to note" })
+    keymap.set("v", "<leader>on", "<cmd>ObsidianLinkNew<cr>", { desc = "Create obsidian link to selection" })
   end,
 }
