@@ -141,6 +141,8 @@ ins_right({
   },
 })
 
+ins_right({ "encoding", color = { fg = colors.fg } })
+
 ins_right({ "progress", color = { fg = colors.fg } })
 
 ins_right({
