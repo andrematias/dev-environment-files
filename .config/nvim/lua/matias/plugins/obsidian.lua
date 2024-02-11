@@ -1,7 +1,7 @@
 return {
   "epwalsh/obsidian.nvim",
   version = "*",
-  lazy = true,
+  lazy = false,
   ft = "markdown",
   -- event = {
   --   "BufReadPre " .. vim.fn.expand("~") .. "Documents/braindump/**.md",
@@ -59,7 +59,7 @@ return {
       },
       -- Specify how to handle attachments.
       attachments = {
-        img_folder = "~/Documents/vaults/braindump/Attachments",
+        img_folder = "Attachments",
         img_text_func = function(client, path)
           local link_path
           local vault_relative_path = client:vault_relative_path(path)

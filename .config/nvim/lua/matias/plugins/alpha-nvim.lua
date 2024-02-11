@@ -25,6 +25,7 @@ return {
       dashboard.button("SPC f p", "  Projects"),
       dashboard.button("SPC e e", "  Toggle file explorer"),
       dashboard.button("SPC f f", "󰱼  Find File"),
+      dashboard.button("SPC f n", "  Obsidian notes", "<cmd>ObsidianQuickSwitch<CR>"),
       dashboard.button("SPC f r", "󰣜  Recent Files"),
       dashboard.button("SPC f s", "  Find Word"),
       dashboard.button("e", "  New File", "<cmd>ene<CR>"),
