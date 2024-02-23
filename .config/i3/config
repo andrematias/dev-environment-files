@@ -17,7 +17,7 @@ title_align center
 # default_border normal 2 px
 # default_floating_border normal 2 px
 # default_border pixel 3
-hide_edge_borders smart
+# hide_edge_borders smart
 for_window [all] title_window_icon off
 # new_window normal 0 px
 
@@ -52,7 +52,8 @@ floating_modifier $mod
 tiling_drag modifier titlebar
 
 # start a terminal
-bindsym $mod+Return exec alacritty
+# bindsym $mod+Return exec alacritty
+bindsym $mod+Return exec konsole
 
 # kill focused window
 bindsym $mod+Shift+c kill
@@ -347,7 +348,7 @@ bar {
 # client.urgent           #AA3941 #AA3941 #FFFFFF #AA3941   #AA3941
 # client.placeholder      #0C0C0C #0C0C0C #FFFFFF #000000   #0C0C0C
 # VSCode
-client.focused           #242D3E #1360A5 #ffffff #2e9ef4 #242D3E
+client.focused           #1360A5 #1360A5 #ffffff #2e9ef4 #1360A5
 client.focused_inactive  #242D3E #313F56 #ffffff #2e9ef4 #242D3E
 client.unfocused         #333333 #212A39 #888888 #292d2e #222222
 
