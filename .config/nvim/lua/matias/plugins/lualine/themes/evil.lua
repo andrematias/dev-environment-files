@@ -42,6 +42,14 @@ local config = {
       inactive = { c = { fg = colors.fg, bg = colors.bg } },
     },
   },
+  tabline = {
+    lualine_a = {},
+    lualine_b = {},
+    lualine_y = {},
+    lualine_z = {},
+    lualine_c = {},
+    lualine_x = {},
+  },
   sections = {
     lualine_a = {},
     lualine_b = {},
@@ -59,6 +67,14 @@ local config = {
     lualine_x = {},
   },
 }
+
+local function ins_left_tab(component)
+  table.insert(config.tabline.lualine_c, component)
+end
+
+local function ins_right_tab(component)
+  table.insert(config.tabline.lualine_x, component)
+end
 
 local function ins_left(component)
   table.insert(config.sections.lualine_c, component)
@@ -100,7 +116,7 @@ ins_left({
   padding = { left = 1, right = 1 },
 })
 
-ins_left({
+ins_left_tab({
   "buffers",
   show_filename_only = true,
   hide_filename_extension = false,
@@ -108,7 +124,7 @@ ins_left({
   mode = 0,
   use_mode_colors = false,
   buffers_color = {
-    active = { fg = colors.white, bg = nil, gui = "bold" },
+    active = { fg = colors.orange, bg = colors.bg, gui = "bold" },
     inactive = { fg = colors.gray, bg = nil },
   },
   symbols = {
@@ -124,10 +140,42 @@ ins_left({
   },
 })
 
+ins_right_tab({
+  "tabs",
+  tabs_color = {
+    active = { fg = colors.orange, bg = colors.bg, gui = "bold" },
+    inactive = { fg = colors.fg, bg = colors.bg },
+  },
+})
+
+ins_left({
+  "filename",
+  file_status = true,
+  newfile_status = false,
+  path = 4,
+  -- 0: Just the filename
+  -- 1: Relative path
+  -- 2: Absolute path
+  -- 3: Absolute path, with tilde as the home directory
+  -- 4: Filename and parent dir, with tilde as the home directory
+
+  shorting_target = 40, -- Shortens path to leave 40 spaces in the window
+  symbols = {
+    modified = " ●",
+    readonly = " 󰌾",
+    unnamed = "[No Name]",
+    newfile = "[New]",
+  },
+})
+
 ins_left({
   function()
     return "%="
   end,
+})
+
+ins_right({
+  "encoding",
 })
 
 ins_right({
@@ -148,14 +196,6 @@ ins_right({ "progress", color = { fg = colors.fg } })
 ins_right({
   "filesize",
   cond = conditions.buffer_not_empty,
-})
-
-ins_right({
-  "tabs",
-  tabs_color = {
-    active = { fg = colors.orange, bg = colors.bg, gui = "bold" },
-    inactive = { fg = colors.fg, bg = colors.bg },
-  },
 })
 
 lualine.setup(config)

@@ -35,6 +35,11 @@ return {
           types = {},
           operators = { "bold" },
         },
+        color_overrides = {
+          latte = {
+            base = "#ffffff",
+          },
+        },
         highlight_overrides = {
           latte = function(c)
             return {

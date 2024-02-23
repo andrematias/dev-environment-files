@@ -28,6 +28,7 @@ return {
       dashboard.button("SPC f n", "  Obsidian notes", "<cmd>ObsidianQuickSwitch<CR>"),
       dashboard.button("SPC f r", "󰣜  Recent Files"),
       dashboard.button("SPC f s", "  Find Word"),
+      dashboard.button("SPC f n", "  Find Notes", "<cmd>ObsidianQuickSwitch<CR>"),
       dashboard.button("e", "  New File", "<cmd>ene<CR>"),
       dashboard.button("c", "  Edit Configurations", "<cmd>e $HOME/.config/nvim/<CR>"),
       dashboard.button("q", "  Quit NVIM", "<cmd>qa<CR>"),

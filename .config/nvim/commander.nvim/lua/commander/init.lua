@@ -21,6 +21,10 @@ end
 
 M = {}
 
+M.commander = function()
+  vim.cmd("new | terminal " .. get_input())
+end
+
 M.vsplit_commander = function()
   vim.cmd("vsplit | terminal " .. get_input())
 end
@@ -42,7 +46,7 @@ M.setup = function(o)
 end
 
 -- User commands
-api.nvim_create_user_command("Commander", M.vsplit_commander, {})
+api.nvim_create_user_command("Commander", M.commander, {})
 api.nvim_create_user_command("CommanderSV", M.vsplit_commander, {})
 api.nvim_create_user_command("CommanderSH", M.split_commander, {})
 api.nvim_create_user_command("CommanderT", M.tab_commander, {})

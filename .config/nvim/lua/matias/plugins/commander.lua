@@ -7,6 +7,6 @@ return {
     -- })
 
     local keymap = vim.keymap
-    keymap.set("n", "<leader>cc", commander.vsplit_commander, { desc = "Run a command in vertical split" })
+    keymap.set("n", "<leader>cc", commander.commander, { desc = "Run a command in vertical split" })
   end,
 }
