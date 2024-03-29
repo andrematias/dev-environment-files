@@ -22,6 +22,7 @@ return {
         "eslint_d", -- js linter
         "cpplint", -- c/c++ linter
         "clang_format", -- c/c++ formatter
+        "phpcbf", -- php formatter
       },
     })
 
@@ -45,6 +46,7 @@ return {
         }), -- js/ts formatter
         formatting.stylua, -- lua formatter
         formatting.isort,
+        formatting.phpcbf.with({ extra_args = { "--standard=PSR12" } }),
         formatting.black,
         formatting.clang_format,
         diagnostics.pylint,
