@@ -142,6 +142,10 @@ ins_left_tab({
 
 ins_right_tab({
   "tabs",
+  symbols = {
+    modified = " ●",
+  },
+
   tabs_color = {
     active = { fg = colors.orange, bg = colors.bg, gui = "bold" },
     inactive = { fg = colors.fg, bg = colors.bg },
@@ -172,10 +176,6 @@ ins_left({
   function()
     return "%="
   end,
-})
-
-ins_right({
-  "encoding",
 })
 
 ins_right({
