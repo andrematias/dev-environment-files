@@ -43,12 +43,12 @@ if vim.g.neovide then
     vim.g.neovide_padding_right = 4
     vim.g.neovide_padding_left = 4
   else
-    vim.opt.guifont = "IosevkaTerm Nerd Font:h12"
+    vim.opt.guifont = "IosevkaTerm Nerd Font:h13"
     vim.g.neovide_refresh_rate = 144
   end
 
   vim.opt.guicursor = "n-sm:block,c-i-ci-ve:ver25,v-r-cr-o:hor20"
-  vim.opt.linespace = 1
+  -- vim.opt.linespace = 1
   vim.g.neovide_cursor_animation_length = 0.10
   vim.g.neovide_cursor_trail_size = 0.5
   vim.g.neovide_confirm_quit = true
