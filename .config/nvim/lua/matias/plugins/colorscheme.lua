@@ -137,7 +137,12 @@ return {
         dim_inactive = false,
         transparent_mode = false,
       })
-      vim.cmd.colorscheme("gruvbox")
+    end,
+  },
+  {
+    "lunacookies/vim-colors-xcode",
+    config = function()
+      vim.cmd.colorscheme("xcodelighthc")
     end,
   },
 }
