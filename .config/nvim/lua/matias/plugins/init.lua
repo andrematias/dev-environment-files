@@ -5,4 +5,5 @@ return {
   "ishan9299/modus-theme-vim",
   "moll/vim-bbye",
   "godlygeek/tabular",
+  "nvim-neotest/nvim-nio",
 }

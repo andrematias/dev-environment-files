@@ -29,7 +29,7 @@ return {
 
       -- change folder arrow icons
       renderer = {
-        root_folder_label = false,
+        root_folder_label = true,
         indent_width = 1,
         indent_markers = {
           enable = false,

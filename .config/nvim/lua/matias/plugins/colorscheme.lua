@@ -97,7 +97,7 @@ return {
         },
       })
 
-      -- vim.cmd.colorscheme("vscode")
+      vim.cmd.colorscheme("vscode")
     end,
   },
   {
@@ -142,7 +142,7 @@ return {
   {
     "lunacookies/vim-colors-xcode",
     config = function()
-      vim.cmd.colorscheme("xcodelighthc")
+      -- vim.cmd.colorscheme("xcodelighthc")
     end,
   },
 }
