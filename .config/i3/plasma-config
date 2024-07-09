@@ -28,21 +28,21 @@ font pango:IosevkaTerm Nerd Font 14
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
+# bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+# bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
+# bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
+# bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
+#
+# # Media player controls
+# bindsym XF86AudioPlay exec playerctl play-pause
+# bindsym XF86AudioPause exec playerctl play-pause
+# bindsym XF86AudioNext exec playerctl next
+# bindsym XF86AudioPrev exec playerctl previous
 
-# Media player controls
-bindsym XF86AudioPlay exec playerctl play-pause
-bindsym XF86AudioPause exec playerctl play-pause
-bindsym XF86AudioNext exec playerctl next
-bindsym XF86AudioPrev exec playerctl previous
-
-# bindsym XF86AudioRaiseVolume exec --no-startup-id qdbus org.kde.kglobalaccel /component/kmix invokeShortcut "increase_volume"
-# bindsym XF86AudioLowerVolume exec --no-startup-id qdbus org.kde.kglobalaccel /component/kmix invokeShortcut "decrease_volume"
-# bindsym XF86AudioMute exec --no-startup-id qdbus org.kde.kglobalaccel /component/kmix invokeShortcut "mute"
-# bindsym XF86AudioMicMute exec --no-startup-id qdbus org.kde.kglobalaccel /component/kmix invokeShortcut "mic_mute"
+bindsym XF86AudioRaiseVolume exec --no-startup-id qdbus org.kde.kglobalaccel /component/kmix invokeShortcut "increase_volume"
+bindsym XF86AudioLowerVolume exec --no-startup-id qdbus org.kde.kglobalaccel /component/kmix invokeShortcut "decrease_volume"
+bindsym XF86AudioMute exec --no-startup-id qdbus org.kde.kglobalaccel /component/kmix invokeShortcut "mute"
+bindsym XF86AudioMicMute exec --no-startup-id qdbus org.kde.kglobalaccel /component/kmix invokeShortcut "mic_mute"
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -61,11 +61,11 @@ bindsym $mod+Shift+c kill
 # start dmenu (a program launcher)
 # bindsym $mod+p exec $psst dmenu_run -fn 'FiraCode-12' 
 # start launcher
-# bindsym $mod+p exec qdbus org.kde.krunner /App querySingleRunner applications ""
-bindsym $mod+p exec rofi -show drun -font "Hack 9" -display-drun ""
+bindsym $mod+p exec qdbus org.kde.krunner /App querySingleRunner applications ""
+# bindsym $mod+p exec rofi -show drun -font "Hack 9" -display-drun ""
 
 # switch between opened windows with rofi
-bindsym $mod+Tab exec rofi -show window -width 200 -hide-scrollbar -font "Hack 9"
+# bindsym $mod+Tab exec rofi -show window -width 200 -hide-scrollbar -font "Hack 9"
 
 # change focus
 # alternatively, you can use the cursor keys:
@@ -161,14 +161,14 @@ bindsym $mod+y resize set 1024 px 800 px, move position center
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Finish the session?' -B 'Yes' 'i3-msg exit'"
+# bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Finish the session?' -B 'Yes' 'i3-msg exit'"
 
 # lock screen
 bindsym Ctrl+$mod+Delete exec "i3lock -c 035b9e --ignore-empty-password --show-failed-attempts" 
 
 bindsym $mod+n exec "neovide" 
 # using plasma's logout screen instead of i3's
-# bindsym $mod+Shift+e exec --no-startup-id qdbus-qt5 org.kde.ksmserver /KSMServer org.kde.KSMServerInterface.logout -1 -1 -1
+bindsym $mod+Shift+e exec --no-startup-id qdbus-qt5 org.kde.ksmserver /KSMServer org.kde.KSMServerInterface.logout -1 -1 -1
 
 ####################################################################
 #   Exec applications
@@ -186,8 +186,8 @@ exec $psst xset r rate 200 50
 exec $psst /usr/lib/pam_kwallet_init
 exec $psst  dex --autostart --environment i3
 exec $psst  xss-lock --transfer-sleep-lock -- i3lock --nofork
-# exec $psst  feh --recursive --bg-fill --randomize $HOME/Pictures/Wallpapers/ 
-exec $psst  feh --bg-fill $HOME/Pictures/Wallpapers/titan_atack_4.jpg
+exec $psst  feh --recursive --bg-fill --randomize $HOME/Pictures/Wallpapers/ 
+# exec $psst  feh --bg-fill $HOME/Pictures/Wallpapers/titan_atack_4.jpg
 exec_always $psst /usr/lib/polkit-kde-authentication-agent-1
 exec_always $psst autotiling
 exec_always $psst picom
@@ -315,7 +315,7 @@ bar {
     position top
     # position bottom
     separator_symbol "󰇙"
-    # mode invisible
+    mode invisible
 
     # mode invisible
     colors {
