@@ -12,14 +12,15 @@
 set $mod Mod1
 set $psst --no-startup-id
 
-title_align center
+# title_align center
 
-# default_border normal 2 px
-# default_floating_border normal 2 px
+# default_border normal 2
+# default_floating_border normal 3
 # default_border pixel 3
+
 # hide_edge_borders smart
 for_window [all] title_window_icon off
-# new_window normal 0 px
+# new_window normal 0
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -202,7 +203,7 @@ exec --no-startup-id nm-applet
 ####################################################################
 #   Gaps
 ####################################################################
-gaps inner 7
+gaps inner 0
 gaps outer 0
 
 ####################################################################
@@ -310,25 +311,25 @@ mode "$mode_redshift" {
 ####################################################################
 #   StatusBar
 ####################################################################
-bar {
-    tray_output none
-    status_command i3blocks
-    position top
-    # position bottom
-    separator_symbol "󰇙"
-    mode invisible
-
-    # mode hide
-    colors {
-        background #000000
-        statusline #dddddd
-        # colorclass       <border> <background> <text>
-        focused_workspace  #434343  #434343     #FFFFFF
-        inactive_workspace #000000  #000000     #FFFFFF
-        active_workspace   #000000  #000000     #FFFFFF
-
-    }
-}
+# bar {
+#     tray_output none
+#     status_command i3blocks
+#     position top
+#     # position bottom
+#     separator_symbol "󰇙"
+#     mode invisible
+#
+#     # mode hide
+#     colors {
+#         background #000000
+#         statusline #dddddd
+#         # colorclass       <border> <background> <text>
+#         focused_workspace  #434343  #434343     #FFFFFF
+#         inactive_workspace #000000  #000000     #FFFFFF
+#         active_workspace   #000000  #000000     #FFFFFF
+#
+#     }
+# }
 
 
 ####################################################################
@@ -337,19 +338,24 @@ bar {
 
 # class                 border  bground text    indicator child_border
 # Black
-client.focused          #000000 #000000 #FFFFFF #FFFFFF   #000000
+# client.focused          #000000 #000000 #FFFFFF #FFFFFF   #000000
+
 # Cyan
 # client.focused          #4C7899 #4C7899 #FFFFFF #ffffff   #4C7899
+
 # Red
 # client.focused          #AA3941 #AA3941 #FFFFFF #FF9500   #AA3941
+
 # Yealow
 # client.focused          #ffa202 #cb6d02 #FFFFFF #4C7899   #ffa202
+
 # Orange
-# client.focused          #fabd2f #fe8019 #282828 #b8bb26   #fabd2f
+client.focused          #ad3c03 #ad3c03 #ffffff #b8bb26   #ad3c03
 client.focused_inactive #222222 #222222 #414141 #292D2E   #222222
 client.unfocused        #222222 #222222 #414141 #292D2E   #222222
 client.urgent           #AA3941 #AA3941 #FFFFFF #AA3941   #AA3941
 client.placeholder      #0C0C0C #0C0C0C #FFFFFF #000000   #0C0C0C
+
 # VSCode
 # client.focused           #1360A5 #1360A5 #ffffff #2e9ef4 #1360A5
 # client.focused_inactive  #242D3E #313F56 #ffffff #2e9ef4 #242D3E
