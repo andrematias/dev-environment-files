@@ -168,6 +168,9 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Finish the session?' -B 'Yes
 bindsym Ctrl+$mod+Delete exec "i3lock -c 035b9e --ignore-empty-password --show-failed-attempts" 
 
 bindsym $mod+n exec "neovide" 
+bindsym $mod+Shift+Insert exec "ksnip -r" 
+bindsym $mod+Insert exec "ksnip" 
+
 # using plasma's logout screen instead of i3's
 # bindsym $mod+Shift+e exec --no-startup-id qdbus-qt5 org.kde.ksmserver /KSMServer org.kde.KSMServerInterface.logout -1 -1 -1
 
@@ -219,6 +222,7 @@ for_window [instance="qalculate-gtk"] floating enable
 for_window [instance="exodus"] floating enable
 for_window [instance="lxappearance"] floating enable
 for_window [instance="isoimagewriter"] floating enable
+for_window [instance="ksnip"] floating enable
 
 # Set Plasma dialogs and pop ups as floating so they won't get tiled
 for_window [title="Desktop @ QRect.*"] kill; floating enable; border none
