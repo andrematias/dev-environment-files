@@ -191,7 +191,7 @@ exec $psst /usr/lib/pam_kwallet_init
 exec $psst  dex --autostart --environment i3
 exec $psst  xss-lock --transfer-sleep-lock -- i3lock --nofork
 # exec $psst  feh --recursive --bg-fill --randomize $HOME/Pictures/Wallpapers/ 
-exec $psst  feh --bg-fill $HOME/Pictures/Wallpapers/berserk-guts.jpg
+exec $psst  feh --bg-fill $HOME/Pictures/Wallpapers/titan_atack_4.jpg
 exec_always $psst /usr/lib/polkit-kde-authentication-agent-1
 exec_always $psst autotiling
 exec_always $psst picom
