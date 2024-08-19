@@ -1,0 +1,54 @@
+git:
+  branchLogCmd: "git log --graph --color=always --abbrev-commit --decorate --date=relative --pretty=medium --oneline {{branchName}} --"
+  merging:
+    manualCommit: false
+    args: "--no-ff"
+
+  mainBranches:
+    - master
+    - main
+    - develop
+
+  fetchAll: true
+
+# Theme
+gui:
+  # Use the mocha catppuccin theme
+  theme:
+    activeBorderColor:
+      - "#89b4fa"
+      - bold
+    inactiveBorderColor:
+      - "#a6adc8"
+    optionsTextColor:
+      - "#89b4fa"
+    selectedLineBgColor:
+      - "#313244"
+    selectedRangeBgColor:
+      - "#313244"
+    cherryPickedCommitBgColor:
+      - "#45475a"
+    cherryPickedCommitFgColor:
+      - "#89b4fa"
+    unstagedChangesColor:
+      - "#f38ba8"
+    defaultFgColor:
+      - "#cdd6f4"
+    searchingActiveBorderColor:
+      - "#f9e2af"
+
+  fontFamily: "FiraCode Nerd Font"
+  commitHashLength: 4
+  fontSize: 8
+  showRandomTip: false
+  showCommandLog: false
+  showBottomLine: false
+  nerdFontsVersion: "3"
+  showFileIcons: true
+  commitAuthorShortLength: 2
+  commitAuthorLongLength: 2
+  filterMode: fuzzy
+  parseEmoji: true
+  notARepository: "skip"
+  timeFormat: 02 Jan 06
+  shortTimeFormat: 3:04PM
