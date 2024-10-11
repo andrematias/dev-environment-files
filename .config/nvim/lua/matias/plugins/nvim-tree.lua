@@ -17,6 +17,7 @@ return {
       view = {
         width = 40,
         relativenumber = false,
+        side = "right",
       },
 
       -- update cwd
@@ -29,7 +30,7 @@ return {
 
       -- change folder arrow icons
       renderer = {
-        root_folder_label = true,
+        root_folder_label = false,
         indent_width = 1,
         indent_markers = {
           enable = false,
