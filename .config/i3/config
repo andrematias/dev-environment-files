@@ -343,8 +343,16 @@ mode "$mode_redshift" {
 ####################################################################
 
 # class                 border  bground text    indicator child_border
+# Violete
+# client.focused          #191919 #191919 #ffffff #752cc7 #441a58
+
 # Black
-# client.focused          #000000 #000000 #FFFFFF #FFFFFF   #000000
+# client.focused          #000000  #000000  #FFFFFF  #FFFFFF  #000000
+client.focused          #0b0b0b  #0b0b0b  #FFFFFF  #FFFFFF  #0b0b0b
+client.focused_inactive #1f1f1f  #1f1f1f  #adadad  #222222
+client.unfocused        #222222  #222222  #414141  #292D2E  #222222
+client.urgent           #AA3941  #AA3941  #FFFFFF  #AA3941  #AA3941
+client.placeholder      #0C0C0C  #0C0C0C  #FFFFFF  #000000  #0C0C0C
 
 # Cyan
 # client.focused          #4C7899 #4C7899 #FFFFFF #ffffff   #4C7899
@@ -356,11 +364,11 @@ mode "$mode_redshift" {
 # client.focused          #ffa202 #cb6d02 #FFFFFF #4C7899   #ffa202
 
 # Orange
-client.focused          #ad3c03 #ad3c03 #ffffff #b8bb26   #ad3c03
-client.focused_inactive #222222 #222222 #414141 #292D2E   #222222
-client.unfocused        #222222 #222222 #414141 #292D2E   #222222
-client.urgent           #AA3941 #AA3941 #FFFFFF #AA3941   #AA3941
-client.placeholder      #0C0C0C #0C0C0C #FFFFFF #000000   #0C0C0C
+# client.focused          #ad3c03 #ad3c03 #ffffff #b8bb26   #ad3c03
+# client.focused_inactive #222222 #222222 #414141 #292D2E   #222222
+# client.unfocused        #222222 #222222 #414141 #292D2E   #222222
+# client.urgent           #AA3941 #AA3941 #FFFFFF #AA3941   #AA3941
+# client.placeholder      #0C0C0C #0C0C0C #FFFFFF #000000   #0C0C0C
 
 # VSCode
 # client.focused           #1360A5 #1360A5 #ffffff #2e9ef4 #1360A5
