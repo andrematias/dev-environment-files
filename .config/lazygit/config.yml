@@ -16,26 +16,27 @@ gui:
   # Use the mocha catppuccin theme
   theme:
     activeBorderColor:
-      - "#89b4fa"
+      - red
       - bold
     inactiveBorderColor:
-      - "#a6adc8"
-    optionsTextColor:
-      - "#89b4fa"
+      - gray
+    # optionsTextColor:
+    #   - gray
+    #   - bold
     selectedLineBgColor:
-      - "#313244"
-    selectedRangeBgColor:
-      - "#313244"
-    cherryPickedCommitBgColor:
-      - "#45475a"
-    cherryPickedCommitFgColor:
-      - "#89b4fa"
-    unstagedChangesColor:
-      - "#f38ba8"
-    defaultFgColor:
-      - "#cdd6f4"
-    searchingActiveBorderColor:
-      - "#f9e2af"
+      - "#bebebe"
+    # selectedRangeBgColor:
+    #   - "#313244"
+    # cherryPickedCommitBgColor:
+    #   - "#45475a"
+    # cherryPickedCommitFgColor:
+    #   - "#89b4fa"
+    # unstagedChangesColor:
+    #   - "#f38ba8"
+    # defaultFgColor:
+    #   - black
+    # searchingActiveBorderColor:
+    #   - "#f9e2af"
 
   fontFamily: "FiraCode Nerd Font"
   commitHashLength: 4
