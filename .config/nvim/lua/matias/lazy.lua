@@ -15,7 +15,7 @@ require("lazy").setup(
   { { import = "matias.plugins" }, { import = "matias.plugins.lsp" }, { import = "matias.plugins.dap" } },
   {
     install = {
-      colorscheme = { "catppuccin" },
+      colorscheme = { "modus" },
     },
     checker = {
       enabled = true,
