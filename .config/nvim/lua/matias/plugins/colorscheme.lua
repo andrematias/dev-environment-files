@@ -1,81 +1,4 @@
 return {
-  {
-    "catppuccin/nvim",
-    name = "catppuccin",
-    priority = 1000,
-    config = function()
-      require("catppuccin").setup({
-        flavour = "mocha", -- latte, frappe, macchiato, mocha
-        background = { -- :h background
-          light = "latte",
-          dark = "macchiato",
-        },
-        transparent_background = false, -- disables setting the background color.
-        show_end_of_buffer = false, -- shows the '~' characters after the end of buffers
-        term_colors = true, -- sets terminal colors (e.g. `g:terminal_color_0`)
-        dim_inactive = {
-          enabled = false, -- dims the background color of inactive window
-          shade = "light",
-          percentage = 0.30, -- percentage of the shade to apply to the inactive window
-        },
-        no_italic = false, -- Force no italic
-        no_bold = false, -- Force no bold
-        no_underline = false, -- Force no underline
-        styles = { -- Handles the styles of general hi groups (see `:h highlight-args`):
-          comments = { "italic" }, -- Change the style of comments
-          conditionals = { "italic" },
-          loops = { "bold" },
-          functions = { "bold" },
-          keywords = { "bold", "italic" },
-          strings = {},
-          variables = {},
-          numbers = {},
-          booleans = {},
-          properties = {},
-          types = {},
-          operators = { "bold" },
-        },
-        color_overrides = {
-          latte = {
-            base = "#ffffff",
-          },
-        },
-        highlight_overrides = {
-          latte = function(c)
-            return {
-              FileExplorer = { bg = c.mantle },
-              CursorLineNr = { fg = c.blue },
-              CursorLine = { bg = c.base },
-            }
-          end,
-          mocha = function(c)
-            return {
-              FileExplorer = { bg = c.mantle },
-              CursorLineNr = { fg = c.lavender },
-              CursorLine = { bg = c.base },
-            }
-          end,
-        },
-        integrations = {
-          markdown = true,
-          gitsigns = true,
-          nvimtree = true,
-          mason = true,
-          aerial = true,
-          alpha = true,
-          treesitter = true,
-          telescope = {
-            enabled = true,
-          },
-          -- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
-        },
-      })
-
-      -- setup must be called before loading
-      -- vim.cmd.colorscheme("catppuccin")
-    end,
-  },
-
   -- VsCode theme
   {
     "Mofiqul/vscode.nvim",
@@ -97,7 +20,7 @@ return {
         },
       })
 
-      vim.cmd.colorscheme("vscode")
+      -- vim.cmd.colorscheme("vscode")
     end,
   },
   {
@@ -143,6 +66,103 @@ return {
     "lunacookies/vim-colors-xcode",
     config = function()
       -- vim.cmd.colorscheme("xcodelighthc")
+    end,
+  },
+  {
+    "miikanissi/modus-themes.nvim",
+    priority = 1000,
+    config = function()
+      require("modus-themes").setup({
+        style = "auto",
+        variant = "default", -- Theme comes in four variants `default`, `tinted`, `deuteranopia`, and `tritanopia`
+        transparent = false,
+        dim_inactive = false,
+        hide_inactive_statusline = true,
+        styles = {
+          comments = { italic = true },
+          keywords = { italic = true },
+          functions = {},
+          variables = {},
+        },
+
+        on_colors = function(colors)
+          colors.yellow = "#bfa200"
+        end,
+
+        on_highlights = function(highlights, colors)
+          highlights.NvimTreeNormal = {
+            bg = colors.bg_main,
+            fg = colors.fg_main,
+          }
+          highlights.NvimTreeNormalNC = {
+            bg = colors.bg_main,
+            fg = colors.fg_main,
+          }
+          highlights.NvimTreeCursorColumn = {
+            bg = colors.bg_main,
+            fg = colors.fg_main,
+          }
+          highlights.NvimTreeCursorLine = {
+            bg = colors.bg_main,
+            fg = colors.yellow,
+          }
+          highlights.NvimTreeCursorLineNr = {
+            bg = colors.bg_main,
+            fg = colors.fg_main,
+          }
+          highlights.NvimTreeLineNr = {
+            bg = colors.bg_main,
+            fg = colors.fg_main,
+          }
+          highlights.NvimTreeSignColumn = {
+            bg = colors.bg_main,
+            fg = colors.fg_main,
+          }
+          highlights.NvimTreeFolderIcon = {
+            bg = colors.bg_main,
+            fg = colors.blue,
+          }
+          highlights.NvimTreeSymlink = {
+            fg = colors.blue,
+          }
+          highlights.NvimTreeWinSeparator = {
+            bg = colors.bg_main,
+            fg = colors.bg_main,
+          }
+
+          highlights.TelescopeBorder = {
+            bg = colors.bg_main,
+            fg = colors.blue,
+          }
+          highlights.TelescopePromptBorder = {
+            bg = colors.bg_main,
+            fg = colors.blue,
+          }
+          highlights.TelescopePromptTitle = {
+            bg = colors.bg_main,
+            fg = colors.blue,
+          }
+
+          highlights.WhichKeyNormal = {
+            bg = colors.bg_main,
+            fg = colors.blue,
+          }
+
+          highlights.LineNr = {
+            bg = colors.bg_main,
+          }
+
+          highlights.NormalFloat = {
+            bg = colors.bg_main,
+          }
+
+          highlights.FloatBorder = {
+            fg = colors.blue,
+          }
+        end,
+      })
+
+      vim.cmd.colorscheme("modus")
     end,
   },
 }
