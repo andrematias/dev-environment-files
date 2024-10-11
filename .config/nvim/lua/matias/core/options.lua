@@ -3,8 +3,8 @@ local opt = vim.opt -- for conciseness
 local g = vim.g -- Global variables
 
 -- line numbers
-opt.relativenumber = true -- show relative line numbers
-opt.number = true -- shows absolute line number on cursor line (when relative number is on)
+opt.relativenumber = false -- show relative line numbers
+opt.number = false -- shows absolute line number on cursor line (when relative number is on)
 
 -- tabs & indentation
 opt.tabstop = 4 -- 2 spaces for tabs (prettier default)
@@ -42,7 +42,7 @@ opt.splitbelow = true -- split horizontal window to the bottom
 
 opt.showmode = false
 opt.swapfile = false -- turn off swapfile
-opt.cmdheight = 1 -- 0 to hide command line input
+opt.cmdheight = 0 -- 0 to hide command line input
 opt.showbreak = " 󰌑 " -- show a icon in lines breaked
 opt.textwidth = 100 -- set line width to 100 characters
 opt.showmatch = true --highlight matching parenthesis
@@ -61,6 +61,9 @@ opt.laststatus = 3 -- Enable global status line
 opt.showtabline = 0
 opt.conceallevel = 2
 wopt.foldmethod = "manual"
+
+-- window separator chars
+vim.o.fillchars = "vert:.,horiz:.,horizup:.,horizdown:.,verthoriz:.,vertright:.,vertleft:.,eob: "
 
 -- Disable nvim intro
 opt.shortmess:append("sI")
