@@ -1,4 +1,5 @@
 return {
+  -- enable = false,
   "neovim/nvim-lspconfig",
   event = { "BufReadPre", "BufNewFile" },
   dependencies = {
@@ -46,7 +47,9 @@ return {
       keymap.set("n", "<leader>D", "<cmd>Telescope diagnostics bufnr=0<CR>", opts) -- show  diagnostics for file
 
       opts.desc = "Show line diagnostics"
-      keymap.set("n", "<leader>d", vim.diagnostic.open_float, opts) -- show diagnostics for line
+      keymap.set("n", "<leader>d", function()
+        vim.diagnostic.open_float({ max_width = 80 })
+      end, opts) -- show diagnostics for line
 
       opts.desc = "Go to previous diagnostic"
       keymap.set("n", "[d", vim.diagnostic.goto_prev, opts) -- jump to previous diagnostic in buffer
@@ -66,8 +69,11 @@ return {
     capabilities.offsetEncoding = { "utf-16" }
 
     local handlers = {
-      ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "single" }),
-      ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "single" }),
+      ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "single", max_width = 80 }),
+      ["textDocument/signatureHelp"] = vim.lsp.with(
+        vim.lsp.handlers.signature_help,
+        { border = "single", max_width = 80 }
+      ),
     }
     local signs = { Error = "● ", Warn = "● ", Info = "● ", Hint = "● " }
     for type, icon in pairs(signs) do
@@ -90,7 +96,7 @@ return {
       },
       severity_sort = true,
       float = {
-        source = "always",
+        source = true,
         border = "single",
         -- format = function(diagnostic)
         --   return string.format(
@@ -111,7 +117,7 @@ return {
     })
 
     -- configure typescript server with plugin
-    lspconfig["tsserver"].setup({
+    lspconfig["ts_ls"].setup({
       handlers = handlers,
       capabilities = capabilities,
       on_attach = on_attach,
