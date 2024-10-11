@@ -66,7 +66,9 @@ bindsym $mod+Shift+c kill
 bindsym $mod+p exec rofi -show drun -font "Hack 9" -display-drun ""
 
 # switch between opened windows with rofi
-bindsym $mod+Tab exec rofi -show window -width 200 -hide-scrollbar -font "Hack 9"
+# bindsym $mod+Tab exec rofi -show window -width 200 -hide-scrollbar -font "Hack 9"
+bindsym $mod+Tab exec ~/.config/i3/scripts/alt-tab.py next all
+bindsym $mod+Shift+Tab exec ~/.config/i3/scripts/alt-tab.py prev all
 
 # change focus
 # alternatively, you can use the cursor keys:
