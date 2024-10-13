@@ -12,7 +12,7 @@
 set $mod Mod1
 set $psst --no-startup-id
 
-# title_align center
+title_align center
 
 # default_border normal 2
 # default_floating_border normal 3
@@ -193,7 +193,8 @@ exec $psst /usr/lib/pam_kwallet_init
 exec $psst  dex --autostart --environment i3
 exec $psst  xss-lock --transfer-sleep-lock -- i3lock --nofork
 # exec $psst  feh --recursive --bg-fill --randomize $HOME/Pictures/Wallpapers/ 
-exec $psst  feh --bg-fill $HOME/Pictures/Wallpapers/anime-gruv-light.png
+# exec $psst  feh --bg-fill $HOME/Pictures/Wallpapers/anime-gruv-light.png
+exec $psst xsetroot -solid "#000000"
 exec_always $psst /usr/lib/polkit-kde-authentication-agent-1
 exec_always $psst autotiling
 exec_always $psst picom
@@ -208,7 +209,7 @@ exec --no-startup-id nm-applet
 ####################################################################
 #   Gaps
 ####################################################################
-gaps inner 10
+gaps inner 0
 gaps outer 0
 
 ####################################################################
@@ -348,9 +349,9 @@ mode "$mode_redshift" {
 
 # Black
 # client.focused          #000000  #000000  #FFFFFF  #FFFFFF  #000000
-client.focused          #0b0b0b  #0b0b0b  #FFFFFF  #FFFFFF  #0b0b0b
+client.focused          #0b0b0b  #0b0b0b  #bfa200  #bfa200  #0b0b0b
 client.focused_inactive #1f1f1f  #1f1f1f  #adadad  #222222
-client.unfocused        #222222  #222222  #414141  #292D2E  #222222
+client.unfocused        #2e2e2e  #2e2e2e  #414141  #292D2E  #2e2e2e
 client.urgent           #AA3941  #AA3941  #FFFFFF  #AA3941  #AA3941
 client.placeholder      #0C0C0C  #0C0C0C  #FFFFFF  #000000  #0C0C0C
 
