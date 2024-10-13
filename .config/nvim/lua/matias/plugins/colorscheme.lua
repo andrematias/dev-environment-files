@@ -74,7 +74,7 @@ return {
     config = function()
       require("modus-themes").setup({
         style = "auto",
-        variant = "default", -- Theme comes in four variants `default`, `tinted`, `deuteranopia`, and `tritanopia`
+        variant = "default",
         transparent = false,
         dim_inactive = false,
         hide_inactive_statusline = true,
@@ -149,6 +149,15 @@ return {
           }
 
           highlights.LineNr = {
+            bg = colors.bg_main,
+            fg = colors.yellow,
+          }
+
+          highlights.LineNrBelow = {
+            bg = colors.bg_main,
+          }
+
+          highlights.LineNrAbove = {
             bg = colors.bg_main,
           }
 
