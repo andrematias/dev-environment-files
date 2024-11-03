@@ -63,7 +63,7 @@ opt.conceallevel = 2
 wopt.foldmethod = "manual"
 
 -- window separator chars
-vim.o.fillchars = "vert:.,horiz:.,horizup:.,horizdown:.,verthoriz:.,vertright:.,vertleft:.,eob: "
+-- vim.o.fillchars = "vert:.,horiz:.,horizup:.,horizdown:.,verthoriz:.,vertright:.,vertleft:.,eob: "
 
 -- Disable nvim intro
 opt.shortmess:append("sI")

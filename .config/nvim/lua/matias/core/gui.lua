@@ -43,7 +43,7 @@ if vim.g.neovide then
     vim.g.neovide_padding_right = 4
     vim.g.neovide_padding_left = 4
   else
-    vim.opt.guifont = "IosevkaTerm Nerd Font:h12"
+    vim.opt.guifont = "FiraMono Nerd Font:h12"
     vim.g.neovide_refresh_rate = 144
   end
 

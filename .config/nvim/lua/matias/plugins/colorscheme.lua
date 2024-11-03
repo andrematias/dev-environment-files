@@ -60,6 +60,8 @@ return {
         dim_inactive = false,
         transparent_mode = false,
       })
+
+      vim.cmd.colorscheme("gruvbox")
     end,
   },
   {
@@ -171,7 +173,7 @@ return {
         end,
       })
 
-      vim.cmd.colorscheme("modus")
+      -- vim.cmd.colorscheme("modus")
     end,
   },
 }
