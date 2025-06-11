@@ -33,8 +33,9 @@ on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
     cmd-shift-k = 'move up'
     cmd-shift-l = 'move right'
 
-    # Consider using 'join-with' command as a 'split' replacement if you want to enable
-    # normalizations
+    cmd-backslash = 'layout tiles horizontal vertical'
+    cmd-minus     = 'layout accordion horizontal vertical'
+
     cmd-ctrl-h = 'join-with left'
     cmd-ctrl-j = 'join-with down'
     cmd-ctrl-k = 'join-with up'
@@ -57,6 +58,7 @@ on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
     cmd-7 = 'workspace 7'
     cmd-8 = 'workspace 8'
     cmd-9 = 'workspace 9'
+    cmd-0 = 'workspace 10'
 
     cmd-shift-1 = 'move-node-to-workspace 1'
     cmd-shift-2 = 'move-node-to-workspace 2'
@@ -67,13 +69,17 @@ on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
     cmd-shift-7 = 'move-node-to-workspace 7'
     cmd-shift-8 = 'move-node-to-workspace 8'
     cmd-shift-9 = 'move-node-to-workspace 9'
+    cmd-shift-0 = 'move-node-to-workspace 10'
+
+    cmd-shift-m = 'move-workspace-to-monitor --wrap-around next'
+    cmd-m = 'focus-monitor --wrap-around next'
 
     cmd-shift-r = 'reload-config'
 
     cmd-r = 'mode resize'
 
     # Programs keybindings
-    alt-enter = 'exec-and-forget open -a /Applications/Utilities/iTerm.app'
+    cmd-enter = 'exec-and-forget open -a /Applications/Utilities/iTerm.app'
 
 [mode.resize.binding]
     h = 'resize width -50'
