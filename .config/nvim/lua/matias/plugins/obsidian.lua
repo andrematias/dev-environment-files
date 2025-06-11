@@ -17,7 +17,7 @@ return {
       workspaces = {
         {
           name = "personal",
-          path = "~/Documents/vaults/braindump",
+          path = "~/projects/vaults/braindump",
         },
       },
       ui = {
