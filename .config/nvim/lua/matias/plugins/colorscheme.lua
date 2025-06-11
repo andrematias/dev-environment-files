@@ -5,7 +5,7 @@ return {
     config = function()
       local c = require("vscode.colors").get_colors()
       require("vscode").setup({
-        -- style = 'light',
+        style = "light",
         transparent = false,
         italic_comments = false,
 
@@ -61,7 +61,7 @@ return {
         transparent_mode = false,
       })
 
-      vim.cmd.colorscheme("gruvbox")
+      -- vim.cmd.colorscheme("gruvbox")
     end,
   },
   {
@@ -173,7 +173,7 @@ return {
         end,
       })
 
-      -- vim.cmd.colorscheme("modus")
+      vim.cmd.colorscheme("modus")
     end,
   },
 }
