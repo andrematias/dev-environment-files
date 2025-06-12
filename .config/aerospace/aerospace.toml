@@ -4,9 +4,9 @@ enable-normalization-opposite-orientation-for-nested-containers = true
 # Mouse follows focus when focused monitor changes
 on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 
-# [[on-window-detected]]
-# if.app-name-regex-substring = 'quicktime'
-# run = 'layout floating'
+[[on-window-detected]]
+if.app-name-regex-substring = 'Zoiper5'
+run = 'layout floating'
 
 [mode.main.binding]
     # All possible keys:
