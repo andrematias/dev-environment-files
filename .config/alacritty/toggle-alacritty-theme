@@ -1,0 +1,16 @@
+#!/bin/zsh
+
+CONFIG_DIR="$HOME/.config/alacritty/themes"
+MAIN_CONFIG="$HOME/.config/alacritty/alacritty.toml"
+
+# Desativa globbing para evitar problemas com `*` ou `[` no conteúdo do arquivo
+setopt NO_NOMATCH
+
+if grep -q "theme-dark.toml" "$MAIN_CONFIG"; then
+  sed -i '' 's/theme-dark\.toml/theme-light\.toml/' "$MAIN_CONFIG"
+else
+  sed -i '' 's/theme-light\.toml/theme-dark\.toml/' "$MAIN_CONFIG"
+fi
+
+# Envia sinal para recarregar as janelas do Alacritty
+#pkill -USR1 alacritty
