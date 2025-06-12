@@ -5,7 +5,6 @@ return {
     config = function()
       local c = require("vscode.colors").get_colors()
       require("vscode").setup({
-        style = "light",
         transparent = false,
         italic_comments = false,
 
@@ -20,7 +19,7 @@ return {
         },
       })
 
-      -- vim.cmd.colorscheme("vscode")
+      vim.cmd.colorscheme("vscode")
     end,
   },
   {
@@ -173,7 +172,7 @@ return {
         end,
       })
 
-      vim.cmd.colorscheme("modus")
+      -- vim.cmd.colorscheme("modus")
     end,
   },
 }
