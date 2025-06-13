@@ -1,0 +1,32 @@
+#!/bin/bash
+
+CONFIG="$HOME/.config/alacritty/alacritty.toml"
+DARK="theme-dark.toml"
+LIGHT="theme-light.toml"
+
+get_theme() {
+  if [[ "$(defaults read -g AppleInterfaceStyle 2>/dev/null)" == "Dark" ]]; then
+    echo "dark"
+  else
+    echo "light"
+  fi
+}
+
+apply_theme() {
+  if [[ "$1" == "dark" ]]; then
+    sed -i '' "s/$LIGHT/$DARK/" "$CONFIG"
+  else
+    sed -i '' "s/$DARK/$LIGHT/" "$CONFIG"
+  fi
+}
+
+# inicial
+last_mode=""
+while true; do
+  current_mode=$(get_theme)
+  if [[ "$current_mode" != "$last_mode" ]]; then
+    apply_theme "$current_mode"
+    last_mode="$current_mode"
+  fi
+  sleep 1
+done
