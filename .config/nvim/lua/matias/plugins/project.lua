@@ -10,7 +10,7 @@ return {
       detection_methods = { "pattern" },
       patterns = { ".git" },
       show_hidden = true,
-      silent_chdir = false,
+      silent_chdir = true,
       datapath = vim.fn.stdpath("data"),
     })
   end,
