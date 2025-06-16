@@ -6,6 +6,7 @@ return {
     dependencies = {
       "nvim-treesitter/nvim-treesitter-textobjects",
       "windwp/nvim-ts-autotag",
+      "JoosepAlviste/nvim-ts-context-commentstring",
     },
     config = function()
       -- import nvim-treesitter plugin
@@ -13,8 +14,19 @@ return {
 
       -- configure treesitter
       treesitter.setup({ -- enable syntax highlighting
+        ensure_installed = {
+          "lua",
+          "javascript",
+          "typescript",
+          "go",
+          "markdown",
+          "markdown_inline",
+        },
+        auto_install = true,
         highlight = {
           enable = true,
+          -- additional_vim_regex_highlighting = false,
+          additional_vim_regex_highlighting = { "markdown" },
         },
         -- enable indentation
         indent = { enable = true },
