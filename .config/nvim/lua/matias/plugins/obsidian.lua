@@ -21,7 +21,7 @@ return {
         },
       },
       ui = {
-        enable = true,
+        enable = false,
         update_debounce = 200,
         checkboxes = {
           [" "] = { char = "󰄱", hl_group = "ObsidianTodo" },
