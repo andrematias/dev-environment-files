@@ -77,8 +77,8 @@ return {
         atx = true,
         setext = true,
         sign = true,
-        -- icons = { ' ' },
-        icons = { '󰭰 ' },
+        icons = { ' ' },
+        -- icons = { '󰭰 ' },
         -- icons = { '󰲡 ', '󰲣 ', '󰲥 ', '󰲧 ', '󰲩 ', '󰲫 ' },
         position = 'overlay',
         signs = { '󰫎 ' },
@@ -158,13 +158,22 @@ return {
         scope_highlight = {},
       },
       latex = {
-        enabled = true,
+        enabled = false,
         render_modes = false,
         converter = 'latex2text',
         highlight = 'RenderMarkdownMath',
         position = 'above',
         top_pad = 0,
         bottom_pad = 0,
+      },
+      win_options = { conceallevel = { rendered = 2 } },
+      on = {
+          render = function()
+              require('nabla').enable_virt({ autogen = true })
+          end,
+          clear = function()
+              require('nabla').disable_virt()
+          end,
       },
     })
   end,
