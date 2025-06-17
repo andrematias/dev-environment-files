@@ -1,7 +1,7 @@
 return {
   "jbyuki/nabla.nvim",
   dependencies = {
-    "nvim-neo-tree/neo-tree.nvim",
+    -- "nvim-neo-tree/neo-tree.nvim",
     "williamboman/mason.nvim",
   },
   lazy = true,
