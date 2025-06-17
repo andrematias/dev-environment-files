@@ -3,6 +3,7 @@ local opt = vim.opt -- for conciseness
 local g = vim.g -- Global variables
 
 opt.spell = false
+opt.winborder = "rounded"
 
 -- line numbers
 opt.relativenumber = true -- show relative line numbers
