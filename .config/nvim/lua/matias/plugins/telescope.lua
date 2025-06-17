@@ -12,6 +12,7 @@ return {
 
     telescope.setup({
       defaults = {
+        border = true,
         prompt_prefix = "  ",
         selection_caret = "> ",
         path_display = { "truncate" },
@@ -54,6 +55,20 @@ return {
           find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
         },
       },
+    })
+
+    -- fix winborder
+    vim.api.nvim_create_autocmd("User", {
+      pattern = "TelescopeFindPre",
+      callback = function()
+        vim.opt_local.winborder = "none"
+        vim.api.nvim_create_autocmd("WinLeave", {
+          once = true,
+          callback = function()
+            vim.opt_local.winborder = "rounded"
+          end,
+        })
+      end,
     })
 
     telescope.load_extension("projects")
