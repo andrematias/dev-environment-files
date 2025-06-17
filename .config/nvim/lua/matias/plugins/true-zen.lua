@@ -10,8 +10,8 @@ return {
           shade = "dark", -- if `dark` then dim the padding windows, otherwise if it's `light` it'll brighten said windows
           backdrop = 0, -- percentage by which padding windows should be dimmed/brightened. Must be a number between 0 and 1. Set to 0 to keep the same background color
           minimum_writing_area = { -- minimum size of main window
-            width = 70,
-            height = 44,
+            width = 100,
+            height = 100,
           },
           quit_untoggles = true, -- type :q or :qa to quit Ataraxis mode
           padding = { -- padding windows
@@ -84,6 +84,6 @@ return {
     keymap.set("v", "<leader>zn", "<cmd>'<,'>TZNarrow<CR>", { noremap = true, desc = "Set True Zen Narrow" })
     keymap.set("n", "<leader>zf", "<cmd>TZFocus<CR>", { noremap = true, desc = "Set True Zen Focus" })
     keymap.set("n", "<leader>zm", "<cmd>TZMinimalist<CR>", { noremap = true, desc = "Set True Zen Minimalist" })
-    keymap.set("n", "<leader>za", "<cmd>TZAtaraxis<CR>", { noremap = true, desc = "Set True Zen Ataraxis" })
+    keymap.set("n", "<leader>zz", "<cmd>TZAtaraxis<CR>", { noremap = true, desc = "Set True Zen Ataraxis" })
   end,
 }
