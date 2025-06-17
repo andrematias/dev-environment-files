@@ -64,17 +64,16 @@ return {
       keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts) -- mapping to restart lsp if necessary
     end
 
+    vim.lsp.buf.hover({
+      border = "rounded",
+      max_width = math.floor(vim.o.columns * 0.3),
+      max_height = math.floor(vim.o.lines * 0.3),
+    })
+
     -- used to enable autocompletion (assign to every lsp server config)
     local capabilities = cmp_nvim_lsp.default_capabilities()
     capabilities.offsetEncoding = { "utf-16" }
 
-    local handlers = {
-      ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "single", max_width = 80 }),
-      ["textDocument/signatureHelp"] = vim.lsp.with(
-        vim.lsp.handlers.signature_help,
-        { border = "single", max_width = 80 }
-      ),
-    }
     local signs = { Error = "● ", Warn = "● ", Info = "● ", Hint = "● " }
     for type, icon in pairs(signs) do
       local hl = "DiagnosticSign" .. type
@@ -111,28 +110,24 @@ return {
 
     -- configure html server
     lspconfig["html"].setup({
-      handlers = handlers,
       capabilities = capabilities,
       on_attach = on_attach,
     })
 
     -- configure typescript server with plugin
     lspconfig["ts_ls"].setup({
-      handlers = handlers,
       capabilities = capabilities,
       on_attach = on_attach,
     })
 
     -- configure css server
     lspconfig["cssls"].setup({
-      handlers = handlers,
       capabilities = capabilities,
       on_attach = on_attach,
     })
 
     -- configure emmet language server
     lspconfig["emmet_ls"].setup({
-      handlers = handlers,
       capabilities = capabilities,
       on_attach = on_attach,
       filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "svelte" },
@@ -160,14 +155,14 @@ return {
       on_init = function(client)
         client.config.settings.python.pythonPath = get_python_path(client.config.root_dir)
       end,
-      handlers = handlers,
+      -- handlers = handlers,
       capabilities = capabilities,
       on_attach = on_attach,
     })
 
     -- configure lua server (with special settings)
     lspconfig["lua_ls"].setup({
-      handlers = handlers,
+      -- handlers = handlers,
       capabilities = capabilities,
       on_attach = on_attach,
       settings = { -- custom settings for lua
@@ -189,35 +184,30 @@ return {
 
     -- configure php lsp server
     lspconfig["intelephense"].setup({
-      handlers = handlers,
       capabilities = capabilities,
       on_attach = on_attach,
     })
 
     -- configure clang lsp server
     lspconfig["clangd"].setup({
-      handlers = handlers,
       capabilities = capabilities,
       on_attach = on_attach,
     })
 
     -- configure cmake lsp server
     lspconfig["neocmake"].setup({
-      handlers = handlers,
       capabilities = capabilities,
       on_attach = on_attach,
     })
 
     -- configure docker language server
     lspconfig["dockerls"].setup({
-      handlers = handlers,
       capabilities = capabilities,
       on_attach = on_attach,
     })
 
     -- configure go language server
     lspconfig["gopls"].setup({
-      handlers = handlers,
       capabilities = capabilities,
       on_attach = on_attach,
     })
