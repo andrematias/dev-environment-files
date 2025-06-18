@@ -1,7 +1,7 @@
 font-family = JetBrainsMono Nerd Font
 font-feature = +liga 
 font-size = 16
-theme = light:Github,dark:GruvboxDarkHard
+theme = light:Apple System Colors Light,dark:GruvboxDarkHard
 keybind = super+comma=open_config
 keybind = super+shift+comma=reload_config
 window-padding-x = 2
