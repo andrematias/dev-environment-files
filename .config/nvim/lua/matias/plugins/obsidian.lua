@@ -3,10 +3,6 @@ return {
   version = "*",
   lazy = false,
   ft = "markdown",
-  -- event = {
-  --   "BufReadPre " .. vim.fn.expand("~") .. "Documents/braindump/**.md",
-  --   "BufNewFile " .. vim.fn.expand("~") .. "Documents/braindump/**.md",
-  -- },
   dependencies = {
     "nvim-lua/plenary.nvim",
   },
@@ -15,10 +11,52 @@ return {
     ob.setup({
       workspaces = {
         {
-          name = "personal",
-          path = "~/projects/vaults/braindump",
+          name = "Braindump",
+          path = "~/Projects/vaults/braindump",
+          overrides = {
+            notes_subdir = "Zettelkasten",
+          },
+        },
+        {
+          name = "Mutant",
+          path = "~/projects/vaults/mutant",
+        },
+        {
+          name = "EB2",
+          path = "~/Projects/vaults/EB2",
+          overrides = {
+            notes_subdir = "Notes",
+          },
         },
       },
+      note_id_func = function(title)
+        local suffix = ""
+        if title ~= nil then
+          suffix = "_" .. title:gsub(" ", "_"):gsub("[^A-Za-z0-9_]", "")
+        end
+        return os.date("%Y%m%d%H%M") .. suffix
+      end,
+      templates = {
+        subdir = "Templates",
+        date_format = "%Y-%m-%d",
+        time_format = "%H:%M",
+        substitutions = {},
+      },
+      attachments = {
+        img_folder = "Attachments",
+        img_text_func = function(client, path)
+          local link_path
+          local vault_relative_path = client:vault_relative_path(path)
+          if vault_relative_path ~= nil then
+            link_path = vault_relative_path
+          else
+            link_path = tostring(path)
+          end
+          local display_name = vim.fs.basename(link_path)
+          return string.format("![%s](%s)", display_name, link_path)
+        end,
+      },
+
       ui = {
         enable = false,
         update_debounce = 200,
@@ -44,33 +82,6 @@ return {
           ObsidianTag = { italic = true, fg = "#89ddff" },
           ObsidianHighlightText = { bg = "#75662e" },
         },
-      },
-      templates = {
-        subdir = "Templates",
-        date_format = "%Y-%m-%d",
-        time_format = "%H:%M",
-        substitutions = {},
-      },
-      daily_notes = {
-        folder = "Diary",
-        date_format = "%Y-%m-%d",
-        alias_format = "%B %-d, %Y",
-        template = nil,
-      },
-      -- Specify how to handle attachments.
-      attachments = {
-        img_folder = "Attachments",
-        img_text_func = function(client, path)
-          local link_path
-          local vault_relative_path = client:vault_relative_path(path)
-          if vault_relative_path ~= nil then
-            link_path = vault_relative_path
-          else
-            link_path = tostring(path)
-          end
-          local display_name = vim.fs.basename(link_path)
-          return string.format("![%s](%s)", display_name, link_path)
-        end,
       },
     })
 
