@@ -2,8 +2,9 @@ return {
   "lervag/vimtex",
   init = function()
     -- Viewer settings
-    vim.g.vimtex_view_method = "skim"
-    vim.g.vimtex_context_pdf_viewer = "skim"
+    vim.g.vimtex_view_method = "zathura"
+    vim.g.vimtex_context_pdf_viewer = "zathura"
+    vim.g.vimtex_view_zathura_use_synctex = 0
 
     -- Indentation settings
     vim.g.vimtex_indent_enabled = false
