@@ -22,7 +22,7 @@ augroup("setPencilMode", { clear = true })
 autocmd("Filetype", {
   group = "setPencilMode",
   pattern = { "mkd", "markdown" },
-  command = "PencilSoft | setlocal conceallevel=2 spell spelllang=pt_br,en_us",
+  command = "PencilHard | setlocal conceallevel=2 spell spelllang=pt_br,en_us",
 })
 
 autocmd("Filetype", {
