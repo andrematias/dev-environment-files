@@ -24,6 +24,7 @@ style = "Italic"
 
 [font.normal]
 family = "JetBrainsMono Nerd Font"
+style = "ExtraLight"
 
 [[keyboard.bindings]] 
 key = "F6"
