@@ -1,0 +1,39 @@
+" settings
+set scrolloff=5
+set incsearch
+set showcmd
+set visualbell
+set clipboard+=unnamed
+set commentary
+
+" map
+map U <C-R>
+map U <C-R>
+vnoremap > >gv
+vnoremap < <gv
+
+" Action map
+nnoremap /  :action Find<CR>
+nnoremap <S-h> :action PreviousTab<CR>
+nnoremap <S-l> :action NextTab<CR>
+
+" Leader map
+let mapleader=' '
+noremap <Leader>rc :e ~/.ideavimrc<CR>
+noremap <Leader>s :source ~/.ideavimrc<CR>
+
+" IDEA action
+nnoremap <Leader>re :action RenameElement<CR>
+nnoremap <Leader>gi :action GotoImplementation<CR>
+nnoremap <Leader>im :action ImplementMethods<CR>
+nnoremap <Leader>rv :action IntroduceVariable<CR>
+nnoremap <Leader>cr :action CopyReference<CR>
+nnoremap <Leader>em :action ExtractMethod<CR>
+nnoremap <Leader>sw :action SurroundWith<CR>
+nnoremap <Leader>rr :action Run<CR>
+nnoremap <Leader>rs :action Stop<CR>
+nnoremap <Leader>rd :action Debug<CR>
+nnoremap <Leader>ff :action SearchEverywhere<CR>
+nnoremap <Leader>fr :action RecentFiles<CR>
+nnoremap <Leader>[ :action PreviousTab<CR>
+nnoremap <Leader>] :action NextTab<CR>
