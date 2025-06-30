@@ -12,7 +12,7 @@ return {
       workspaces = {
         {
           name = "Braindump",
-          path = "~/Projects/vaults/braindump",
+          path = "~/projects/vaults/braindump",
           overrides = {
             notes_subdir = "Zettelkasten",
           },
@@ -23,7 +23,7 @@ return {
         },
         {
           name = "EB2",
-          path = "~/Projects/vaults/EB2",
+          path = "~/projects/vaults/EB2",
           overrides = {
             notes_subdir = "Notes",
           },
@@ -58,7 +58,7 @@ return {
       },
 
       ui = {
-        enable = false,
+        enable = true,
         update_debounce = 200,
         checkboxes = {
           [" "] = { char = "󰄱", hl_group = "ObsidianTodo" },
@@ -70,7 +70,7 @@ return {
         external_link_icon = { char = "", hl_group = "ObsidianExtLinkIcon" },
         reference_text = { hl_group = "ObsidianRefText" },
         highlight_text = { hl_group = "ObsidianHighlightText" },
-        tags = { hl_group = "ObsidianTag" },
+        tags = { char = "", hl_group = "ObsidianTag" },
         hl_groups = {
           ObsidianTodo = { bold = true },
           ObsidianDone = { bold = true },

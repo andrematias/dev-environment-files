@@ -22,6 +22,7 @@ return {
           "markdown",
           "markdown_inline",
         },
+        ignore_install = { "latex" },
         auto_install = true,
         highlight = {
           enable = true,
