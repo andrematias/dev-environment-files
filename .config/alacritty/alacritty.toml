@@ -1,5 +1,11 @@
 [general]
-import = [ "~/.config/alacritty/themes/theme-light.toml" ]
+import = [ "~/.config/alacritty/themes/theme-dark.toml" ]
+
+[cursor]
+blink_interval = 300
+blink_timeout = 0
+style.shape = "Beam"
+style.blinking = "Always"
 
 [colors]
 draw_bold_text_with_bright_colors = true
@@ -8,7 +14,7 @@ draw_bold_text_with_bright_colors = true
 TERM = "xterm-256color"
 
 [font]
-size = 16
+size = 13
 
 [font.bold]
 family = "JetBrainsMono Nerd Font"
@@ -24,7 +30,7 @@ style = "Italic"
 
 [font.normal]
 family = "JetBrainsMono Nerd Font"
-style = "ExtraLight"
+style = "Light"
 
 [[keyboard.bindings]] 
 key = "F6"
@@ -51,29 +57,19 @@ mode = "~Vi"
 mods = "Control"
 
 [[keyboard.bindings]]
-action = "ScrollPageUp"
-key = "PageUp"
-mode = "~Alt"
-mods = "Shift"
+action = "ScrollLineUp"
+key = "K"
+mods = "Control|Shift"
 
 [[keyboard.bindings]]
-action = "ScrollPageDown"
-key = "PageDown"
-mode = "~Alt"
-mods = "Shift"
+action = "ScrollLineDown"
+key = "J"
+mods = "Control|Shift"
 
 [[keyboard.bindings]]
-action = "ScrollToTop"
-key = "Home"
-mode = "~Alt"
-mods = "Shift"
-
-[[keyboard.bindings]]
-action = "ScrollToBottom"
-key = "End"
-mode = "~Alt"
-mods = "Shift"
-
+action = "ToggleViMode"
+key = "Space"
+mods = "Control"
 
 [[mouse.bindings]]
 action = "PasteSelection"
@@ -81,12 +77,11 @@ mouse = "Middle"
 
 [scrolling]
 history = 10000
-multiplier = 3
+multiplier = 1
 
 [terminal.shell]
 args = ["--login"]
 program = "/bin/zsh"
-
 
 [window]
 decorations = "full"
@@ -94,6 +89,4 @@ dynamic_padding = true
 
 [window.class]
 instance = "Alacritty"
-
-[terminal]
 
