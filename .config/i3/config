@@ -14,12 +14,13 @@ set $psst --no-startup-id
 
 title_align center
 
-default_border normal 1
+default_border normal 3
 # default_floating_border normal 3
 # default_border pixel 3
 
 # hide_edge_borders smart
 for_window [all] title_window_icon off
+
 # new_window normal 0
 
 # Font for window titles. Will also be used by the bar unless a different font
@@ -367,18 +368,18 @@ mode "$mode_redshift" {
 # client.focused          #ffa202 #cb6d02 #FFFFFF #4C7899   #ffa202
 
 # Orange
-# client.focused          #ad3c03 #ad3c03 #ffffff #b8bb26   #ad3c03
-# client.focused_inactive #222222 #222222 #414141 #292D2E   #222222
-# client.unfocused        #222222 #222222 #414141 #292D2E   #222222
-# client.urgent           #AA3941 #AA3941 #FFFFFF #AA3941   #AA3941
-# client.placeholder      #0C0C0C #0C0C0C #FFFFFF #000000   #0C0C0C
+client.focused          #ad3c03 #ad3c03 #ffffff #b8bb26   #ad3c03
+client.focused_inactive #222222 #222222 #414141 #292D2E   #222222
+client.unfocused        #222222 #222222 #414141 #292D2E   #222222
+client.urgent           #AA3941 #AA3941 #FFFFFF #AA3941   #AA3941
+client.placeholder      #0C0C0C #0C0C0C #FFFFFF #000000   #0C0C0C
 
 # VSCode
-client.focused           #1360A5 #1360A5 #ffffff #2e9ef4 #1360A5
-client.focused_inactive  #242D3E #313F56 #ffffff #2e9ef4 #242D3E
-client.unfocused         #333333 #212A39 #888888 #292d2e #222222
-
-client.background       #FFFFFF
+# client.focused           #1360A5 #1360A5 #ffffff #2e9ef4 #1360A5
+# client.focused_inactive  #242D3E #313F56 #ffffff #2e9ef4 #242D3E
+# client.unfocused         #333333 #212A39 #888888 #292d2e #222222
+#
+# client.background       #FFFFFF
 
 # B&W
 # client.focused #9b8d7f #9b8d7f #000000 #9b8d7f #9b8d7f
