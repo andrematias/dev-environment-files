@@ -6,5 +6,19 @@
 
 config_version: 2
 settings:
+  colors.tabs.bar.bg:
+    global: '#00000000'
+  colors.webpage.darkmode.algorithm:
+    global: lightness-cielab
+  colors.webpage.darkmode.enabled:
+    global: false
+  tabs.padding:
+    global:
+      bottom: 0
+      left: 5
+      right: 5
+      top: 0
+  tabs.position:
+    global: top
   tabs.show:
     global: switching
