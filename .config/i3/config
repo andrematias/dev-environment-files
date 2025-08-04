@@ -21,6 +21,9 @@ default_border normal 3
 # hide_edge_borders smart
 for_window [all] title_window_icon off
 
+# center all floating window
+for_window [floating] move position center
+
 # new_window normal 0
 
 # Font for window titles. Will also be used by the bar unless a different font
