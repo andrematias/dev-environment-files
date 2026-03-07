@@ -8,7 +8,7 @@ return {
   },
   config = function()
     -- import lspconfig plugin
-    local lspconfig = require("lspconfig")
+    local lspconfig = vim.lsp.config
     local util = require("lspconfig/util")
     local path = util.path
 
@@ -52,10 +52,14 @@ return {
       end, opts) -- show diagnostics for line
 
       opts.desc = "Go to previous diagnostic"
-      keymap.set("n", "[d", vim.diagnostic.goto_prev, opts) -- jump to previous diagnostic in buffer
+      keymap.set("n", "[d", function()
+        vim.diagnostic.jump({ count = 1 })
+      end, opts) -- jump to previous diagnostic in buffer
 
       opts.desc = "Go to next diagnostic"
-      keymap.set("n", "]d", vim.diagnostic.goto_next, opts) -- jump to next diagnostic in buffer
+      keymap.set("n", "]d", function()
+        vim.diagnostic.jump({ count = 1 })
+      end, opts) -- jump to next diagnostic in buffer
 
       opts.desc = "Show documentation for what is under cursor"
       keymap.set("n", "K", vim.lsp.buf.hover, opts) -- show documentation for what is under cursor
@@ -109,25 +113,25 @@ return {
     })
 
     -- configure html server
-    lspconfig["html"].setup({
+    lspconfig("html", {
       capabilities = capabilities,
       on_attach = on_attach,
     })
 
     -- configure typescript server with plugin
-    lspconfig["ts_ls"].setup({
+    lspconfig("ts_ls", {
       capabilities = capabilities,
       on_attach = on_attach,
     })
 
     -- configure css server
-    lspconfig["cssls"].setup({
+    lspconfig("cssls", {
       capabilities = capabilities,
       on_attach = on_attach,
     })
 
     -- configure emmet language server
-    lspconfig["emmet_ls"].setup({
+    lspconfig("emmet_ls", {
       capabilities = capabilities,
       on_attach = on_attach,
       filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "svelte" },
@@ -151,18 +155,16 @@ return {
       return vim.fn.exepath("python3") or vim.fn.exepath("python") or "python"
     end
 
-    lspconfig["pyright"].setup({
+    lspconfig("pyright", {
       on_init = function(client)
         client.config.settings.python.pythonPath = get_python_path(client.config.root_dir)
       end,
-      -- handlers = handlers,
       capabilities = capabilities,
       on_attach = on_attach,
     })
 
     -- configure lua server (with special settings)
-    lspconfig["lua_ls"].setup({
-      -- handlers = handlers,
+    lspconfig("lua_ls", {
       capabilities = capabilities,
       on_attach = on_attach,
       settings = { -- custom settings for lua
@@ -183,44 +185,42 @@ return {
     })
 
     -- configure php lsp server
-    lspconfig["intelephense"].setup({
+    lspconfig("intelephense", {
       capabilities = capabilities,
       on_attach = on_attach,
     })
 
     -- configure clang lsp server
-    lspconfig["clangd"].setup({
+    lspconfig("clangd", {
       capabilities = capabilities,
       on_attach = on_attach,
     })
 
     -- configure cmake lsp server
-    lspconfig["neocmake"].setup({
+    lspconfig("neocmake", {
       capabilities = capabilities,
       on_attach = on_attach,
     })
 
     -- configure docker language server
-    lspconfig["dockerls"].setup({
+    lspconfig("dockerls", {
       capabilities = capabilities,
       on_attach = on_attach,
     })
 
     -- configure go language server
-    lspconfig["gopls"].setup({
+    lspconfig("gopls", {
       capabilities = capabilities,
       on_attach = on_attach,
     })
 
     -- configure go language server
-    lspconfig["gopls"].setup({
-      handlers = handlers,
+    lspconfig("gopls", {
       capabilities = capabilities,
       on_attach = on_attach,
     })
 
-    lspconfig["tailwindcss"].setup({
-      handlers = handlers,
+    lspconfig("tailwindcss", {
       capabilities = capabilities,
       on_attach = on_attach,
     })
