@@ -21,4 +21,4 @@ settings:
   tabs.position:
     global: top
   tabs.show:
-    global: switching
+    global: always
