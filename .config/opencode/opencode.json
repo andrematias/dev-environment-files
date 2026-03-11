@@ -5,6 +5,20 @@
     "edit": "ask",
     "write": "ask"
   },
+  "mcp": {
+    "pycharm": {
+      "command": [
+        "/opt/pycharm/jbr/bin/java",
+        "-classpath",
+        "/opt/pycharm/plugins/mcpserver/lib/mcpserver-frontend.jar:/opt/pycharm/lib/util-8.jar:/opt/pycharm/lib/module-intellij.libraries.ktor.client.cio.jar:/opt/pycharm/lib/module-intellij.libraries.ktor.client.jar:/opt/pycharm/lib/module-intellij.libraries.ktor.network.tls.jar:/opt/pycharm/lib/module-intellij.libraries.ktor.io.jar:/opt/pycharm/lib/module-intellij.libraries.ktor.utils.jar:/opt/pycharm/lib/module-intellij.libraries.kotlinx.io.jar:/opt/pycharm/lib/module-intellij.libraries.kotlinx.serialization.core.jar:/opt/pycharm/lib/module-intellij.libraries.kotlinx.serialization.json.jar",
+        "com.intellij.mcpserver.stdio.McpStdioRunnerKt"
+      ],
+      "environment": {
+        "IJ_MCP_SERVER_PORT": "64342"
+      },
+      "type": "local"
+    }
+  },
   "provider": {
     "ollama": {
       "npm": "@ai-sdk/openai-compatible",
