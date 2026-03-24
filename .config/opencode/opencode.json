@@ -5,6 +5,7 @@
     "edit": "ask",
     "write": "ask"
   },
+  "formatter": false,
   "mcp": {
     "jira": {
       "type": "remote",
