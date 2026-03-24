@@ -6,6 +6,22 @@
     "write": "ask"
   },
   "mcp": {
+    "jira": {
+      "type": "remote",
+      "url": "https://mcp.atlassian.com/v1/mcp",
+    },
+    "intellij": {
+      "command": [
+        "/opt/intellij-idea-ultimate-edition/jbr/bin/java",
+        "-classpath",
+        "/opt/intellij-idea-ultimate-edition/plugins/mcpserver/lib/mcpserver-frontend.jar:/opt/intellij-idea-ultimate-edition/lib/util-8.jar:/opt/intellij-idea-ultimate-edition/lib/module-intellij.libraries.ktor.client.cio.jar:/opt/intellij-idea-ultimate-edition/lib/module-intellij.libraries.ktor.client.jar:/opt/intellij-idea-ultimate-edition/lib/module-intellij.libraries.ktor.network.tls.jar:/opt/intellij-idea-ultimate-edition/lib/module-intellij.libraries.ktor.io.jar:/opt/intellij-idea-ultimate-edition/lib/module-intellij.libraries.ktor.utils.jar:/opt/intellij-idea-ultimate-edition/lib/module-intellij.libraries.kotlinx.io.jar:/opt/intellij-idea-ultimate-edition/lib/module-intellij.libraries.kotlinx.serialization.core.jar:/opt/intellij-idea-ultimate-edition/lib/module-intellij.libraries.kotlinx.serialization.json.jar",
+        "com.intellij.mcpserver.stdio.McpStdioRunnerKt"
+      ],
+      "environment": {
+        "IJ_MCP_SERVER_PORT": "64343"
+      },
+      "type": "local"
+    },
     "pycharm": {
       "command": [
         "/opt/pycharm/jbr/bin/java",
