@@ -9,16 +9,16 @@ Antes de iniciar, pergunte ao usuário o identificador da feature ou correção 
 ## Verificação de pré-condições
 
 Verifique se os seguintes arquivos existem:
-- `.specs/backlog/in-progress/[ID]/00-SPEC.md` — se não existir, informe que a SPEC precisa ser criada primeiro (`/sdd-create-spec`). Não prossiga.
-- `.specs/backlog/in-progress/[ID]/01-PLAN.md` — se não existir, informe que o PLAN precisa ser criado primeiro (`/sdd-create-plan`). Não prossiga.
-- `.specs/backlog/in-progress/[ID]/02-TASKS.md` — se não existir, informe que as TASKS precisam ser criadas primeiro (`/sdd-create-tasks`). Não prossiga.
+- `.specs/backlog/in-progress/[ID]/00-spec.md` — se não existir, informe que a SPEC precisa ser criada primeiro (`/sdd-create-spec`). Não prossiga.
+- `.specs/backlog/in-progress/[ID]/01-plan.md` — se não existir, informe que o PLAN precisa ser criado primeiro (`/sdd-create-plan`). Não prossiga.
+- `.specs/backlog/in-progress/[ID]/02-tasks.md` — se não existir, informe que as TASKS precisam ser criadas primeiro (`/sdd-create-tasks`). Não prossiga.
 
 ## Leitura dos documentos
 
 Leia os três documentos na seguinte ordem antes de escrever qualquer código:
-1. SPEC: `.specs/backlog/in-progress/[ID]/00-SPEC.md` — entenda o problema, os requisitos e os critérios de aceite.
-2. PLAN: `.specs/backlog/in-progress/[ID]/01-PLAN.md` — entenda os componentes, contratos, fluxo e estratégia de testes.
-3. TASKS: `.specs/backlog/in-progress/[ID]/02-TASKS.md` — esta é a lista de execução a seguir.
+1. SPEC: `.specs/backlog/in-progress/[ID]/00-spec.md` — entenda o problema, os requisitos e os critérios de aceite.
+2. PLAN: `.specs/backlog/in-progress/[ID]/01-plan.md` — entenda os componentes, contratos, fluxo e estratégia de testes.
+3. TASKS: `.specs/backlog/in-progress/[ID]/02-tasks.md` — esta é a lista de execução a seguir.
 
 ## Execução
 
@@ -28,7 +28,7 @@ Para cada tarefa:
 1. Informe ao usuário qual tarefa está sendo executada.
 2. Execute a tarefa (crie ou edite os arquivos necessários).
 3. Após concluir, marque a tarefa como feita no arquivo TASKS trocando `- [ ]` por `- [x]`.
-4. Salve o arquivo `.specs/backlog/in-progress/[ID]/02-TASKS.md` com o progresso atualizado.
+4. Salve o arquivo `.specs/backlog/in-progress/[ID]/02-tasks.md` com o progresso atualizado.
 5. Pergunte ao usuário se quer prosseguir para a próxima tarefa ou pausar.
 
 ## Registro de decisões e débitos técnicos
@@ -36,12 +36,12 @@ Para cada tarefa:
 Sempre que surgir uma decisão de implementação não prevista no PLAN (escolha de biblioteca, abordagem alternativa, ajuste de contrato, etc.):
 - Informe ao usuário a decisão que precisa ser tomada.
 - Aguarde orientação ou proponha opções com prós e contras.
-- Após a decisão, registre-a imediatamente na seção "Decisões de implementação" do arquivo `.specs/backlog/in-progress/[ID]/03-TECH_NOTES.md` usando o formato do template em `~/.config/opencode/skills/sdd/templates/03-TECH_NOTES.template.md`.
+- Após a decisão, registre-a imediatamente na seção "Decisões de implementação" do arquivo `.specs/backlog/in-progress/[ID]/03-tech-notes.md` usando o formato do template em `~/.config/opencode/skills/sdd/templates/03-tech-notes.template.md`.
 - Continue a execução.
 
 Sempre que identificar um débito técnico (algo feito de forma não ideal por restrição de tempo, complexidade ou dependência externa):
 - Informe ao usuário o débito identificado.
-- Registre-o imediatamente na seção "Débitos técnicos" do arquivo `.specs/backlog/in-progress/[ID]/03-TECH_NOTES.md`.
+- Registre-o imediatamente na seção "Débitos técnicos" do arquivo `.specs/backlog/in-progress/[ID]/03-tech-notes.md`.
 - Continue a execução.
 
 ## Atualização do status das TASKS
@@ -61,16 +61,16 @@ Se o usuário confirmar, execute o checklist abaixo na ordem. Para cada item, in
 ### Checklist de encerramento
 
 **1. Tarefas**
-- Verifique se todas as tarefas em `.specs/backlog/in-progress/[ID]/02-TASKS.md` estão marcadas com `[x]`.
+- Verifique se todas as tarefas em `.specs/backlog/in-progress/[ID]/02-tasks.md` estão marcadas com `[x]`.
 - Se houver tarefas abertas (`[ ]`): liste-as e pergunte ao usuário se quer continuar a implementação ou ignorar intencionalmente cada uma.
 
 **2. Critérios de aceite**
-- Leia cada CA da SPEC em `.specs/backlog/in-progress/[ID]/00-SPEC.md`.
+- Leia cada CA da SPEC em `.specs/backlog/in-progress/[ID]/00-spec.md`.
 - Para cada CA, pergunte ao usuário se foi atendido ou requer verificação manual.
 - Liste o resultado: CA01 ✓, CA02 ✓, CA03 ✗ (verificação manual necessária), etc.
 
 **3. Débitos técnicos**
-- Verifique se o arquivo `.specs/backlog/in-progress/[ID]/03-TECH_NOTES.md` existe.
+- Verifique se o arquivo `.specs/backlog/in-progress/[ID]/03-tech-notes.md` existe.
 - Se existir, liste os débitos registrados na seção "Débitos técnicos" para o usuário revisar e confirmar que estão documentados.
 
 **4. Mover para done**

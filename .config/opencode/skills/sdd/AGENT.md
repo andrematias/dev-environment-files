@@ -24,7 +24,7 @@ Each skill is defined by a `SKILL.md` file with YAML frontmatter (`name`, `descr
 Skills follow a strict sequential order. Each stage depends on the previous:
 
 ```
-SPEC (what & why) → PLAN (how) → TASKS (execution checklist) → IMPLEMENTATION_DECISIONS (rationale log)
+SPEC (what & why) → PLAN (how) → TASKS (execution checklist) → TECH_NOTES (decisions + technical debts)
 ```
 
 Documents are placed under `.specs/backlog/in-progress/[ID]/` where `[ID]` is the feature/fix identifier in kebab-case (e.g. `add-cache-layer`).
@@ -36,10 +36,10 @@ skills/
 ├── sdd/                  ← orchestrator skill + shared templates
 │   ├── SKILL.md
 │   └── templates/
-│       ├── 00-SPEC.template.md
-│       ├── 01-PLAN.template.md
-│       ├── 02-TASKS.template.md
-│       └── 03-IMPLEMENTATION_DECISIONS.template.md
+│       ├── 00-spec.template.md
+│       ├── 01-plan.template.md
+│       ├── 02-tasks.template.md
+│       └── 03-tech-notes.template.md
 ├── sdd-create-spec/
 │   └── SKILL.md
 ├── sdd-create-plan/
@@ -52,10 +52,10 @@ skills/
 
 ## Template Structure
 
-- `00-SPEC.template.md` — Context, Problem, Objective, Scope, Functional/Non-Functional Requirements, Acceptance Criteria, Impact Mapping
-- `01-PLAN.template.md` — Overview, High-Level Design (main flow + components), Code Change Strategy (Domain, Infrastructure, Tests), Rollout Strategy, Risks
-- `02-TASKS.template.md` — Checklist: Preparation, Domain impl, Infrastructure impl, Tests, Docs/cleanup, Final validation
-- `03-TECH_NOTES.template.md` — Decisions log (context, options, chosen approach) + technical debts table + file tracking
+- `00-spec.template.md` — Context, Problem, Objective, Scope, Functional/Non-Functional Requirements, Acceptance Criteria, Impact Mapping
+- `01-plan.template.md` — Overview, High-Level Design (main flow + components), Code Change Strategy (Domain, Infrastructure, Tests), Rollout Strategy, Risks
+- `02-tasks.template.md` — Checklist: Preparation, Domain impl, Infrastructure impl, Tests, Docs/cleanup, Final validation
+- `03-tech-notes.template.md` — Decisions log (context, options, chosen approach) + technical debts table + file tracking
 
 ## Language Convention
 

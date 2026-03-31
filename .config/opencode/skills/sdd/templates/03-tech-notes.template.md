@@ -1,6 +1,6 @@
 # Tech Notes - [ID] [TÍTULO CURTO DA FEATURE/CORREÇÃO]
 
-**SPEC de origem:** [ID] [título] — `.specs/backlog/in-progress/[ID]/00-SPEC.md`
+**SPEC de origem:** [ID] [título] — `.specs/backlog/in-progress/[ID]/00-spec.md`
 
 ## Decisões de implementação
 

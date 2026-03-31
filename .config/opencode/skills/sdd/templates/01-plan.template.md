@@ -3,7 +3,7 @@
 **Status:** Rascunho | Em revisão | Aprovado
 **Autor:** [nome]
 **Data:** [YYYY-MM-DD]
-**SPEC de origem:** [ID] [título] — `.specs/backlog/in-progress/[ID]/00-SPEC.md`
+**SPEC de origem:** [ID] [título] — `.specs/backlog/in-progress/[ID]/00-spec.md`
 **Critérios de aceite cobertos:** CA01, CA02, [...]
 
 ## 1. Visão geral

@@ -15,36 +15,36 @@ Pergunte ao usuário:
 2. Qual identificador usar (kebab-case, ex: `add-cache-layer`). Se não informado, derive do título.
 
 Verifique quais documentos já existem em `.specs/backlog/in-progress/[ID]/`:
-- `00-SPEC.md` existe? → etapa SPEC já concluída.
-- `01-PLAN.md` existe? → etapa PLAN já concluída.
-- `02-TASKS.md` existe? → etapa TASKS já concluída.
+- `00-spec.md` existe? → etapa SPEC já concluída.
+- `01-plan.md` existe? → etapa PLAN já concluída.
+- `02-tasks.md` existe? → etapa TASKS já concluída.
 
 Informe ao usuário o estado atual e a próxima etapa pendente.
 
 ### Etapa 2 — SPEC
 
-Se `00-SPEC.md` não existir:
+Se `00-spec.md` não existir:
 - Colete as informações necessárias com o usuário (contexto, problema, objetivo, requisitos, critérios de aceite).
-- Gere a SPEC seguindo o template em `~/.config/opencode/skills/sdd/templates/00-SPEC.template.md`.
-- Salve em `.specs/backlog/in-progress/[ID]/00-SPEC.md`.
+- Gere a SPEC seguindo o template em `~/.config/opencode/skills/sdd/templates/00-spec.template.md`.
+- Salve em `.specs/backlog/in-progress/[ID]/00-spec.md`.
 - Informe: "SPEC criada. Quer prosseguir para o PLAN agora? (sim/não)"
 - Se não: encerre e lembre o próximo comando (`/sdd-create-plan`).
 
 ### Etapa 3 — PLAN
 
-Se `01-PLAN.md` não existir e o usuário quiser prosseguir:
-- Leia a SPEC em `.specs/backlog/in-progress/[ID]/00-SPEC.md`.
-- Gere o PLAN seguindo o template em `~/.config/opencode/skills/sdd/templates/01-PLAN.template.md`.
-- Salve em `.specs/backlog/in-progress/[ID]/01-PLAN.md`.
+Se `01-plan.md` não existir e o usuário quiser prosseguir:
+- Leia a SPEC em `.specs/backlog/in-progress/[ID]/00-spec.md`.
+- Gere o PLAN seguindo o template em `~/.config/opencode/skills/sdd/templates/01-plan.template.md`.
+- Salve em `.specs/backlog/in-progress/[ID]/01-plan.md`.
 - Informe: "PLAN criado. Quer prosseguir para as TASKS agora? (sim/não)"
 - Se não: encerre e lembre o próximo comando (`/sdd-create-tasks`).
 
 ### Etapa 4 — TASKS
 
-Se `02-TASKS.md` não existir e o usuário quiser prosseguir:
+Se `02-tasks.md` não existir e o usuário quiser prosseguir:
 - Leia a SPEC e o PLAN em `.specs/backlog/in-progress/[ID]/`.
-- Gere as TASKS seguindo o template em `~/.config/opencode/skills/sdd/templates/02-TASKS.template.md`.
-- Salve em `.specs/backlog/in-progress/[ID]/02-TASKS.md`.
+- Gere as TASKS seguindo o template em `~/.config/opencode/skills/sdd/templates/02-tasks.template.md`.
+- Salve em `.specs/backlog/in-progress/[ID]/02-tasks.md`.
 - Informe: "TASKS criadas. O fluxo de planejamento está completo.
 Próximo passo: `/sdd-implement` para executar as tarefas e implementar a solução."
 

@@ -7,12 +7,12 @@ compatibility: opencode
 Antes de gerar, pergunte ao usuário o identificador da feature ou correção (o mesmo usado no diretório, ex: `add-cache-layer`).
 
 Verifique se os seguintes arquivos existem:
-- `.specs/backlog/in-progress/[ID]/00-SPEC.md` — se não existir, informe que a SPEC precisa ser criada primeiro (`/sdd-create-spec`). Não gere o TASKS.
-- `.specs/backlog/in-progress/[ID]/01-PLAN.md` — se não existir, informe que o PLAN precisa ser criado primeiro (`/sdd-create-plan`). Não gere o TASKS.
+- `.specs/backlog/in-progress/[ID]/00-spec.md` — se não existir, informe que a SPEC precisa ser criada primeiro (`/sdd-create-spec`). Não gere o TASKS.
+- `.specs/backlog/in-progress/[ID]/01-plan.md` — se não existir, informe que o PLAN precisa ser criado primeiro (`/sdd-create-plan`). Não gere o TASKS.
 
 Leia e analise os seguintes arquivos antes de gerar qualquer conteúdo:
-- SPEC: `.specs/backlog/in-progress/[ID]/00-SPEC.md`
-- PLAN: `.specs/backlog/in-progress/[ID]/01-PLAN.md`
+- SPEC: `.specs/backlog/in-progress/[ID]/00-spec.md`
+- PLAN: `.specs/backlog/in-progress/[ID]/01-plan.md`
 
 Extraia os Critérios de Aceite (CAs) da SPEC e os componentes/contratos do PLAN para gerar tarefas concretas e rastreáveis.
 
@@ -46,14 +46,14 @@ Antes de gerar as tarefas, analise os componentes e arquivos afetados descritos 
 - **Opcional** — a trilha é independente mas o escopo é pequeno (3 arquivos ou menos); worktree possível mas overhead pode não compensar.
 - **Não** — a trilha compartilha arquivos, interfaces ou contratos com outra; ou é sequencial (depende de outra trilha).
 
-Use o template em `~/.config/opencode/skills/sdd/templates/02-TASKS.template.md` como referência de estrutura, formatação, sequência e estilo.
+Use o template em `~/.config/opencode/skills/sdd/templates/02-tasks.template.md` como referência de estrutura, formatação, sequência e estilo.
 Gere uma lista de tarefas em formato de checklist para um desenvolvedor executar.
 Não altere a ordem das seções.
 Use linguagem objetiva e focada em desenvolvimento de software.
 Todos os documentos devem ser escritos em PT-BR.
 
-Salve o arquivo gerado em `.specs/backlog/in-progress/[ID]/02-TASKS.md`.
+Salve o arquivo gerado em `.specs/backlog/in-progress/[ID]/02-tasks.md`.
 
 Após salvar, informe ao usuário:
-"TASKS criado em `.specs/backlog/in-progress/[ID]/02-TASKS.md`.
+"TASKS criado em `.specs/backlog/in-progress/[ID]/02-tasks.md`.
 Próximo passo: `/sdd-implement` para executar as tarefas e implementar a solução."

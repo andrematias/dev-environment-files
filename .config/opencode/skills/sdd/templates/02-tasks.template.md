@@ -3,8 +3,8 @@
 **Status:** Pendente | Em progresso | Concluído
 **Autor:** [nome]
 **Data:** [YYYY-MM-DD]
-**SPEC:** [ID] [título] — `.specs/backlog/in-progress/[ID]/00-SPEC.md`
-**PLAN:** `.specs/backlog/in-progress/[ID]/01-PLAN.md`
+**SPEC:** [ID] [título] — `.specs/backlog/in-progress/[ID]/00-spec.md`
+**PLAN:** `.specs/backlog/in-progress/[ID]/01-plan.md`
 
 ## Mapa de paralelização
 
@@ -61,7 +61,7 @@
 
 ## 5. Decisões tomadas durante a implementação
 
-Registrar em `.specs/backlog/in-progress/[ID]/03-TECH_NOTES.md` decisões não previstas no PLAN e débitos técnicos identificados à medida que surgirem.
+Registrar em `.specs/backlog/in-progress/[ID]/03-tech-notes.md` decisões não previstas no PLAN e débitos técnicos identificados à medida que surgirem.
 
 - [ ] Decisões registradas e justificadas no documento de decisões.
 
