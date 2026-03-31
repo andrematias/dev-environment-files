@@ -47,10 +47,16 @@
 
 ## 4. Testes
 
-Cada CA da SPEC deve ter ao menos uma tarefa de teste correspondente.
+### 4.1. Escrita dos testes
 
-- [ ] CA01 — [tipo de teste] em [caminho] validando [comportamento esperado].
-- [ ] CA02 — [tipo de teste] em [caminho] cobrindo [cenário].
+> Cada tarefa abaixo deve resultar em um arquivo de teste persistente no repositório, não apenas na execução de um comando. Referenciar a tabela de arquivos de teste do PLAN (seção 4.3).
+
+- [ ] Criar `[caminho/do/arquivo_test]` com casos `[test_caso1]`, `[test_caso2]` cobrindo CA01.
+- [ ] Criar `[caminho/do/arquivo_test]` com casos `[test_caso1]` cobrindo CA02.
+
+### 4.2. Execução e validação
+
+- [ ] Rodar `[comando de execução dos testes conforme PLAN seção 4.3]` e confirmar que todos passam.
 - [ ] Todos os testes passando localmente antes de abrir PR.
 
 ## 5. Decisões tomadas durante a implementação

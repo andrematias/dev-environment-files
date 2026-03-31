@@ -16,6 +16,21 @@ Leia e analise os seguintes arquivos antes de gerar qualquer conteúdo:
 
 Extraia os Critérios de Aceite (CAs) da SPEC e os componentes/contratos do PLAN para gerar tarefas concretas e rastreáveis.
 
+## Geração das tarefas de teste (seção 4)
+
+Leia a tabela "Arquivos de teste a criar" da seção 4.3 do PLAN e gere as tarefas da seguinte forma:
+
+**Seção 4.1 — Escrita dos testes:**
+- Para cada linha da tabela, gere uma tarefa de criação do arquivo de teste com os casos de teste nomeados explicitamente.
+- Formato: `- [ ] Criar \`[arquivo]\` com casos \`[test_caso1]\`, \`[test_caso2]\` cobrindo [CA].`
+- Cada tarefa deve resultar em código de teste commitável, não em execução de CLI.
+
+**Seção 4.2 — Execução e validação:**
+- Gere uma tarefa para rodar o comando de execução definido na seção 4.3 do PLAN.
+- Gere uma tarefa de confirmação que todos os testes passam localmente antes do PR.
+
+Nunca colapsar escrita e execução em uma única tarefa — são etapas distintas.
+
 ## Análise de paralelização
 
 Antes de gerar as tarefas, analise os componentes e arquivos afetados descritos no PLAN (seções 3.1 e 3.2) e preencha o Mapa de paralelização seguindo estas regras:

@@ -49,10 +49,20 @@
 
 ### 4.3. Testes
 
-Cada CA deve ter ao menos um teste correspondente planejado.
+Cada CA deve ter ao menos um arquivo de teste a ser **escrito** como artefato permanente (não apenas executado via CLI).
 
-- CA01 → [tipo de teste] em [módulo/caminho] validando [comportamento]
-- CA02 → [tipo de teste] em [módulo/caminho] cobrindo [cenário]
+#### Arquivos de teste a criar
+
+| Arquivo | Tipo | CA coberto | Casos de teste |
+|---------|------|-----------|----------------|
+| `tests/unit/test_[módulo].py` | Unitário | CA01 | `test_[comportamento]`, `test_[edge_case]` |
+| `tests/integration/test_[fluxo].py` | Integração | CA02 | `test_[cenário_completo]` |
+
+#### Comando de execução
+
+```
+[comando para rodar os testes, ex: pytest tests/unit/test_módulo.py]
+```
 
 ## 5. Estratégia de rollout
 
