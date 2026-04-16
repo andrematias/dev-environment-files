@@ -1,15 +1,15 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "permission": {
-    "bash": "ask",
-    "edit": "ask",
-    "write": "ask"
-  },
   "formatter": false,
   "mcp": {
-    "jira": {
-      "type": "remote",
-      "url": "https://mcp.atlassian.com/v1/mcp",
+    "bitbucket": {
+      "command": ["npx", "-y", "@aashari/mcp-server-atlassian-bitbucket"],
+      "environment": {
+        "ATLASSIAN_API_TOKEN": "xxx",
+        "ATLASSIAN_USER_EMAIL": "andre.matias@mutant.com.br",
+        "BITBUCKET_DEFAULT_WORKSPACE": "unearsa"
+      },
+      "type": "local"
     },
     "intellij": {
       "command": [
@@ -22,6 +22,10 @@
         "IJ_MCP_SERVER_PORT": "64343"
       },
       "type": "local"
+    },
+    "jira": {
+      "type": "remote",
+      "url": "https://mcp.atlassian.com/v1/mcp"
     },
     "pycharm": {
       "command": [
@@ -38,24 +42,21 @@
   },
   "provider": {
     "ollama": {
-      "npm": "@ai-sdk/openai-compatible",
-      "name": "Ollama",
-      "options": {
-        "baseURL": "http://localhost:11434/v1"
-      },
       "models": {
+        "gemma4:26b": {
+          "name": "gemma4:26b"
+        },
         "qwen2.5-coder:7b": {
           "name": "Qwen 2.5 Coder"
         },
-        "qwen3:8b": {
-          "name": "Qwen 3"
-        },
-        "codellama": {
-          "name": "Codellama"
-        },
-        "llama3.1": {
-          "name": "Llama 3.1"
+        "qwen3.5:35b-a3b-coding-nvfp4": {
+          "name": "qwen3.5:35b MLX"
         }
+      },
+      "name": "Ollama",
+      "npm": "@ai-sdk/openai-compatible",
+      "options": {
+        "baseURL": "http://localhost:11434/v1"
       }
     }
   }

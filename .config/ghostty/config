@@ -1,9 +1,60 @@
 font-family = JetBrainsMono Nerd Font
 font-feature = +liga 
 font-size = 16
-theme = light:Apple System Colors Light,dark:GruvboxDarkHard
-keybind = super+comma=open_config
-keybind = super+shift+comma=reload_config
-window-padding-x = 2
-window-padding-y = 2
+theme = light:Apple System Colors Light,dark:Gruvbox Dark Hard
+window-padding-x = 0
+window-padding-y = 0
 window-padding-balance = true
+cursor-style = block
+macos-titlebar-style = tabs
+
+shell-integration = zsh
+shell-integration-features = no-cursor
+mouse-hide-while-typing = true
+scrollback-limit = 1000000
+# window-save-state = always
+keybind = super+r=reload_config
+
+
+# For tmux like keybinding
+keybind = ctrl+a>q=quit
+keybind = ctrl+a>t=new_tab
+keybind = ctrl+a>o=toggle_tab_overview
+keybind = ctrl+a>s=new_window
+keybind = ctrl+a>p=previous_tab
+keybind = ctrl+a>n=next_tab
+keybind = ctrl+a>1=goto_tab:1
+keybind = ctrl+a>2=goto_tab:2
+keybind = ctrl+a>3=goto_tab:3
+keybind = ctrl+a>4=goto_tab:4
+keybind = ctrl+a>5=goto_tab:5
+keybind = ctrl+a>6=goto_tab:6
+keybind = ctrl+a>7=goto_tab:7
+keybind = ctrl+a>8=goto_tab:8
+keybind = ctrl+a>9=goto_tab:9
+keybind = ctrl+a>6=goto_tab:6
+
+
+# to create split and navigate it
+keybind = ctrl+a>f=toggle_split_zoom
+keybind = ctrl+a>shift+\=new_split:right
+keybind = ctrl+a>minus=new_split:down
+keybind = ctrl+a>z=toggle_split_zoom
+# keybind = ctrl+a>h=new_split:left
+# keybind = ctrl+a>j=new_split:down
+# keybind = ctrl+a>k=new_split:up
+# keybind = ctrl+a>l=new_split:right
+
+keybind = ctrl+a>h=goto_split:left
+keybind = ctrl+a>j=goto_split:bottom
+keybind = ctrl+a>k=goto_split:top
+keybind = ctrl+a>l=goto_split:right
+keybind = ctrl+a>x=close_surface
+keybind = ctrl+a>equal=equalize_splits
+
+# for resizing split
+keybind = ctrl+shift+h=resize_split:left,10
+keybind = ctrl+shift+l=resize_split:right,10
+keybind = ctrl+shift+k=resize_split:up,10
+keybind = ctrl+shift+j=resize_split:down,10
+keybind = ctrl+a>r=reload_config

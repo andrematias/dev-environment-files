@@ -1,5 +1,5 @@
 ---
-model: github-copilot/gpt-5-mini
+model: github-copilot/gpt-4.1
 tools:
   bash: true
   read: true
