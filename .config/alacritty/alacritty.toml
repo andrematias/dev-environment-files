@@ -1,5 +1,11 @@
 [general]
-import = [ "~/.config/alacritty/themes/theme-dark.toml" ]
+import = [
+  # "~/.config/alacritty/catppuccin-latte.toml"
+  # "~/.config/alacritty/themes/theme-dark.toml",
+  # "~/.config/alacritty/catppuccin-frappe.toml"
+  # "~/.config/alacritty/catppuccin-macchiato.toml"
+  "~/.config/alacritty/catppuccin-mocha.toml",
+]
 
 [cursor]
 blink_interval = 300
@@ -32,7 +38,7 @@ style = "Italic"
 family = "JetBrainsMono Nerd Font"
 style = "Light"
 
-[[keyboard.bindings]] 
+[[keyboard.bindings]]
 key = "F6"
 mods = "Shift"
 command = { program = "/usr/local/bin/toggle-alacritty-theme" }
@@ -89,4 +95,3 @@ dynamic_padding = true
 
 [window.class]
 instance = "Alacritty"
-
