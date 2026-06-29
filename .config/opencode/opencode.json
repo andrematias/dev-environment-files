@@ -1,9 +1,17 @@
 {
   "$schema": "https://opencode.ai/config.json",
   "formatter": false,
+  "permission": {
+    "edit": "ask",
+    "bash": "ask",
+  },
   "mcp": {
     "bitbucket": {
-      "command": ["npx", "-y", "@aashari/mcp-server-atlassian-bitbucket"],
+      "command": [
+        "npx",
+        "-y",
+        "@aashari/mcp-server-atlassian-bitbucket"
+      ],
       "environment": {
         "ATLASSIAN_API_TOKEN": "xxx",
         "ATLASSIAN_USER_EMAIL": "andre.matias@mutant.com.br",
